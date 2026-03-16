@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>蓝牙音箱 Bluetooth Speaker 美国站选品分析</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --ink: #14212b;
+      --muted: #5f6970;
+      --line: #d8c8b3;
+      --card: rgba(255, 250, 241, 0.88);
+      --accent: #cb5b2f;
+      --accent-2: #1f7a8c;
+      --accent-3: #8a9447;
+      --accent-4: #7c5c46;
+      --shadow: 0 16px 40px rgba(20, 33, 43, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(203, 91, 47, 0.10), transparent 28%),
+        radial-gradient(circle at 88% 16%, rgba(31, 122, 140, 0.10), transparent 24%),
+        linear-gradient(180deg, #f3eee5 0%, #f8f5ef 52%, #f1eadf 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    .page { max-width: 1380px; margin: 0 auto; padding: 28px 22px 56px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(246, 235, 220, 0.92)),
+        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 48%);
+      border: 1px solid rgba(187, 168, 143, 0.45);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 22px; align-items: start; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(20, 33, 43, 0.06);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+    .hero p.lead { max-width: 780px; margin: 0 0 18px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+    .hero-insights { display: grid; gap: 10px; margin-top: 18px; }
+    .insight-pill {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(187, 168, 143, 0.55);
+      border-radius: 18px;
+    }
+    .insight-pill .index {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      background: rgba(203, 91, 47, 0.12);
+      color: var(--accent);
+    }
+    .hero-side { display: grid; gap: 16px; }
+    .score-card {
+      background: linear-gradient(160deg, rgba(20,33,43,0.94), rgba(40,58,70,0.94));
+      color: #fef7ef;
+      border-radius: 28px;
+      padding: 24px;
+      min-height: 250px;
+    }
+    .score-label { font-size: 12px; letter-spacing: 0.16em; color: rgba(255,255,255,0.68); text-transform: uppercase; }
+    .score-number { display: flex; align-items: baseline; gap: 10px; margin: 12px 0 8px; }
+    .score-number .value { font-size: clamp(56px, 7vw, 84px); line-height: 1; font-weight: 700; letter-spacing: -0.05em; }
+    .score-number .suffix { font-size: 18px; color: rgba(255,255,255,0.7); }
+    .score-subline { font-size: 18px; margin-bottom: 10px; }
+    .focus-list { display: grid; gap: 8px; margin-top: 16px; }
+    .focus-chip {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .metric-band { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+    .metric-card, .panel, .ring-card, .section-card {
+      background: var(--card);
+      border: 1px solid rgba(187, 168, 143, 0.46);
+      box-shadow: var(--shadow);
+    }
+    .metric-card {
+      padding: 16px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(20,33,43,0.04);
+    }
+    .metric-card .label { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .metric-card .value { font-size: 30px; line-height: 1.05; font-weight: 700; margin-bottom: 6px; }
+    .metric-card .desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .ring-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .ring-card {
+      padding: 16px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 124px;
+    }
+    .ring {
+      --value: 50;
+      --color: var(--accent);
+      width: 74px;
+      height: 74px;
+      flex: none;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fffaf3 0 54%, transparent 56%),
+        conic-gradient(var(--color) calc(var(--value) * 1%), rgba(20,33,43,0.08) 0);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .ring-meta .name { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .ring-meta .display { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .ring-meta .hint { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .sticky-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 9;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 244, 236, 0.72);
+      border: 1px solid rgba(187,168,143,0.42);
+      border-radius: 999px;
+      box-shadow: 0 10px 26px rgba(20,33,43,0.06);
+    }
+    .sticky-nav a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .sticky-nav a:hover { background: rgba(203,91,47,0.10); color: var(--ink); }
+    .sections { display: grid; gap: 18px; margin-top: 18px; }
+    .section-card { border-radius: 28px; padding: 22px; }
+    .section-head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; }
+    .section-head h2 { margin: 0 0 6px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.04em; }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.65; max-width: 720px; }
+    .section-kicker { color: var(--accent); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .grid-2, .grid-3 { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel { border-radius: 22px; padding: 18px; min-height: 100px; }
+    .panel h3 { margin: 0 0 6px; font-size: 18px; }
+    .panel p.note { margin: 0 0 14px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .bar-list { display: grid; gap: 12px; }
+    .bar-row { display: grid; gap: 6px; }
+    .bar-meta { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; font-size: 13px; }
+    .bar-meta strong { font-size: 14px; }
+    .bar-track { height: 10px; border-radius: 999px; background: rgba(20,33,43,0.08); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), #e09d53); }
+    .bar-secondary { font-size: 12px; color: var(--muted); }
+    .chip-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+    .token-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(20,33,43,0.05);
+      border: 1px solid rgba(187,168,143,0.45);
+      color: var(--ink);
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .token-chip small { color: var(--muted); font-size: 11px; }
+    .plot { width: 100%; min-height: 340px; }
+    .plot svg { width: 100%; height: auto; display: block; }
+    .table-wrap {
+      overflow: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(187,168,143,0.38);
+      background: rgba(255,255,255,0.7);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid rgba(187,168,143,0.24); text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: rgba(245, 236, 222, 0.98); font-weight: 700; color: #42332a; z-index: 1; }
+    tbody tr:hover { background: rgba(203,91,47,0.05); }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .controls button {
+      appearance: none;
+      border: 1px solid rgba(187,168,143,0.55);
+      background: rgba(255,255,255,0.76);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .controls button.active, .controls button:hover {
+      background: rgba(203,91,47,0.12);
+      border-color: rgba(203,91,47,0.36);
+      color: var(--ink);
+    }
+    .heatmap-grid { display: grid; border-radius: 18px; overflow: hidden; border: 1px solid rgba(187,168,143,0.36); }
+    .heatmap-cell, .heatmap-header {
+      min-height: 74px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      border-right: 1px solid rgba(255,255,255,0.16);
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+    }
+    .heatmap-header { background: rgba(20,33,43,0.08); font-size: 12px; color: var(--muted); font-weight: 600; }
+    .heatmap-cell strong { font-size: 14px; line-height: 1.1; }
+    .heatmap-cell span { font-size: 11px; opacity: 0.84; }
+    .opportunity-list { display: grid; gap: 10px; }
+    .opportunity-card {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(246,235,220,0.86));
+      border: 1px solid rgba(187,168,143,0.42);
+    }
+    .opportunity-card .topline { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 8px; font-size: 12px; color: var(--muted); text-transform: uppercase; }
+    .opportunity-card h4 { margin: 0 0 6px; font-size: 16px; }
+    .opportunity-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .mini-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .mini-stat {
+      padding: 14px;
+      background: rgba(20,33,43,0.04);
+      border: 1px solid rgba(187,168,143,0.36);
+      border-radius: 18px;
+    }
+    .mini-stat .title { font-size: 12px; color: var(--muted); }
+    .mini-stat .number { margin-top: 8px; font-size: 24px; font-weight: 700; }
+    .quote-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(155deg, rgba(20,33,43,0.94), rgba(26,57,67,0.9));
+      color: #fff8ef;
+    }
+    .quote-card h3 { margin: 0 0 12px; }
+    .quote-card p { margin: 0; color: rgba(255,248,239,0.82); line-height: 1.75; font-size: 14px; }
+    .score-bars { display: grid; gap: 14px; }
+    .score-row { display: grid; gap: 6px; }
+    .score-row .meta { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+    .score-row .desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+    .recommend-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .recommend-card { padding: 18px; border-radius: 20px; border: 1px solid rgba(187,168,143,0.42); background: rgba(255,255,255,0.8); }
+    .recommend-card .tier { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: rgba(203,91,47,0.12); color: var(--accent); font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+    .recommend-card h4 { margin: 0 0 10px; font-size: 18px; }
+    .recommend-card p, .recommend-card li { color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .recommend-card ul { margin: 10px 0 0; padding-left: 18px; }
+    .footer { margin-top: 24px; padding: 18px 4px 8px; color: var(--muted); font-size: 12px; line-height: 1.7; text-align: center; }
+    .footer code { background: rgba(20,33,43,0.06); border-radius: 8px; padding: 2px 6px; }
+    @media (max-width: 1160px) {
+      .hero-grid, .grid-2, .grid-3, .metric-band, .ring-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .page { padding: 18px 14px 36px; }
+      .hero { padding: 20px; }
+      .hero-grid, .grid-2, .grid-3, .metric-band, .ring-grid { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+      .sticky-nav { border-radius: 24px; top: 8px; }
+      h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Amazon Product Research Dashboard</div>
+          <h1>市场调研可视化看板</h1>
+          <p class="lead">把 `zach-product-research` 跑出来的结构化结果，拆成更适合内部判断、品牌沟通和会前过稿的一组 HTML 图表视图。</p>
+          <div class="hero-insights" id="heroInsights"></div>
+        </div>
+        <div class="hero-side">
+          <div class="score-card">
+            <div class="score-label">Go / No-Go</div>
+            <div class="score-number">
+              <div class="value" id="scoreValue"></div>
+              <div class="suffix" id="scoreSuffix">/ 100</div>
+            </div>
+            <div class="score-subline" id="scoreVerdict"></div>
+            <div style="color: rgba(255,255,255,0.72); line-height: 1.65;" id="scoreSubline"></div>
+            <div class="focus-list" id="heroFocus"></div>
+          </div>
+          <div class="ring-grid" id="ringGrid"></div>
+        </div>
+      </div>
+      <div class="metric-band" id="metricBand"></div>
+    </header>
+
+    <nav class="sticky-nav">
+      <a href="#market">市场结构</a>
+      <a href="#discovery">词频与维度</a>
+      <a href="#keywords">关键词</a>
+      <a href="#segments">属性分布</a>
+      <a href="#opportunity">机会空白</a>
+      <a href="#newcomers">新品窗口</a>
+      <a href="#competition">竞品与 VOC</a>
+      <a href="#decision">经营判断</a>
+    </nav>
+
+    <main class="sections">
+      <section class="section-card" id="market">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Market View</div>
+            <h2>先看大盘，再看谁在吃销量</h2>
+            <p>这部分回答三个问题：市场有没有量、头部品牌吃掉了多少、评论门槛高不高。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>品牌销量集中度</h3>
+            <p class="note">按 Top100 月销量聚合，先看品牌护城河，再判断应该避开还是切进去。</p>
+            <div id="brandChart" class="bar-list"></div>
+          </div>
+          <div class="panel">
+            <h3>价格带分布</h3>
+            <p class="note">看产品数和承接销量主要堆在哪个价格区间，避免一上来就打最拥挤的位置。</p>
+            <div id="priceHistogram" class="bar-list"></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="panel">
+            <h3>Top100 销量 vs 评论</h3>
+            <p class="note">横轴是评论数，纵轴是月销量。右上角越多，说明头部评论墙越厚。</p>
+            <div id="topProductsScatter" class="plot"></div>
+          </div>
+          <div class="panel">
+            <h3>低评论快跑样本</h3>
+            <p class="note">专看评论数 ≤ 300 但月销已经冲起来的样本，用来判断新品窗口。</p>
+            <div class="table-wrap"><table id="lowReviewTable"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="discovery">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Discovery</div>
+            <h2>不是先定维度，而是从标题里把维度找出来</h2>
+            <p>先从标题词频和短语里倒推市场真正高频的规格、结构和场景。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="panel">
+            <h3>维度支持度</h3>
+            <p class="note">覆盖率越高，越适合作为后续切片维度。</p>
+            <div id="dimensionSupport" class="bar-list"></div>
+          </div>
+          <div class="panel">
+            <h3>高频标题词</h3>
+            <p class="note">词频越高，越接近真实市场卖点和主流表达。</p>
+            <div id="tokenCloud" class="chip-cloud"></div>
+          </div>
+          <div class="panel">
+            <h3>高频短语</h3>
+            <p class="note">短语更接近用户在标题里感知到的完整卖点组合。</p>
+            <div id="phraseCloud" class="chip-cloud"></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="panel">
+            <h3>功率词热度</h3>
+            <div id="wattsChart" class="bar-list"></div>
+          </div>
+          <div class="panel">
+            <h3>容量词热度</h3>
+            <div id="capacityChart" class="bar-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="keywords">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Keyword Lens</div>
+            <h2>流量、CPC、竞品数最好一起看</h2>
+            <p>单看搜索量会误判，单看竞品数又会忽略需求强度。这里把关键词放在同一张图里看位置。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>关键词流量 / CPC / 竞品气泡图</h3>
+            <div id="keywordScatter" class="plot"></div>
+          </div>
+          <div class="panel">
+            <h3>关键词清单</h3>
+            <div class="table-wrap"><table id="keywordTable"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="segments">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Segment Split</div>
+            <h2>Top100 被哪些属性组合占住了</h2>
+            <p>这里不是只看“有多少产品”，而是切换看“多少销量”和“多少月销额”。</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="controls" id="distributionDimensionControls"></div>
+          <div class="controls" id="distributionMetricControls"></div>
+          <div class="grid-2">
+            <div><div id="distributionChart" class="bar-list"></div></div>
+            <div>
+              <div class="mini-grid" id="distributionStats"></div>
+              <div class="quote-card" style="margin-top: 16px;">
+                <h3>当前切口建议</h3>
+                <p>优先盯住高频标题词、主力容量段和薄供给交叉位，别把首发 SKU 直接扔进最拥挤的红海价位。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="opportunity">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Gap Finder</div>
+            <h2>机会不是凭感觉，是从交叉矩阵里挤出来的</h2>
+            <p>颜色越深，说明承接的月销量越多；产品数很少但颜色很深，就是值得盯的薄供给组合。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="controls" id="matrixControls"></div>
+            <div id="heatmapPanel"></div>
+          </div>
+          <div class="panel">
+            <h3>机会空白 Top12</h3>
+            <div class="opportunity-list" id="gapList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="newcomers">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">New Product Window</div>
+            <h2>窗口没关死，但不能盲冲</h2>
+            <p>看新品占比趋势，再看最近样本怎么跑起来，能更快判断“是不是还有新入场位”。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>新品销量占比趋势</h3>
+            <div id="newProductTrend" class="plot"></div>
+          </div>
+          <div class="panel">
+            <h3>新品时间桶</h3>
+            <div id="newProductBuckets" class="bar-list"></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="panel">
+            <h3>新品样本：上线天数 vs 月销量</h3>
+            <div id="newProductScatter" class="plot"></div>
+          </div>
+          <div class="panel">
+            <h3>新品 Top 样本</h3>
+            <div class="table-wrap"><table id="newProductTable"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="competition">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Competitor & VOC</div>
+            <h2>竞品怎么站位，差评又在打哪里</h2>
+            <p>一边看代表竞品的价格和月销分层，一边看差评集中在哪些维度，方便判断产品和 Listing 要避什么坑。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>代表竞品：价格 vs 月销量</h3>
+            <div id="competitorScatter" class="plot"></div>
+          </div>
+          <div class="panel">
+            <h3>差评痛点强度</h3>
+            <div id="painChart" class="bar-list"></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="panel">
+            <h3>竞品清单</h3>
+            <div class="table-wrap"><table id="competitorTable"></table></div>
+          </div>
+          <div class="panel">
+            <h3>1688 供货价带</h3>
+            <div id="procurementCards" class="mini-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="decision">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Decision</div>
+            <h2>最后把结论压缩成经营动作</h2>
+            <p>适合给品牌方、老板或产品同事看，避免大家只盯着大盘，不知道先做什么。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Go / No-Go 评分拆解</h3>
+            <div class="score-bars" id="scoreBars"></div>
+          </div>
+          <div class="panel">
+            <h3>潜力补充样本</h3>
+            <div id="potentialProducts" class="bar-list"></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 16px;">
+          <h3>建议优先级</h3>
+          <div class="recommend-grid" id="recommendGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">
+      生成时间：<code>2026-03-16 23:05</code> · 输入报告：<code>20260316_US_bluetooth-speaker</code><br />
+      数据来源文件：<code>sorftime MCP: category_report, sorftime MCP: keyword_detail, sorftime MCP: keyword_extends, sorftime MCP: product_detail, sorftime MCP: product_reviews, sorftime MCP: category_trend, sorftime MCP: ali1688_similar_product</code>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {"hero": {"title": "\u84dd\u7259\u97f3\u7bb1 Bluetooth Speaker \u7f8e\u56fd\u7ad9\u9009\u54c1\u5206\u6790", "subtitle": "\u84dd\u7259\u97f3\u7bb1\u662f\u300c\u5927\u5e02\u573a\u3001\u9ad8\u58c1\u5792\u3001\u6709\u7f1d\u9699\u300d\u7684\u54c1\u7c7b\u3002\u6b63\u9762\u786c\u521aJBL\u6ca1\u6709\u80dc\u7b97\uff0c\u4f46\u901a\u8fc7\u573a\u666f\u7ec6\u5206\uff08\u6dcb\u6d74/\u6237\u5916/\u5de5\u5730\uff09+\u75db\u70b9\u89e3\u51b3\uff08\u771f\u5b9e\u7eed\u822a+\u771f\u5b9e\u9632\u6c34\uff09+\u4ef7\u683c\u9519\u4f4d\uff08$25-50\u533a\u95f4\uff09\uff0c\u4e2d\u56fd\u65b0\u5356\u5bb6\u4ecd\u6709Conditional Go\u7684\u673a\u4f1a\u3002", "insights": ["Top100\u6708\u9500\u989d$1,900\u4e07\uff0c\u6708\u641c\u7d22\u91cf39.5\u4e07 \u2192 \u5927\u4f53\u91cf\u6210\u719f\u5e02\u573a\uff0c\u503c\u5f97\u6295\u5165", "\u534a\u5e74\u5185\u65b0\u54c113\u4e2a\u4f46\u9500\u91cf\u4ec5\u53604.5% \u2192 \u65b0\u54c1\u80fd\u8fdb\u573a\u4f46\u96be\u7a81\u56f4", "\u8de8\u6240\u6709\u7ade\u54c1\u5dee\u8bc4\u4e2d\u7eed\u822a\u865a\u6807\u51fa\u73b0\u7387\u6700\u9ad8\uff08\u680720H\u5b9e\u96454-8H\uff09 \u2192 \u7535\u6c60\u7eed\u822a\u662f\u5168\u54c1\u7c7b#1\u75db\u70b9", "$15-30\u670938\u4e2aSKU\uff0c$30-50\u4ec518\u4e2a\u4f46\u6708\u9500\u989d$361\u4e07 \u2192 $30-50\u4ef7\u683c\u5e26\u5b58\u5728\u7ed3\u6784\u6027\u7a7a\u767d", "IP67+20H\u4ee5\u4e0a\u771f\u5b9e\u7eed\u822a\u7684\u4ea7\u54c1\u4ec53\u4e2a\uff0cwaterproof\u6708\u641c2\u4e07 \u2192 \u9632\u6c34\u548c\u7eed\u822a\u7684\u4ea4\u53c9\u7a7a\u767d\u662f\u6700\u5927\u673a\u4f1a"], "verdict": "CONDITIONAL GO", "score": 6.4, "focus": ["Tier 1: \u771f\u5b9eIP67+\u5145\u7535\u53e3\u9632\u6c34\u76d6+12H\u771f\u5b9e\u7eed\u822a\u2014\u2014\u6807\u591a\u5c11\u7ed9\u591a\u5c11", "Tier 2: JBL\u7ea7\u97f3\u8d28\uff0c1/3\u4ef7\u683c\uff0c\u66f4\u957f\u771f\u5b9e\u7eed\u822a"], "avoid": ["JBL\u54c1\u724c\u62a4\u57ce\u6cb3\u6781\u6df1\uff0825\u4e2aSKU\u5168\u4ef7\u4f4d\u8986\u76d6\uff09", "\u8bc4\u8bba\u58c1\u5792\u9ad8\uff08Top100\u5e73\u574713,781\u6761\uff09", "\u4f4e\u4ef7\u7ade\u54c1\u6781\u591a\uff08$15-30\u670938\u4e2a\u4ea7\u54c1\uff09"]}, "rings": [{"name": "Top100\u6708\u9500\u91cf", "display": "286,403\u4ef6", "value": 286403.0, "hint": ""}, {"name": "Top100\u6708\u9500\u989d", "display": "$18,999,628", "value": 18999628.0, "hint": ""}, {"name": "\u5e73\u5747\u4ef7\u683c", "display": "$71.36", "value": 71.36, "hint": "\u88ab\u9ad8\u7aef\u4ea7\u54c1\u62c9\u9ad8"}, {"name": "\u4e2d\u4f4d\u4ef7\u683c", "display": "$14.97", "value": 14.97, "hint": "\u8fc7\u534a\u4ea7\u54c1\u4f4e\u4e8e$15"}], "marketOverview": [{"\u6307\u6807": "Top100\u6708\u9500\u91cf", "\u6570\u503c": "286,403\u4ef6", "\u8bf4\u660e": ""}, {"\u6307\u6807": "Top100\u6708\u9500\u989d", "\u6570\u503c": "$18,999,628", "\u8bf4\u660e": ""}, {"\u6307\u6807": "\u5e73\u5747\u4ef7\u683c", "\u6570\u503c": "$71.36", "\u8bf4\u660e": "\u88ab\u9ad8\u7aef\u4ea7\u54c1\u62c9\u9ad8"}, {"\u6307\u6807": "\u4e2d\u4f4d\u4ef7\u683c", "\u6570\u503c": "$14.97", "\u8bf4\u660e": "\u8fc7\u534a\u4ea7\u54c1\u4f4e\u4e8e$15"}, {"\u6307\u6807": "Top3\u4ea7\u54c1\u9500\u91cf\u5360\u6bd4", "\u6570\u503c": "19.67%", "\u8bf4\u660e": "\u5934\u90e8\u96c6\u4e2d\u4f46\u672a\u7edd\u5bf9\u5784\u65ad"}, {"\u6307\u6807": "Top3\u54c1\u724c\u9500\u91cf\u5360\u6bd4", "\u6570\u503c": "44.72%", "\u8bf4\u660e": "JBL 33.8%"}, {"\u6307\u6807": "\u4e9a\u9a6c\u900a\u81ea\u8425\u5360\u6bd4", "\u6570\u503c": "28.37%", "\u8bf4\u660e": ""}, {"\u6307\u6807": "\u65b0\u54c1\u9500\u91cf\u5360\u6bd4", "\u6570\u503c": "0.93%", "\u8bf4\u660e": "\u6781\u4f4e"}, {"\u6307\u6807": "\u4e2d\u56fd\u5356\u5bb6\u5360\u6bd4", "\u6570\u503c": "76.27%", "\u8bf4\u660e": ""}, {"\u6307\u6807": "\u5e73\u5747\u8bc4\u5206/\u8bc4\u8bba", "\u6570\u503c": "4.57/13,781", "\u8bf4\u660e": "\u8bc4\u8bba\u58c1\u5792\u6781\u9ad8"}, {"\u6307\u6807": "\u65fa\u5b63", "\u6570\u503c": "7\u6708\u300112\u6708", "\u8bf4\u660e": "\u590f\u5b63\u6237\u5916+\u5723\u8bde\u9001\u793c"}], "brands": [{"label": "JBL", "share": 33.8, "count": 25, "sales": 25.0, "avgPrice": 135.0, "strategy": "\u5168\u4ef7\u4f4d\u5168\u5f62\u6001\u8986\u76d6\uff0c\u54c1\u724c\u6ea2\u4ef7", "role": "\u54c1\u7c7b\u9886\u5bfc\u8005"}, {"label": "Anker/Soundcore", "share": 9.5, "count": 4, "sales": 4.0, "avgPrice": 42.5, "strategy": "\u6027\u4ef7\u6bd4+\u54c1\u8d28\u4fdd\u8bc1", "role": "\u54c1\u8d28\u6027\u4ef7\u6bd4\u6807\u6746"}, {"label": "BolaButty", "share": 4.7, "count": 1, "sales": 1.0, "avgPrice": 21.99, "strategy": "\u4f4e\u4ef7\u7206\u6b3e+\u706f\u5149", "role": "\u4e2d\u56fd\u5356\u5bb6\u4ee3\u8868"}, {"label": "Bose", "share": 3.7, "count": 3, "sales": 3.0, "avgPrice": 202.3, "strategy": "\u9ad8\u7aef\u97f3\u8d28+\u54c1\u724c\u6ea2\u4ef7", "role": "\u9ad8\u7aef\u5b88\u62a4\u8005"}, {"label": "Marshall", "share": 1.5, "count": 3, "sales": 3.0, "avgPrice": 153.3, "strategy": "\u590d\u53e4\u8bbe\u8ba1+\u54c1\u724c\u60c5\u6000", "role": "\u8bbe\u8ba1\u5dee\u5f02\u5316"}, {"label": "Sony", "share": 1.1, "count": 2, "sales": 2.0, "avgPrice": 49.5, "strategy": "\u54c1\u724c+\u6280\u672f", "role": "\u6280\u672f\u54c1\u724c"}], "keywords": [{"\u5173\u952e\u8bcd": "bluetooth speaker", "\u7ef4\u5ea6": "\u54c1\u7c7b\u5927\u8bcd", "\u6708\u641c\u7d22\u91cf": 395804, "CPC": 1.57, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 46991, "\u65fa\u5b63": "7\u6708"}, {"\u5173\u952e\u8bcd": "portable bluetooth speakers", "\u7ef4\u5ea6": "\u54c1\u7c7b\u5927\u8bcd", "\u6708\u641c\u7d22\u91cf": 49877, "CPC": 1.3, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 24124, "\u65fa\u5b63": "\u5747\u8861"}, {"\u5173\u952e\u8bcd": "waterproof bluetooth speaker", "\u7ef4\u5ea6": "\u5c5e\u6027\u8bcd-\u9632\u6c34", "\u6708\u641c\u7d22\u91cf": 19839, "CPC": 1.21, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 10474, "\u65fa\u5b63": "6-7\u6708"}, {"\u5173\u952e\u8bcd": "bluetooth speaker loud", "\u7ef4\u5ea6": "\u5c5e\u6027\u8bcd-\u97f3\u91cf", "\u6708\u641c\u7d22\u91cf": 13136, "CPC": 1.63, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 12615, "\u65fa\u5b63": "6\u6708"}, {"\u5173\u952e\u8bcd": "outdoor speaker", "\u7ef4\u5ea6": "\u573a\u666f\u8bcd-\u6237\u5916", "\u6708\u641c\u7d22\u91cf": 12481, "CPC": 2.13, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 33785, "\u65fa\u5b63": "5-7\u6708"}, {"\u5173\u952e\u8bcd": "small portable speaker", "\u7ef4\u5ea6": "\u89c4\u683c\u8bcd-\u5c0f\u578b", "\u6708\u641c\u7d22\u91cf": 4596, "CPC": 1.68, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 0, "\u65fa\u5b63": "12\u6708"}, {"\u5173\u952e\u8bcd": "bluetooth speaker with bass", "\u7ef4\u5ea6": "\u5c5e\u6027\u8bcd-\u4f4e\u97f3", "\u6708\u641c\u7d22\u91cf": 3751, "CPC": 1.73, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 25743, "\u65fa\u5b63": "7\u6708"}, {"\u5173\u952e\u8bcd": "long battery life bluetooth speakers", "\u7ef4\u5ea6": "\u5c5e\u6027\u8bcd-\u7eed\u822a", "\u6708\u641c\u7d22\u91cf": 3101, "CPC": 1.88, "\u641c\u7d22\u7ed3\u679c\u7ade\u54c1\u6570": 0, "\u65fa\u5b63": "12-2\u6708"}], "distributions": {"\u529f\u7387": [{"label": "\u226410W", "count": 17, "share": "", "sales": 98199, "revenue": 5590866, "avg_price": 57.0, "salesShare": ""}, {"label": "10-20W", "count": 13, "share": "", "sales": 47605, "revenue": 2108553, "avg_price": 44.3, "salesShare": ""}, {"label": "20-30W", "count": 8, "share": "", "sales": 20386, "revenue": 1928198, "avg_price": 94.6, "salesShare": ""}, {"label": "30-50W", "count": 5, "share": "", "sales": 15286, "revenue": 2912024, "avg_price": 190.5, "salesShare": ""}, {"label": "50-80W", "count": 5, "share": "", "sales": 12072, "revenue": 1070121, "avg_price": 88.6, "salesShare": ""}, {"label": "80W+", "count": 9, "share": "", "sales": 7055, "revenue": 2408171, "avg_price": 341.3, "salesShare": ""}, {"label": "\u672a\u77e5", "count": 43, "share": "", "sales": 85800, "revenue": 2981693, "avg_price": 34.7, "salesShare": ""}], "\u9632\u6c34\u7b49\u7ea7": [{"label": "IP67/IPX7", "count": 33, "share": "", "sales": 99113, "revenue": 5697888, "avg_price": 57.5, "salesShare": ""}, {"label": "\u9632\u6c34(\u672a\u6807\u7b49\u7ea7)", "count": 18, "share": "", "sales": 78825, "revenue": 6423400, "avg_price": 81.5, "salesShare": ""}, {"label": "\u65e0\u9632\u6c34", "count": 29, "share": "", "sales": 48274, "revenue": 3419207, "avg_price": 70.8, "salesShare": ""}, {"label": "IPX5", "count": 9, "share": "", "sales": 35184, "revenue": 596415, "avg_price": 17.0, "salesShare": ""}, {"label": "IP68/IPX8", "count": 7, "share": "", "sales": 18009, "revenue": 2150756, "avg_price": 119.4, "salesShare": ""}, {"label": "IPX6", "count": 3, "share": "", "sales": 6237, "revenue": 521750, "avg_price": 83.7, "salesShare": ""}, {"label": "IPX4", "count": 1, "share": "", "sales": 761, "revenue": 190212, "avg_price": 249.95, "salesShare": ""}], "\u7eed\u822a\u65f6\u95f4": [{"label": "12-20H", "count": 20, "share": "", "sales": 60812, "revenue": 3705612, "avg_price": 60.9, "salesShare": ""}, {"label": "8-12H", "count": 9, "share": "", "sales": 43268, "revenue": 3777752, "avg_price": 87.3, "salesShare": ""}, {"label": "\u22648H", "count": 4, "share": "", "sales": 42691, "revenue": 1830040, "avg_price": 42.9, "salesShare": ""}, {"label": "20-24H", "count": 10, "share": "", "sales": 31386, "revenue": 1302376, "avg_price": 41.5, "salesShare": ""}, {"label": "24H+", "count": 9, "share": "", "sales": 21236, "revenue": 2736140, "avg_price": 128.8, "salesShare": ""}, {"label": "\u672a\u77e5", "count": 48, "share": "", "sales": 87010, "revenue": 5647708, "avg_price": 64.9, "salesShare": ""}], "\u4ea7\u54c1\u5f62\u6001": [{"label": "\u6807\u51c6\u4fbf\u643a", "count": 40, "share": "", "sales": 121518, "revenue": 9317311, "avg_price": 76.7, "salesShare": ""}, {"label": "Mini\u8ff7\u4f60", "count": 12, "share": "", "sales": 71281, "revenue": 4165359, "avg_price": 58.4, "salesShare": ""}, {"label": "\u6dcb\u6d74\u97f3\u7bb1", "count": 14, "share": "", "sales": 29829, "revenue": 691260, "avg_price": 23.2, "salesShare": ""}, {"label": "Clip\u6302\u6263", "count": 4, "share": "", "sales": 19265, "revenue": 969385, "avg_price": 50.3, "salesShare": ""}, {"label": "\u624b\u673a\u652f\u67b6\u97f3\u7bb1", "count": 13, "share": "", "sales": 19055, "revenue": 444154, "avg_price": 23.3, "salesShare": ""}, {"label": "Boombox/PartyBox", "count": 8, "share": "", "sales": 6337, "revenue": 1732978, "avg_price": 273.5, "salesShare": ""}, {"label": "\u590d\u53e4\u9020\u578b", "count": 3, "share": "", "sales": 8713, "revenue": 165207, "avg_price": 19.0, "salesShare": ""}], "\u706f\u5149\u6548\u679c": [{"label": "\u65e0\u706f\u5149", "count": 71, "share": "", "sales": 237981, "revenue": 16951095, "avg_price": 71.2, "salesShare": ""}, {"label": "\u6709\u706f\u5149", "count": 29, "share": "", "sales": 48422, "revenue": 2048532, "avg_price": 42.3, "salesShare": ""}], "\u4f7f\u7528\u573a\u666f": [{"label": "\u901a\u7528", "count": 30, "share": "", "sales": 107204, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u6237\u5916/\u6d3e\u5bf9", "count": 13, "share": "", "sales": 44983, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u6237\u5916/\u5c45\u5bb6", "count": 13, "share": "", "sales": 43516, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u6237\u5916", "count": 13, "share": "", "sales": 35946, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u6dcb\u6d74/\u6237\u5916", "count": 11, "share": "", "sales": 25430, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u6d3e\u5bf9", "count": 7, "share": "", "sales": 6501, "revenue": 0, "avg_price": 0, "salesShare": ""}, {"label": "\u5c45\u5bb6", "count": 3, "share": "", "sales": 4897, "revenue": 0, "avg_price": 0, "salesShare": ""}], "\u4ef7\u683c\u5e26": [{"label": "$15-30", "count": 38, "share": "", "sales": 93204, "revenue": 2130319, "avg_price": 22.9, "salesShare": ""}, {"label": "$30-60", "count": 18, "share": "", "sales": 83975, "revenue": 3617446, "avg_price": 43.1, "salesShare": ""}, {"label": "$100-200", "count": 13, "share": "", "sales": 37929, "revenue": 5091663, "avg_price": 134.2, "salesShare": ""}, {"label": "$60-100", "count": 11, "share": "", "sales": 33045, "revenue": 2923132, "avg_price": 88.4, "salesShare": ""}, {"label": "$200+", "count": 10, "share": "", "sales": 17091, "revenue": 5084891, "avg_price": 297.5, "salesShare": ""}, {"label": "<$15", "count": 8, "share": "", "sales": 11645, "revenue": 152177, "avg_price": 13.1, "salesShare": ""}]}, "matrices": [{"name": "\u529f\u7387 \u00d7 \u4ef7\u683c\u5e26", "dim1": "\u529f\u7387", "dim2": "\u4ef7\u683c\u5e26", "rowLabel": "\u529f\u7387", "colLabel": "\u4ef7\u683c\u5e26", "rows": ["\u226410W", "10-20W", "20-30W", "50-80W", "30-50W"], "cols": ["$30-60", "$15-30", "$100-200", "$60-100"], "cells": [{"row": "\u226410W", "col": "$30-60", "count": 7, "sales": 60931}, {"row": "\u226410W", "col": "$15-30", "count": 4, "sales": 22531}, {"row": "10-20W", "col": "$30-60", "count": 4, "sales": 15903}, {"row": "20-30W", "col": "$100-200", "count": 5, "sales": 14625}, {"row": "10-20W", "col": "$60-100", "count": 2, "sales": 12553}, {"row": "50-80W", "col": "$60-100", "count": 3, "sales": 10427}, {"row": "30-50W", "col": "$100-200", "count": 2, "sales": 8962}], "gaps": [{"dim1_value": "20-30W", "dim2_value": "$30-60", "count": 1, "sales": 1432, "reason": "\u8584\u4f9b\u7ed9\uff1a\u4ec51\u4e2a\u4ea7\u54c1\u4f4620-30W\u662f\u4e2d\u529f\u7387\u751c\u871c\u70b9\uff0c$30-60\u662f\u5229\u6da6\u533a\u95f4\uff0c\u6280\u672f\u5b8c\u5168\u53ef\u884c\uff0c\u88ab\u5e02\u573a\u5ffd\u89c6"}, {"dim1_value": "10-20W", "dim2_value": "$60-100", "count": 2, "sales": 12553, "reason": "\u8584\u4f9b\u7ed9\u4f46\u9ad8\u9700\u6c42\uff1a\u6708\u950012,553\u4f46\u4ec52\u4e2a\u4ea7\u54c1\uff0c\u54c1\u724c\u6ea2\u4ef7\u7a7a\u95f4\u5927"}, {"dim1_value": "30-50W", "dim2_value": "$30-60", "count": 1, "sales": 766, "reason": "\u8584\u4f9b\u7ed9\uff1a\u5927\u529f\u7387\u4f4e\u4ef7\u4f4d\u5c1a\u672a\u88ab\u5145\u5206\u5f00\u53d1"}], "findings": "\u226410W \u00d7 $30-60 \u662f\u6700\u5927\u7ec4\u5408\uff08JBL Go/Clip\u7cfb\u5217\u4e3b\u5bfc\uff09\uff0c\u8bf4\u660e\u8ff7\u4f60\u97f3\u7bb1\u6d88\u8d39\u8005\u613f\u610f\u4e3a\u54c1\u724c\u548c\u54c1\u8d28\u4ed8$30-60\u300220-30W \u00d7 $30-60 \u4ec51\u4e2a\u4ea7\u54c1\u662f\u6700\u660e\u663e\u7684\u7ed3\u6784\u6027\u7a7a\u767d\u2014\u201425W\u4e2d\u529f\u7387\u5b9a\u4ef7$39.99\u76f4\u63a5\u5bf9\u6807JBL Flip\u7cfb\u5217\u4f461/3\u4ef7\u683c\uff0c\u6280\u672f\u53ef\u884c\u4e14\u5229\u6da6\u53ef\u89c2\u3002"}, {"name": "\u9632\u6c34\u7b49\u7ea7 \u00d7 \u4ea7\u54c1\u5f62\u6001", "dim1": "\u9632\u6c34\u7b49\u7ea7", "dim2": "\u4ea7\u54c1\u5f62\u6001", "rowLabel": "\u9632\u6c34\u7b49\u7ea7", "colLabel": "\u4ea7\u54c1\u5f62\u6001", "rows": ["IP67/IPX7", "\u9632\u6c34(\u672a\u6807\u7b49\u7ea7)", "IPX5", "\u65e0\u9632\u6c34", "IP68/IPX8"], "cols": ["\u6807\u51c6\u4fbf\u643a", "Mini\u8ff7\u4f60", "\u6dcb\u6d74\u97f3\u7bb1", "\u624b\u673a\u652f\u67b6\u97f3\u7bb1"], "cells": [{"row": "IP67/IPX7", "col": "\u6807\u51c6\u4fbf\u643a", "count": 18, "sales": 56864}, {"row": "\u9632\u6c34(\u672a\u6807\u7b49\u7ea7)", "col": "Mini\u8ff7\u4f60", "count": 5, "sales": 48254}, {"row": "IP67/IPX7", "col": "\u6dcb\u6d74\u97f3\u7bb1", "count": 11, "sales": 25793}, {"row": "IPX5", "col": "\u6807\u51c6\u4fbf\u643a", "count": 6, "sales": 24561}, {"row": "\u65e0\u9632\u6c34", "col": "\u624b\u673a\u652f\u67b6\u97f3\u7bb1", "count": 13, "sales": 19055}], "gaps": [{"dim1_value": "IP68/IPX8", "dim2_value": "\u6dcb\u6d74\u97f3\u7bb1", "count": 1, "sales": 744, "reason": "\u8584\u4f9b\u7ed9\uff1aIP68\u6dcb\u6d74\u97f3\u7bb1\u4ec51\u4e2a\u4ea7\u54c1\uff0c\u6d88\u8d39\u8005\u5bf9\u6dcb\u6d74\u573a\u666f\u7684\u9632\u6c34\u8981\u6c42\u6700\u9ad8\u4f46\u4f9b\u7ed9\u4e0d\u8db3"}, {"dim1_value": "IP67/IPX7", "dim2_value": "Mini\u8ff7\u4f60", "count": 2, "sales": 9620, "reason": "\u8584\u4f9b\u7ed9\u4f46\u9ad8\u9700\u6c42\uff1aIP67\u8ff7\u4f60\u97f3\u7bb1\u4ec52\u4e2a\u4f46\u6708\u95009,620"}], "findings": "IP67\u6807\u51c6\u4fbf\u643a\u662f\u4e3b\u529b\u7ec4\u5408\uff0818\u4e2a\u4ea7\u54c1\uff09\uff0c\u4f46IP67/IP68\u6dcb\u6d74\u97f3\u7bb1\u4f9b\u7ed9\u4e25\u91cd\u4e0d\u8db3\uff08IP68\u6dcb\u6d74\u4ec51\u4e2a\u4ea7\u54c1\uff09\u3002\u65e0\u9632\u6c34\u7684\u624b\u673a\u652f\u67b6\u97f3\u7bb1\u662f\u65b0\u5174\u54c1\u7c7b\uff0813\u4e2a\u4ea7\u54c1\u6708\u950019,055\uff09\u4f46\u4e0e\u84dd\u7259\u97f3\u7bb1\u6838\u5fc3\u9700\u6c42\u4e0d\u540c\u3002"}, {"name": "\u706f\u5149\u6548\u679c \u00d7 \u4ef7\u683c\u5e26", "dim1": "\u706f\u5149\u6548\u679c", "dim2": "\u4ef7\u683c\u5e26", "rowLabel": "\u706f\u5149\u6548\u679c", "colLabel": "\u4ef7\u683c\u5e26", "rows": ["\u65e0\u706f\u5149", "\u6709\u706f\u5149"], "cols": ["$30-60", "$15-30", "$100-200"], "cells": [{"row": "\u65e0\u706f\u5149", "col": "$30-60", "count": 14, "sales": 79703}, {"row": "\u65e0\u706f\u5149", "col": "$15-30", "count": 24, "sales": 68785}, {"row": "\u6709\u706f\u5149", "col": "$15-30", "count": 14, "sales": 24419}, {"row": "\u65e0\u706f\u5149", "col": "$100-200", "count": 13, "sales": 37929}, {"row": "\u6709\u706f\u5149", "col": "$30-60", "count": 4, "sales": 4272}], "gaps": [{"dim1_value": "\u6709\u706f\u5149", "dim2_value": "$100-200", "count": 0, "sales": 0, "reason": "\u7a7a\u767d\uff1a\u9ad8\u7aef+\u706f\u5149\u7ec4\u5408\u4e0d\u5b58\u5728\uff0c\u56e0\u4e3a\u9ad8\u7aef\u54c1\u724c\uff08JBL/Bose/Marshall\uff09\u4e0d\u505a\u706f\u5149\uff0c\u706f\u5149\u88ab\u89c6\u4e3a\u4f4e\u7aef\u7279\u5f81"}, {"dim1_value": "\u6709\u706f\u5149", "dim2_value": "$30-60", "count": 4, "sales": 4272, "reason": "\u8584\u4f9b\u7ed9\uff1a$30-60\u706f\u5149\u4ea7\u54c1\u4ec54\u4e2a\uff0c\u4f46\u6237\u5916\u6d3e\u5bf9\u573a\u666f\u5bf9\u706f\u5149\u6709\u9700\u6c42"}], "findings": "\u706f\u5149\u96c6\u4e2d\u5728$15-30\u4f4e\u4ef7\u6bb5\uff0c$100+\u5b8c\u5168\u6ca1\u6709\u706f\u5149\u4ea7\u54c1\u2014\u2014\u9ad8\u7aef\u54c1\u724c\u5c06\u706f\u5149\u89c6\u4e3a'\u5ec9\u4ef7'\u7279\u5f81\u3002$30-60\u706f\u5149\u4ea7\u54c1\u4ec54\u4e2a\u4f46\u6708\u95004,272\uff0c\u8bf4\u660e\u4e2d\u4ef7\u4f4d\u5e26\u706f\u5149\u6709\u5c0f\u4f17\u9700\u6c42\uff08\u9732\u8425/\u805a\u4f1a\u573a\u666f\uff09\u3002"}], "gaps": [{"\u4ea4\u53c9\u7ef4\u5ea6": "\u4ea4\u53c9\u5206\u6790ch04\uff08IP68\u6dcb\u6d74\u4ec51\u4e2a\u4ea7\u54c1\uff09+\u75db\u70b9ch06\uff08\u7eed\u822a\u865a\u6807#1\u75db\u70b9+\u9632\u6c34\u76d6\u7f3a\u5931\uff09", "\u72b6\u6001": "\u4f18\u5148\u7ea7 #1", "\u7ec4\u5408": "\u6dcb\u6d74\u4e13\u7528IP67\u97f3\u7bb1+\u771f\u5b9e12H\u7eed\u822a+\u5145\u7535\u53e3\u9632\u6c34\u76d6\uff0c$22-28\u4ef7\u683c\u5e26", "\u4ea7\u54c1\u6570": "\u2014", "\u6708\u9500\u91cf": 7900.0, "action": "Tier 1\u4ea7\u54c1\uff0c\u4f18\u5148\u5f00\u53d1"}, {"\u4ea4\u53c9\u7ef4\u5ea6": "\u4ea4\u53c9\u5206\u6790ch04\uff0820-30W\u00d7$30-60\u4ec51\u4e2a\u4ea7\u54c1\uff09+\u54c1\u724c\u683c\u5c40ch05\uff08JBL Flip\u7cfb\u52171/3\u4ef7\u683c\uff09", "\u72b6\u6001": "\u4f18\u5148\u7ea7 #2", "\u7ec4\u5408": "25W\u4e2d\u529f\u7387\u6237\u5916\u97f3\u7bb1+IP67+18H\u771f\u5b9e\u7eed\u822a\uff0c$35-50\u4ef7\u683c\u5e26", "\u4ea7\u54c1\u6570": "\u2014", "\u6708\u9500\u91cf": 7400.0, "action": "Tier 2\u4ea7\u54c1\uff0cTier 1\u9a8c\u8bc1\u540e\u8ddf\u8fdb"}, {"\u4ea4\u53c9\u7ef4\u5ea6": "ANCOON\u5dee\u8bc4\u5bc6\u96c6\u4f46\u6708\u95004,956\u8bf4\u660e\u9700\u6c42\u5b58\u5728", "\u72b6\u6001": "\u4f18\u5148\u7ea7 #3", "\u7ec4\u5408": "60W\u5927\u529f\u7387\u5de5\u5730/\u8f66\u95f4\u97f3\u7bb1+IPX6+24H\u7eed\u822a+\u9632\u6454\uff0c$60-90", "\u4ea7\u54c1\u6570": "\u2014", "\u6708\u9500\u91cf": 5700.0, "action": "Tier 3\uff0c\u89c2\u671bANCOON\u8868\u73b0\u540e\u51b3\u5b9a"}], "painPoints": [{"\u75db\u70b9\u7ef4\u5ea6": "\u7535\u6c60\u7eed\u822a", "\u547d\u4e2d\u6b21\u6570": 40, "\u4ee3\u8868\u5410\u69fd": "\u5b9e\u9645\u7eed\u822a\u8fdc\u4f4e\u4e8e\u6807\u79f0\uff08JBL Go 4\u68077H\u5b9e\u96452-3H\uff0cBolaButty\u680720H\u5b9e\u96454-8H\uff0cJBL Flip 7\u680716H\u5b9e\u96452-5H\uff09", "opportunity": "\u771f\u5b9e\u6807\u6ce8\u7eed\u822a+\u9ad8\u54c1\u8d28\u7535\u82af+\u5feb\u5145+\u8fb9\u5145\u8fb9\u542c+\u7535\u91cf\u663e\u793a", "solution": "\u9009\u7528A\u54c1\u9502\u7535\u6c60\uff0c50%\u97f3\u91cf\u5b9e\u6d4b\u7eed\u822a\u4f5c\u4e3a\u6807\u79f0\u503c\uff0cType-C\u5feb\u5145\uff0cLED\u7535\u91cf\u6307\u793a\u706f"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u97f3\u8d28/\u529f\u7387", "\u547d\u4e2d\u6b21\u6570": 20, "\u4ee3\u8868\u5410\u69fd": "\u97f3\u91cf\u4e0d\u591f\u5927\uff08Mini\u97f3\u7bb1\u901a\u75c5\uff09", "opportunity": "\u5b9e\u9645RMS\u529f\u7387\u4e0d\u865a\u6807+DSP\u8c03\u97f3+\u88ab\u52a8\u8f90\u5c04\u5668", "solution": "\u88ab\u52a8\u8f90\u5c04\u5668\u8bbe\u8ba1\uff0cRMS\u529f\u7387\u771f\u5b9e\u6807\u6ce8\uff0cDSP\u9884\u8bbeEQ\u6a21\u5f0f"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u84dd\u7259\u8fde\u63a5", "\u547d\u4e2d\u6b21\u6570": 15, "\u4ee3\u8868\u5410\u69fd": "\u968f\u673a\u65ad\u8fde", "opportunity": "BT5.3+\u7a33\u5b9a\u8fde\u63a5+\u4f18\u5316\u5929\u7ebf\u8bbe\u8ba1", "solution": "\u84dd\u72595.3\u82af\u7247\uff0c\u52a0\u5927\u5929\u7ebf\u9762\u79ef\uff0cTWS\u7a33\u5b9a\u914d\u5bf9\u534f\u8bae"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u4ea7\u54c1\u8010\u4e45\u6027", "\u547d\u4e2d\u6b21\u6570": 15, "\u4ee3\u8868\u5410\u69fd": "\u4ea7\u54c11-6\u4e2a\u6708\u540e\u505c\u6b62\u5de5\u4f5c", "opportunity": "QC\u5168\u68c0+\u5ef6\u957f\u4fdd\u4fee+\u5feb\u901f\u552e\u540e", "solution": "\u51fa\u5382\u5168\u68c0\uff0c1\u5e74\u8d28\u4fdd\uff0cAmazon\u552e\u540e\u5feb\u901f\u54cd\u5e94"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u9632\u6c34\u53ef\u9760\u6027", "\u547d\u4e2d\u6b21\u6570": 5, "\u4ee3\u8868\u5410\u69fd": "\u6807\u79f0\u9632\u6c34\u4f46\u5b9e\u9645\u8fdb\u6c34\u635f\u574f", "opportunity": "\u5145\u7535\u53e3\u6a61\u80f6\u585e+\u771f\u5b9eIP67\u8ba4\u8bc1+\u6d6e\u6c34\u8bbe\u8ba1", "solution": "\u5145\u7535\u53e3\u7845\u80f6\u585e\uff0c\u7b2c\u4e09\u65b9IP67\u8ba4\u8bc1\u62a5\u544a"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u706f\u5149\u6548\u679c", "\u547d\u4e2d\u6b21\u6570": 3, "\u4ee3\u8868\u5410\u69fd": "\u65e0\u6cd5\u5173\u95ed\u706f\u5149/\u64cd\u4f5c\u4e0d\u4fbf", "opportunity": "\u706f\u5149\u72ec\u7acb\u5f00\u5173+\u8bb0\u5fc6\u8bbe\u5b9a", "solution": "\u72ec\u7acb\u706f\u5149\u6309\u952e\uff0c\u957f\u6309\u5173\u95ed\uff0c\u8bb0\u5fc6\u4e0a\u6b21\u8bbe\u5b9a"}, {"\u75db\u70b9\u7ef4\u5ea6": "\u914d\u4ef6/\u5145\u7535\u7ebf", "\u547d\u4e2d\u6b21\u6570": 5, "\u4ee3\u8868\u5410\u69fd": "\u4e0d\u9644\u9001\u5145\u7535\u7ebf", "opportunity": "\u6807\u914dType-C\u5145\u7535\u7ebf+\u4fbf\u643a\u888b", "solution": "\u6807\u914d\u5145\u7535\u7ebf+\u6302\u7ef3/\u4fbf\u643a\u888b"}], "scorecard": [{"\u7ef4\u5ea6": "\u5e02\u573a\u89c4\u6a21", "\u5f97\u5206": 9, "\u6ee1\u5206": 10, "\u8bf4\u660e": "Top100\u6708\u9500\u989d$1,900\u4e07\uff0c\u6708\u641c\u7d22\u91cf39.5\u4e07", "\u6743\u91cd": 20, "\u52a0\u6743\u5206": 1.8}, {"\u7ef4\u5ea6": "\u7ade\u4e89\u683c\u5c40", "\u5f97\u5206": 4, "\u6ee1\u5206": 10, "\u8bf4\u660e": "JBL\u536034%\uff0c\u54c1\u724c\u96c6\u4e2d\u5ea6\u9ad8\uff0c\u8bc4\u8bba\u58c1\u5792\u6781\u9ad8", "\u6743\u91cd": 25, "\u52a0\u6743\u5206": 1.0}, {"\u7ef4\u5ea6": "\u9700\u6c42\u6e05\u6670\u5ea6", "\u5f97\u5206": 8, "\u6ee1\u5206": 10, "\u8bf4\u660e": "\u5173\u952e\u8bcd\u591a\u7ef4\u5ea6\u9700\u6c42\u660e\u786e\uff0c\u5dee\u8bc4\u75db\u70b9\u6e05\u6670\u53ef\u89e3\u51b3", "\u6743\u91cd": 15, "\u52a0\u6743\u5206": 1.2}, {"\u7ef4\u5ea6": "\u8fdb\u5165\u58c1\u5792\uff08\u53cd\u5411\uff09", "\u5f97\u5206": 5, "\u6ee1\u5206": 10, "\u8bf4\u660e": "Review\u548c\u54c1\u724c\u58c1\u5792\u9ad8\uff0c\u4f46\u6280\u672f\u548c\u4f9b\u5e94\u94fe\u58c1\u5792\u4f4e", "\u6743\u91cd": 20, "\u52a0\u6743\u5206": 1.0}, {"\u7ef4\u5ea6": "\u76c8\u5229\u80fd\u529b", "\u5f97\u5206": 7, "\u6ee1\u5206": 10, "\u8bf4\u660e": "\u6bdb\u5229\u738733-39%\uff0c\u51c0\u5229\u7387\u7ea624%\uff0cCPC $1.21-1.88", "\u6743\u91cd": 20, "\u52a0\u6743\u5206": 1.4}, {"\u7ef4\u5ea6": "\u603b\u5206", "\u5f97\u5206": 6.4, "\u6ee1\u5206": 10, "\u8bf4\u660e": "CONDITIONAL GO", "\u6743\u91cd": 100, "\u52a0\u6743\u5206": 6.4}], "competitors": [{"brand": "JBL", "asin": "B0CTNWBT1Z", "type": "\u91cf\u7ea7\u6807\u6746", "price": 44.95, "sales": 30203, "reviews": 14469, "coverage": "Mini\u8ff7\u4f60/\u226410W/$30-60"}, {"brand": "BolaButty", "asin": "B0BRKPVZB4", "type": "\u91cf\u7ea7\u6807\u6746", "price": 21.99, "sales": 13510, "reviews": 34416, "coverage": "\u6807\u51c6\u4fbf\u643a/$15-30/\u6709\u706f\u5149"}, {"brand": "JBL", "asin": "B0DMV3BMGP", "type": "\u529f\u80fd\u5dee\u5f02\u4ee3\u8868", "price": 109.95, "sales": 7314, "reviews": 2562, "coverage": "\u6807\u51c6\u4fbf\u643a/20-30W/$100-200"}, {"brand": "ANCOON", "asin": "B0DHX88N8Z", "type": "\u529f\u80fd\u5dee\u5f02\u4ee3\u8868", "price": 89.99, "sales": 4956, "reviews": 2403, "coverage": "80W/\u5de5\u5730\u573a\u666f/$60-100"}, {"brand": "Deeyaple", "asin": "B0D7BWV74T", "type": "\u4ef7\u683c\u5e26-\u4f4e", "price": 19.99, "sales": 4852, "reviews": 4996, "coverage": "$15-30/\u6709\u706f\u5149/15W"}, {"brand": "Ortizan", "asin": "B08FDPW8KR", "type": "\u4ef7\u683c\u5e26-\u4e2d", "price": 29.99, "sales": 8140, "reviews": 45936, "coverage": "\u6807\u51c6\u4fbf\u643a/$15-30/IPX7"}, {"brand": "Soundcore", "asin": "B0DB1753RZ", "type": "\u529f\u80fd\u5dee\u5f02\u4ee3\u8868", "price": 24.99, "sales": 6836, "reviews": 9266, "coverage": "\u6dcb\u6d74/IP67/$15-30"}], "newProductTrend": [], "newProductBuckets": [], "newProductTop": [], "newProductScatter": [], "priceHistogram": [{"label": "$15-30", "count": 38, "share": "", "sales": 93204, "revenue": 2130319, "avg_price": 22.9, "salesShare": ""}, {"label": "$30-60", "count": 18, "share": "", "sales": 83975, "revenue": 3617446, "avg_price": 43.1, "salesShare": ""}, {"label": "$100-200", "count": 13, "share": "", "sales": 37929, "revenue": 5091663, "avg_price": 134.2, "salesShare": ""}, {"label": "$60-100", "count": 11, "share": "", "sales": 33045, "revenue": 2923132, "avg_price": 88.4, "salesShare": ""}, {"label": "$200+", "count": 10, "share": "", "sales": 17091, "revenue": 5084891, "avg_price": 297.5, "salesShare": ""}, {"label": "<$15", "count": 8, "share": "", "sales": 11645, "revenue": 152177, "avg_price": 13.1, "salesShare": ""}], "topProductsScatter": [{"brand": "JBL", "sales": 30203.0, "reviews": 14469.0, "price": 44.95}, {"brand": "BolaButty", "sales": 13510.0, "reviews": 34416.0, "price": 21.99}, {"brand": "Anker", "sales": 12609.0, "reviews": 147791.0, "price": 31.99}, {"brand": "JBL", "sales": 11220.0, "reviews": 83997.0, "price": 89.95}, {"brand": "JBL", "sales": 9159.0, "reviews": 7159.0, "price": 59.95}, {"brand": "JBL", "sales": 8426.0, "reviews": 51498.0, "price": 39.99}, {"brand": "CHIFENCHY", "sales": 8375.0, "reviews": 6157.0, "price": 0.0}, {"brand": "Ortizan", "sales": 8140.0, "reviews": 45936.0, "price": 29.99}, {"brand": "JBL", "sales": 7314.0, "reviews": 2562.0, "price": 109.95}, {"brand": "Bose", "sales": 7130.0, "reviews": 10122.0, "price": 129.0}, {"brand": "Soundcore", "sales": 6836.0, "reviews": 9266.0, "price": 24.99}, {"brand": "JBL", "sales": 6772.0, "reviews": 4036.0, "price": 159.95}, {"brand": "Sonos", "sales": 5898.0, "reviews": 2444.0, "price": 219.0}, {"brand": "Dosmix", "sales": 5531.0, "reviews": 7092.0, "price": 16.99}, {"brand": "JBL", "sales": 5471.0, "reviews": 34888.0, "price": 49.95}, {"brand": "Anker", "sales": 5189.0, "reviews": 109261.0, "price": 24.99}, {"brand": "ANCOON", "sales": 4956.0, "reviews": 2403.0, "price": 89.99}, {"brand": "Deeyaple", "sales": 4852.0, "reviews": 4996.0, "price": 19.99}, {"brand": "Turtlebox", "sales": 4510.0, "reviews": 871.0, "price": 250.0}, {"brand": "JTEMAN", "sales": 4373.0, "reviews": 17120.0, "price": 24.69}, {"brand": "OHAYO", "sales": 3985.0, "reviews": 682.0, "price": 26.99}, {"brand": "EWA", "sales": 3347.0, "reviews": 50865.0, "price": 17.99}, {"brand": "JBL", "sales": 3270.0, "reviews": 79845.0, "price": 35.95}, {"brand": "Jabra", "sales": 3147.0, "reviews": 2332.0, "price": 93.2}, {"brand": "Ultimate Ears", "sales": 3084.0, "reviews": 2112.0, "price": 79.99}, {"brand": "Beats", "sales": 2881.0, "reviews": 3045.0, "price": 99.95}, {"brand": "EBODA", "sales": 2758.0, "reviews": 17088.0, "price": 21.99}, {"brand": "Soundcore", "sales": 2590.0, "reviews": 6789.0, "price": 99.99}, {"brand": "AIKELA", "sales": 2580.0, "reviews": 544.0, "price": 25.99}, {"brand": "JBL", "sales": 2559.0, "reviews": 21267.0, "price": 109.95}], "lowReviewRunners": [], "dimensionDiscovery": {}, "procurement": [{"label": "\u8ff7\u4f60\u6b3e\uff08\u226410W\uff09", "min": 3.0, "median": 5.0, "max": 8.0}, {"label": "\u6807\u51c6\u4fbf\u643a\uff0810-20W\uff09", "min": 5.0, "median": 8.0, "max": 15.0}, {"label": "\u4e2d\u529f\u7387\uff0820-50W\uff09", "min": 12.0, "median": 18.0, "max": 30.0}, {"label": "\u5927\u529f\u7387\uff0850W+\uff09", "min": 20.0, "median": 35.0, "max": 60.0}], "potentialProducts": [{"brand": "Tier 1", "potential": 7.9, "asin": "", "sales": 0, "reviews": 0, "price": 0, "reason": "\u6dcb\u6d74\u4e13\u7528IP67\u97f3\u7bb1+\u771f\u5b9e12H\u7eed\u822a+\u5145\u7535\u53e3\u9632\u6c34\u76d6\uff0c$22-28\u4ef7\u683c\u5e26"}, {"brand": "Tier 2", "potential": 7.4, "asin": "", "sales": 0, "reviews": 0, "price": 0, "reason": "25W\u4e2d\u529f\u7387\u6237\u5916\u97f3\u7bb1+IP67+18H\u771f\u5b9e\u7eed\u822a\uff0c$35-50\u4ef7\u683c\u5e26"}, {"brand": "Tier 3", "potential": 5.7, "asin": "", "sales": 0, "reviews": 0, "price": 0, "reason": "60W\u5927\u529f\u7387\u5de5\u5730/\u8f66\u95f4\u97f3\u7bb1+IPX6+24H\u7eed\u822a+\u9632\u6454\uff0c$60-90"}], "page_title": "\u84dd\u7259\u97f3\u7bb1 Bluetooth Speaker \u7f8e\u56fd\u7ad9\u9009\u54c1\u5206\u6790"};
+    const palette = ["#cb5b2f", "#1f7a8c", "#8a9447", "#7c5c46", "#d49a43", "#526d82", "#a25a4b"];
+    const keywordColors = {
+      "品类大词": "#cb5b2f",
+      "属性词": "#1f7a8c",
+      "规格词": "#8a9447",
+      "场景词": "#7c5c46"
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("zh-CN").format(Math.round(Number(value || 0)));
+    }
+
+    function formatMoney(value) {
+      return "$" + new Intl.NumberFormat("zh-CN", {
+        minimumFractionDigits: Number(value) < 100 ? 2 : 0,
+        maximumFractionDigits: Number(value) < 100 ? 2 : 0
+      }).format(Number(value || 0));
+    }
+
+    function compact(value) {
+      const numeric = Number(value || 0);
+      const abs = Math.abs(numeric);
+      if (abs >= 1000000) return (numeric / 1000000).toFixed(1) + "M";
+      if (abs >= 1000) return (numeric / 1000).toFixed(1) + "K";
+      return String(Math.round(numeric));
+    }
+
+    function percent(value, digits = 1) {
+      return Number(value || 0).toFixed(digits) + "%";
+    }
+
+    function toggleSection(id, show) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.style.display = show ? "" : "none";
+      }
+    }
+
+    function renderMetricBand() {
+      const rows = DATA.marketOverview || [];
+      document.getElementById("metricBand").innerHTML = rows.map((item) => `
+        <div class="metric-card">
+          <div class="label">${escapeHtml(item["指标"])}</div>
+          <div class="value">${escapeHtml(item["数值"])}</div>
+          <div class="desc">${escapeHtml(item["说明"])}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderHero() {
+      const scoreDisplay = DATA.hero?.scoreDisplay ?? (DATA.hero?.score ?? 0);
+      document.getElementById("scoreValue").textContent = scoreDisplay;
+      document.getElementById("scoreSuffix").textContent = scoreDisplay === "—" ? "" : "/ 100";
+      document.getElementById("scoreVerdict").textContent = DATA.hero?.verdict ?? "";
+      document.getElementById("scoreSubline").textContent = DATA.hero?.subline ?? "";
+      const insights = DATA.hero?.insights || [];
+      const heroInsights = document.getElementById("heroInsights");
+      heroInsights.innerHTML = insights.map((item, index) => `
+        <div class="insight-pill">
+          <div class="index">${index + 1}</div>
+          <div>${escapeHtml(item)}</div>
+        </div>
+      `).join("");
+      heroInsights.style.display = insights.length ? "" : "none";
+      const focusItems = DATA.hero?.focus || [];
+      const heroFocus = document.getElementById("heroFocus");
+      heroFocus.innerHTML = focusItems.map((item) => `
+        <div class="focus-chip">${escapeHtml(item)}</div>
+      `).join("");
+      heroFocus.style.display = focusItems.length ? "" : "none";
+      const ringItems = (DATA.rings || []).filter((item) => item.display !== "—");
+      const ringGrid = document.getElementById("ringGrid");
+      ringGrid.innerHTML = ringItems.map((item) => `
+        <div class="ring-card">
+          <div class="ring" style="--value:${item.value || 0}; --color:${item.color || '#cb5b2f'};">${escapeHtml(item.display)}</div>
+          <div class="ring-meta">
+            <div class="name">${escapeHtml(item.label)}</div>
+            <div class="display">${escapeHtml(item.display)}</div>
+            <div class="hint">用来判断这个市场到底有多挤、还能不能让新品穿过去。</div>
+          </div>
+        </div>
+      `).join("");
+      ringGrid.style.display = ringItems.length ? "" : "none";
+    }
+
+    function renderBarList(containerId, items, options = {}) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const {
+        labelKey = "label",
+        valueKey = "sales",
+        formatter = compact,
+        secondary = null,
+        colorize = null
+      } = options;
+      const values = items.map((item) => Number(item[valueKey] || 0));
+      const maxValue = Math.max(...values, 1);
+      container.innerHTML = items.map((item, index) => {
+        const rawValue = Number(item[valueKey] || 0);
+        const width = maxValue ? (rawValue / maxValue) * 100 : 0;
+        const secondaryText = secondary ? secondary(item) : "";
+        const barColor = colorize ? colorize(item, index) : palette[index % palette.length];
+        return `
+          <div class="bar-row">
+            <div class="bar-meta">
+              <span>${escapeHtml(item[labelKey])}</span>
+              <strong>${escapeHtml(formatter(rawValue, item))}</strong>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:${width}%; background: linear-gradient(90deg, ${barColor}, rgba(224,157,83,0.9));"></div></div>
+            ${secondaryText ? `<div class="bar-secondary">${secondaryText}</div>` : ""}
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderTable(tableId, columns, rows) {
+      const table = document.getElementById(tableId);
+      if (!table) return;
+      table.innerHTML = `<thead><tr>${columns.map((col) => `<th>${escapeHtml(col.label)}</th>`).join("")}</tr></thead><tbody>${
+        rows.map((row) => `<tr>${columns.map((col) => `<td>${escapeHtml(col.render ? col.render(row) : row[col.key])}</td>`).join("")}</tr>`).join("")
+      }</tbody>`;
+    }
+
+    function renderTokenCloud(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const maxValue = Math.max(...items.map((item) => item[1]), 1);
+      container.innerHTML = items.map((item, index) => {
+        const size = 12 + (item[1] / maxValue) * 12;
+        const color = palette[index % palette.length];
+        return `<span class="token-chip" style="font-size:${size}px; background:${color}1a; border-color:${color}33;">${escapeHtml(item[0])}<small>${item[1]}</small></span>`;
+      }).join("");
+    }
+
+    function renderScatter(containerId, points, config) {
+      const container = document.getElementById(containerId);
+      if (!container || !points.length) return;
+      const width = Math.max(container.clientWidth || 560, 560);
+      const height = 340;
+      const pad = { top: 18, right: 26, bottom: 44, left: 56 };
+      const transformX = config.xLog ? (value) => Math.log10(Number(value || 0) + 1) : (value) => Number(value || 0);
+      const xValues = points.map((point) => transformX(point[config.xKey]));
+      const yValues = points.map((point) => Number(point[config.yKey] || 0));
+      const sizeValues = points.map((point) => Number(point[config.sizeKey] || 0));
+      const maxX = Math.max(...xValues, 1);
+      const maxY = Math.max(...yValues, 1);
+      const maxSize = Math.max(...sizeValues, 1);
+      const innerW = width - pad.left - pad.right;
+      const innerH = height - pad.top - pad.bottom;
+
+      const pointMarkup = points.map((point, index) => {
+        const x = pad.left + (transformX(point[config.xKey]) / maxX) * innerW;
+        const y = pad.top + innerH - ((Number(point[config.yKey] || 0)) / maxY) * innerH;
+        const r = 6 + (Math.sqrt(Number(point[config.sizeKey] || 0)) / Math.sqrt(maxSize)) * 14;
+        const fill = config.colorFn ? config.colorFn(point, index) : palette[index % palette.length];
+        const label = config.labelFn ? config.labelFn(point, index) : point.label;
+        const showLabel = config.showLabel ? config.showLabel(point, index) : index < 6;
+        const tooltip = [
+          label,
+          `${config.xLabel}: ${config.xFormatter ? config.xFormatter(point[config.xKey]) : point[config.xKey]}`,
+          `${config.yLabel}: ${config.yFormatter ? config.yFormatter(point[config.yKey]) : point[config.yKey]}`,
+          config.sizeLabel ? `${config.sizeLabel}: ${config.sizeFormatter ? config.sizeFormatter(point[config.sizeKey]) : point[config.sizeKey]}` : ""
+        ].filter(Boolean).join(" | ");
+        return `<g>
+          <circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" fill-opacity="0.72" stroke="rgba(20,33,43,0.28)" stroke-width="1">
+            <title>${escapeHtml(tooltip)}</title>
+          </circle>
+          ${showLabel ? `<text x="${x + r + 6}" y="${y - 8}" font-size="11" fill="#5f6970">${escapeHtml(label)}</text>` : ""}
+        </g>`;
+      }).join("");
+
+      container.innerHTML = `<svg viewBox="0 0 ${width} ${height}">
+        <line x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}" stroke="rgba(20,33,43,0.22)" />
+        <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${height - pad.bottom}" stroke="rgba(20,33,43,0.22)" />
+        <text x="${width / 2}" y="${height - 10}" text-anchor="middle" font-size="12" fill="#5f6970">${escapeHtml(config.xLabel)}</text>
+        <text x="16" y="${height / 2}" text-anchor="middle" transform="rotate(-90 16 ${height / 2})" font-size="12" fill="#5f6970">${escapeHtml(config.yLabel)}</text>
+        ${pointMarkup}
+      </svg>`;
+    }
+
+    function renderLineChart(containerId, points) {
+      const container = document.getElementById(containerId);
+      if (!container || !points.length) return;
+      const width = Math.max(container.clientWidth || 560, 560);
+      const height = 320;
+      const pad = { top: 18, right: 20, bottom: 52, left: 50 };
+      const maxValue = Math.max(...points.map((point) => Number(point.share || 0)), 1);
+      const innerW = width - pad.left - pad.right;
+      const innerH = height - pad.top - pad.bottom;
+      const coords = points.map((point, index) => ({
+        x: pad.left + (points.length === 1 ? 0.5 : index / (points.length - 1)) * innerW,
+        y: pad.top + innerH - (Number(point.share || 0) / maxValue) * innerH,
+        point
+      }));
+      const path = coords.map((coord, index) => `${index === 0 ? "M" : "L"} ${coord.x} ${coord.y}`).join(" ");
+      container.innerHTML = `<svg viewBox="0 0 ${width} ${height}">
+        <line x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}" stroke="rgba(20,33,43,0.22)" />
+        <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${height - pad.bottom}" stroke="rgba(20,33,43,0.22)" />
+        <path d="${path}" fill="none" stroke="#cb5b2f" stroke-width="4" stroke-linecap="round" />
+        ${coords.map((coord, index) => `
+          <g>
+            <circle cx="${coord.x}" cy="${coord.y}" r="4.8" fill="#cb5b2f"><title>${escapeHtml(coord.point.month)} | ${percent(coord.point.share, 2)}</title></circle>
+            ${(index === 0 || index === coords.length - 1 || index % Math.max(1, Math.floor(coords.length / 6)) === 0) ? `<text x="${coord.x}" y="${height - 20}" text-anchor="middle" font-size="11" fill="#5f6970">${escapeHtml(coord.point.month)}</text>` : ""}
+          </g>
+        `).join("")}
+      </svg>`;
+    }
+
+    function renderHeatmap(matrix) {
+      const container = document.getElementById("heatmapPanel");
+      if (!container || !matrix) return;
+      const cellMap = {};
+      matrix.cells.forEach((cell) => { cellMap[`${cell.row}__${cell.col}`] = cell; });
+      const maxSales = Math.max(...matrix.cells.map((cell) => Number(cell.sales || 0)), 1);
+      let markup = `<div class="heatmap-grid" style="grid-template-columns: 160px repeat(${matrix.cols.length}, minmax(120px, 1fr));">`;
+      markup += `<div class="heatmap-header">${escapeHtml(matrix.rowLabel)} \\ ${escapeHtml(matrix.colLabel)}</div>`;
+      matrix.cols.forEach((col) => { markup += `<div class="heatmap-header">${escapeHtml(col)}</div>`; });
+      matrix.rows.forEach((row) => {
+        markup += `<div class="heatmap-header">${escapeHtml(row)}</div>`;
+        matrix.cols.forEach((col) => {
+          const cell = cellMap[`${row}__${col}`];
+          const sales = cell ? Number(cell.sales || 0) : 0;
+          const count = cell ? Number(cell.count || 0) : 0;
+          const alpha = sales ? 0.12 + (Math.log10(sales + 1) / Math.log10(maxSales + 1)) * 0.68 : 0.04;
+          markup += `<div class="heatmap-cell" style="background: rgba(203,91,47,${alpha.toFixed(3)}); color:${sales > maxSales * 0.45 ? '#fffaf3' : '#14212b'};">
+            <strong>${sales ? compact(sales) : "—"}</strong>
+            <span>${count ? `${count} 个产品` : "无样本"}</span>
+          </div>`;
+        });
+      });
+      markup += "</div>";
+      container.innerHTML = markup;
+    }
+
+    const distributionState = {
+      dimension: Object.keys(DATA.distributions || {})[0] || "",
+      metric: "sales"
+    };
+    const matrixState = { active: (DATA.matrices || [])[0]?.name || "" };
+
+    function renderDistributionControls() {
+      const dimensions = Object.keys(DATA.distributions || {});
+      const dimWrap = document.getElementById("distributionDimensionControls");
+      const metricWrap = document.getElementById("distributionMetricControls");
+      if (!dimWrap || !metricWrap || !dimensions.length) return;
+      if (!distributionState.dimension) distributionState.dimension = dimensions[0];
+      dimWrap.innerHTML = dimensions.map((name) => `<button class="${name === distributionState.dimension ? 'active' : ''}" data-dimension="${escapeHtml(name)}">${escapeHtml(name)}</button>`).join("");
+      dimWrap.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          distributionState.dimension = button.dataset.dimension;
+          renderDistributionControls();
+          renderDistributionChart();
+        });
+      });
+      const metrics = [
+        { key: "sales", label: "按月销量" },
+        { key: "count", label: "按产品数" },
+        { key: "revenue", label: "按月销额" }
+      ];
+      metricWrap.innerHTML = metrics.map((metric) => `<button class="${metric.key === distributionState.metric ? 'active' : ''}" data-metric="${metric.key}">${metric.label}</button>`).join("");
+      metricWrap.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          distributionState.metric = button.dataset.metric;
+          renderDistributionControls();
+          renderDistributionChart();
+        });
+      });
+    }
+
+    function renderDistributionChart() {
+      const items = [...(DATA.distributions?.[distributionState.dimension] || [])].sort((a, b) => Number(b[distributionState.metric] || 0) - Number(a[distributionState.metric] || 0));
+      renderBarList("distributionChart", items, {
+        labelKey: "label",
+        valueKey: distributionState.metric,
+        formatter: (value) => distributionState.metric === "revenue" ? formatMoney(value) : distributionState.metric === "count" ? formatNumber(value) : compact(value),
+        secondary: (item) => `产品数 ${formatNumber(item.count)} · 月销量 ${compact(item.sales)} · 月销额 ${formatMoney(item.revenue)}`
+      });
+      document.getElementById("distributionStats").innerHTML = items.slice(0, 4).map((item) => `
+        <div class="mini-stat">
+          <div class="title">${escapeHtml(item.label)}</div>
+          <div class="number">${distributionState.metric === "revenue" ? formatMoney(item.revenue) : distributionState.metric === "count" ? formatNumber(item.count) : compact(item.sales)}</div>
+          <div style="margin-top:8px; color:#5f6970; font-size:12px; line-height:1.6;">产品数 ${formatNumber(item.count)}<br />月销额 ${formatMoney(item.revenue)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderMatrixControls() {
+      const wrap = document.getElementById("matrixControls");
+      if (!wrap || !(DATA.matrices || []).length) return;
+      wrap.innerHTML = DATA.matrices.map((matrix) => `<button class="${matrix.name === matrixState.active ? 'active' : ''}" data-matrix="${escapeHtml(matrix.name)}">${escapeHtml(matrix.name)}</button>`).join("");
+      wrap.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          matrixState.active = button.dataset.matrix;
+          renderMatrixControls();
+          renderActiveMatrix();
+        });
+      });
+    }
+
+    function renderActiveMatrix() {
+      renderHeatmap((DATA.matrices || []).find((item) => item.name === matrixState.active));
+    }
+
+    function cleanPriorityLabel(text) {
+      return String(text || "").replace(/^`?P\d(?:\.\d+)?`?\s*[：:]\s*/, "").trim();
+    }
+
+    function renderRecommendations() {
+      const focus = DATA.hero?.focus || [];
+      const avoid = DATA.hero?.avoid || [];
+      const grid = document.getElementById("recommendGrid");
+      const panel = grid?.closest(".panel");
+      const cards = [];
+      if (focus[0]) {
+        cards.push({
+          tier: "P1 主切口",
+          title: cleanPriorityLabel(focus[0]),
+          body: "先把更像品牌能力、也最容易切出差异化的组合打透。",
+          points: ["对齐高频标题词", "尽量踩中薄供给位", "首发优先考虑售后可控性"]
+        });
+      }
+      if (focus[1]) {
+        cards.push({
+          tier: "P1.5 第二条线",
+          title: cleanPriorityLabel(focus[1]),
+          body: "适合拉开差异化，但体验一致性和售后成本要提前控住。",
+          points: ["注意热管理", "注意兼容稳定性", "注意高退货风险"]
+        });
+      }
+      if (focus[2]) {
+        cards.push({
+          tier: "P2 储备",
+          title: cleanPriorityLabel(focus[2]),
+          body: "更适合作为第二波储备线，等首发款站稳后再扩。",
+          points: ["验证利润空间", "验证售后负担", "验证品牌是否需要更高客单"]
+        });
+      }
+      if (avoid.length) {
+        cards.push({
+          tier: "暂缓 / 不主攻",
+          title: avoid.map(cleanPriorityLabel).join(" / "),
+          body: "这些方向不是没量，而是更容易卷入低价杂牌市场。",
+          points: ["容易价格战", "品牌感弱", "不适合首发阶段"]
+        });
+      }
+      if (panel) {
+        panel.style.display = cards.length ? "" : "none";
+      }
+      if (!grid) return;
+      grid.innerHTML = cards.map((card) => `
+        <div class="recommend-card">
+          <div class="tier">${escapeHtml(card.tier)}</div>
+          <h4>${escapeHtml(card.title)}</h4>
+          <p>${escapeHtml(card.body)}</p>
+          <ul>${card.points.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </div>
+      `).join("");
+    }
+
+    function init() {
+      renderHero();
+      renderMetricBand();
+
+      toggleSection("market", (DATA.brands || []).length || (DATA.marketOverview || []).length);
+      toggleSection("discovery", (DATA.dimensionDiscovery?.support || []).length || (DATA.dimensionDiscovery?.tokens || []).length);
+      toggleSection("keywords", (DATA.keywords || []).length);
+      toggleSection("segments", Object.keys(DATA.distributions || {}).length);
+      toggleSection("opportunity", (DATA.gaps || []).length || (DATA.matrices || []).length);
+      toggleSection("newcomers", (DATA.newProductTrend || []).length || (DATA.newProductTop || []).length);
+      toggleSection("competition", (DATA.competitors || []).length || (DATA.painPoints || []).length);
+      toggleSection("decision", (DATA.scorecard || []).length || (DATA.potentialProducts || []).length);
+
+      renderBarList("brandChart", DATA.brands || [], {
+        labelKey: "label",
+        valueKey: "share",
+        formatter: (value) => percent(value, 1),
+        secondary: (item) => `月销量 ${compact(item.sales)} · 产品数 ${formatNumber(item.count)}`
+      });
+      renderBarList("priceHistogram", DATA.priceHistogram || [], {
+        labelKey: "label",
+        valueKey: "count",
+        formatter: (value) => `${formatNumber(value)} 个`,
+        secondary: (item) => `月销量 ${compact(item.sales)} · 均价 ${formatMoney(item.avg_price)}`
+      });
+      renderScatter("topProductsScatter", DATA.topProductsScatter || [], {
+        xKey: "reviews",
+        yKey: "sales",
+        sizeKey: "price",
+        xLabel: "评论数（对数）",
+        yLabel: "月销量",
+        sizeLabel: "价格",
+        xLog: true,
+        xFormatter: (value) => formatNumber(value),
+        yFormatter: (value) => compact(value),
+        sizeFormatter: (value) => formatMoney(value),
+        labelFn: (point) => point.brand,
+        showLabel: (point, index) => index < 7
+      });
+      renderTable("lowReviewTable", [
+        { label: "品牌", key: "brand" },
+        { label: "ASIN", key: "asin" },
+        { label: "月销量", render: (row) => compact(row.sales) },
+        { label: "评论数", render: (row) => formatNumber(row.reviews) },
+        { label: "价格", render: (row) => formatMoney(row.price) }
+      ], DATA.lowReviewRunners || []);
+
+      renderBarList("dimensionSupport", (DATA.dimensionDiscovery?.dimension_support || []).map((item) => ({
+        label: item["维度"],
+        coverage: Number(String(item["覆盖率"] || "").replace("%", "")),
+        count: Number(item["标题覆盖产品数"] || 0)
+      })), {
+        valueKey: "coverage",
+        formatter: (value) => percent(value, 1),
+        secondary: (item) => `标题覆盖产品数 ${formatNumber(item.count)}`
+      });
+      renderTokenCloud("tokenCloud", DATA.dimensionDiscovery?.top_tokens || []);
+      renderTokenCloud("phraseCloud", DATA.dimensionDiscovery?.top_phrases || []);
+      renderBarList("wattsChart", (DATA.dimensionDiscovery?.top_watts || []).map((item) => ({ label: item[0], count: item[1] })), {
+        valueKey: "count",
+        formatter: (value) => formatNumber(value)
+      });
+      renderBarList("capacityChart", (DATA.dimensionDiscovery?.top_capacity || []).map((item) => ({ label: item[0], count: item[1] })), {
+        valueKey: "count",
+        formatter: (value) => formatNumber(value)
+      });
+
+      renderScatter("keywordScatter", DATA.keywords || [], {
+        xKey: "月搜索量",
+        yKey: "CPC",
+        sizeKey: "搜索结果竞品数",
+        xLabel: "月搜索量（对数）",
+        yLabel: "CPC",
+        sizeLabel: "搜索结果竞品数",
+        xLog: true,
+        xFormatter: (value) => formatNumber(value),
+        yFormatter: (value) => "$" + Number(value || 0).toFixed(2),
+        sizeFormatter: (value) => formatNumber(value),
+        colorFn: (point) => keywordColors[point["维度"]] || "#cb5b2f",
+        labelFn: (point) => point["关键词"],
+        showLabel: (point) => ["portable charger", "magsafe power bank", "45w power bank", "power bank"].includes(point["关键词"])
+      });
+      renderTable("keywordTable", [
+        { label: "关键词", key: "关键词" },
+        { label: "维度", key: "维度" },
+        { label: "月搜索量", render: (row) => formatNumber(row["月搜索量"]) },
+        { label: "CPC", render: (row) => "$" + Number(row["CPC"] || 0).toFixed(2) },
+        { label: "竞品数", render: (row) => formatNumber(row["搜索结果竞品数"]) },
+        { label: "旺季", key: "旺季" }
+      ], DATA.keywords || []);
+
+      renderDistributionControls();
+      renderDistributionChart();
+
+      renderMatrixControls();
+      renderActiveMatrix();
+      document.getElementById("gapList").innerHTML = (DATA.gaps || []).map((item, index) => `
+        <div class="opportunity-card">
+          <div class="topline"><span>#${index + 1} · ${escapeHtml(item["交叉维度"])}</span><span>${escapeHtml(item["状态"])}</span></div>
+          <h4>${escapeHtml(item["组合"])}</h4>
+          <p>只有 ${escapeHtml(item["产品数"])} 个产品，却承接了约 ${compact(item["月销量"])} 月销量。</p>
+        </div>
+      `).join("");
+
+      renderLineChart("newProductTrend", DATA.newProductTrend || []);
+      renderBarList("newProductBuckets", (DATA.newProductBuckets || []).map((row) => ({
+        label: row["时间桶"],
+        sales: Number(row["月销量"] || 0),
+        share: row["销量占比"],
+        count: Number(row["产品数"] || 0)
+      })), {
+        valueKey: "sales",
+        formatter: (value) => compact(value),
+        secondary: (item) => `产品数 ${formatNumber(item.count)} · 销量占比 ${item.share}`
+      });
+      renderScatter("newProductScatter", DATA.newProductScatter || [], {
+        xKey: "days",
+        yKey: "sales",
+        sizeKey: "reviews",
+        xLabel: "上线天数",
+        yLabel: "月销量",
+        sizeLabel: "评论数",
+        xFormatter: (value) => `${formatNumber(value)} 天`,
+        yFormatter: (value) => compact(value),
+        sizeFormatter: (value) => formatNumber(value),
+        colorFn: (point) => String(point.power || "").includes("20") ? "#1f7a8c" : String(point.power || "").includes("22.5") ? "#cb5b2f" : "#8a9447",
+        labelFn: (point) => point.asin,
+        showLabel: (point, index) => index < 6
+      });
+      renderTable("newProductTable", [
+        { label: "ASIN", key: "ASIN" },
+        { label: "上线日期", key: "上线日期" },
+        { label: "月销量", render: (row) => compact(row["月销量"]) },
+        { label: "评论数", render: (row) => formatNumber(row["评论数"]) },
+        { label: "功率档位", key: "功率档位" },
+        { label: "容量段", key: "容量段" }
+      ], DATA.newProductTop || []);
+
+      renderScatter("competitorScatter", DATA.competitors || [], {
+        xKey: "price",
+        yKey: "sales",
+        sizeKey: "reviews",
+        xLabel: "价格",
+        yLabel: "月销量",
+        sizeLabel: "评论数",
+        xFormatter: (value) => formatMoney(value),
+        yFormatter: (value) => compact(value),
+        sizeFormatter: (value) => formatNumber(value),
+        colorFn: (point) => ({
+          "头部标杆": "#cb5b2f",
+          "直接对手": "#1f7a8c",
+          "品牌高端样本": "#8a9447",
+          "高功率场景样本": "#7c5c46",
+          "新品黑马": "#d49a43",
+          "痛点代表": "#a25a4b",
+          "结构差异样本": "#526d82"
+        }[point.type] || "#cb5b2f"),
+        labelFn: (point) => `${point.brand} · ${point.type}`,
+        showLabel: () => true
+      });
+      renderBarList("painChart", DATA.painPoints || [], {
+        labelKey: "痛点维度",
+        valueKey: "命中次数",
+        formatter: (value) => formatNumber(value),
+        secondary: (item) => escapeHtml(String(item["代表吐槽"] || "").slice(0, 90)) + "..."
+      });
+      renderTable("competitorTable", [
+        { label: "品牌", key: "brand" },
+        { label: "类型", key: "type" },
+        { label: "价格", render: (row) => formatMoney(row.price) },
+        { label: "月销量", render: (row) => compact(row.sales) },
+        { label: "评论数", render: (row) => formatNumber(row.reviews) },
+        { label: "覆盖维度", key: "coverage" }
+      ], DATA.competitors || []);
+      document.getElementById("procurementCards").innerHTML = (DATA.procurement || []).map((item) => `
+        <div class="mini-stat">
+          <div class="title">${escapeHtml(item.label)}</div>
+          <div class="number">RMB ${Number(item.median || 0).toFixed(2)}</div>
+          <div style="margin-top:8px; color:#5f6970; font-size:12px; line-height:1.6;">范围 ${Number(item.min || 0).toFixed(2)} - ${Number(item.max || 0).toFixed(2)}<br />中位价更适合拿来估首发价格带。</div>
+        </div>
+      `).join("");
+
+      document.getElementById("scoreBars").innerHTML = (DATA.scorecard || []).filter((row) => row["维度"] !== "总分").map((row, index) => {
+        const width = row["满分"] ? (Number(row["得分"] || 0) / Number(row["满分"] || 1)) * 100 : 0;
+        const color = palette[index % palette.length];
+        return `<div class="score-row">
+          <div class="meta"><strong>${escapeHtml(row["维度"])}</strong><span>${row["得分"]} / ${row["满分"]}</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${width}%; background: linear-gradient(90deg, ${color}, rgba(224,157,83,0.92));"></div></div>
+          <div class="desc">${escapeHtml(row["说明"])}</div>
+        </div>`;
+      }).join("");
+      renderBarList("potentialProducts", DATA.potentialProducts || [], {
+        labelKey: "brand",
+        valueKey: "potential",
+        formatter: (value) => Number(value || 0).toFixed(2),
+        secondary: (item) => `${escapeHtml(item.asin)} · 月销 ${compact(item.sales)} · 评论 ${formatNumber(item.reviews)} · ${formatMoney(item.price)}`
+      });
+      renderRecommendations();
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
