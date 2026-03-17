@@ -56,7 +56,7 @@
 Sorftime 是这个 Skill 的数据源，没有它就没有数据可分析。
 
 - **新用户福利**：首次注册可免费体验 3 天（100 次调用额度），足够跑几个品类试试效果
-- **优惠链接**：[点击注册](https://sorftime.com/pc?tag=MjAyMzAyMTQxMzM4NDkzMzAyNDY)（首月有优惠）
+- **优惠链接**：[点击注册](https://sorftime.com/pc?tag=MjAyNTA3MjQxOTA5MTM5MDA1MzE~)（首月有优惠）
 - 注册后在个人中心获取 API Key
 
 ### Sorftime MCP 配置
