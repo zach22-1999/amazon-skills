@@ -22,6 +22,13 @@ v2 核心变化：
   python render_deliverables.py generate --input payload.json
   python render_deliverables.py validate --input payload.json
   python render_deliverables.py all --input payload.json
+
+  # 从任意目录运行（使用绝对路径）：
+  python render_deliverables.py all --input /absolute/path/to/payload.json --root /path/to/repo/root
+
+  # 或使用相对路径（相对于脚本所在目录）：
+  cd /path/to/skills/zach-product-research/scripts
+  python render_deliverables.py all --input ../payload.json
 """
 
 from __future__ import annotations
@@ -30,8 +37,15 @@ import argparse
 import html as html_lib
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
+
+# Windows 编码兼容性：确保 UTF-8 输出正常
+if sys.platform == "win32":
+    import io
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
 
 from openpyxl import Workbook, load_workbook
 
@@ -88,7 +102,17 @@ def _is_v2(payload: dict[str, Any]) -> bool:
 # ---------------------------------------------------------------------------
 
 def read_payload(path: Path) -> dict[str, Any]:
-    payload = json.loads(path.read_text(encoding="utf-8"))
+    """读取 JSON payload，自动处理 Windows/macOS 的编码差异"""
+    try:
+        # UTF-8 with BOM 和不带 BOM 都支持
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
+    except UnicodeDecodeError:
+        # 备用编码
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except UnicodeDecodeError:
+            raise ValueError(f"无法以 UTF-8 编码读取文件：{path}。请确保文件编码为 UTF-8。")
+
     if not isinstance(payload, dict):
         raise ValueError("payload 顶层必须是 JSON object")
     metadata = payload.get("metadata")
@@ -1349,29 +1373,64 @@ def validate(payload: dict[str, Any], root: Path) -> tuple[dict[str, Path], list
 # ---------------------------------------------------------------------------
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="生成并校验选品调研交付物（v1 三件套 / v2 四件套）")
+    parser = argparse.ArgumentParser(
+        description="生成并校验选品调研交付物（v1 三件套 / v2 四件套）",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+例子：
+  # 从脚本所在目录运行
+  python render_deliverables.py all --input ../../payload.json
+
+  # 从任意目录运行（使用绝对路径）
+  python /path/to/render_deliverables.py all --input C:\\absolute\\path\\payload.json
+
+  # 指定输出根目录
+  python render_deliverables.py all --input payload.json --root C:\\output\\root
+        """
+    )
     parser.add_argument("command", choices=["generate", "validate", "all"])
-    parser.add_argument("--input", "-i", required=True, help="统一 JSON 数据包路径")
+    parser.add_argument("--input", "-i", required=True, help="统一 JSON 数据包路径（支持相对或绝对路径）")
     parser.add_argument("--root", default=".", help="仓库根目录，默认当前目录")
     args = parser.parse_args()
 
-    root = Path(args.root).resolve()
-    payload = read_payload(Path(args.input))
-
-    if args.command in {"generate", "all"}:
-        paths = generate(payload, root)
-        print(f"generated: {paths['dir']}")
-
-    if args.command in {"validate", "all"}:
-        paths, errors = validate(payload, root)
-        if errors:
-            print(f"validate_failed: {paths['dir']}")
-            for error in errors:
-                print(f"- {error}")
+    try:
+        # 确保路径是绝对路径，支持相对和绝对路径
+        input_path = Path(args.input).resolve()
+        if not input_path.exists():
+            print(f"❌ 错误：输入文件不存在", file=sys.stderr)
+            print(f"   搜索位置：{input_path}", file=sys.stderr)
             return 1
-        print(f"validate_ok: {paths['dir']}")
 
-    return 0
+        root = Path(args.root).resolve()
+
+        payload = read_payload(input_path)
+
+        if args.command in {"generate", "all"}:
+            paths = generate(payload, root)
+            print(f"✅ 生成完成：{paths['dir']}")
+
+        if args.command in {"validate", "all"}:
+            paths, errors = validate(payload, root)
+            if errors:
+                print(f"❌ 校验失败：{paths['dir']}", file=sys.stderr)
+                for error in errors:
+                    print(f"   - {error}", file=sys.stderr)
+                return 1
+            print(f"✅ 校验通过：{paths['dir']}")
+
+        return 0
+
+    except FileNotFoundError as e:
+        print(f"❌ 错误：文件不存在 - {e}", file=sys.stderr)
+        return 1
+    except ValueError as e:
+        print(f"❌ 错误：数据验证失败 - {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"❌ 未预期的错误 - {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return 1
 
 
 if __name__ == "__main__":
