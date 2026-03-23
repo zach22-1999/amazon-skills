@@ -2,7 +2,11 @@
 
 > **作者**：Zach ｜ 公众号「Zach的进化笔记」
 >
-> Learn in public！把亚马逊卖家做“微创新功能判断”的经验，写成 AI 能执行的 SOP。
+> Learn in public！把亚马逊卖家做"微创新功能判断"的经验，写成 AI 能执行的 SOP。
+
+关注公众号，获取 AI x 跨境电商的实战经验、工具和方法论：
+
+<img src="./imgs/公众号二维码.jpg" width="200" alt="公众号二维码" />
 
 ---
 
@@ -37,9 +41,9 @@
 - `zach-product-research`：判断这个市场能不能做
 - `zach-feature-demand-validator`：判断这个功能点值不值得做
 
-前者更像“选品”。
+前者更像"选品"。
 
-后者更像“产品微创新验证”。
+后者更像"产品微创新验证"。
 
 ---
 
@@ -65,7 +69,7 @@
 
 这不是完整版。
 
-但至少能先把“评论里到底有没有人在乎这个功能”这条证据链跑通，而且所有原始文件都能回查。
+但至少能先把"评论里到底有没有人在乎这个功能"这条证据链跑通，而且所有原始文件都能回查。
 
 ---
 
@@ -170,6 +174,8 @@ zach-feature-demand-validator/
 ├── .claude/
 │   └── skills/
 │       └── zach-feature-demand-validator.md
+├── imgs/
+│   └── 公众号二维码.jpg
 ├── examples/
 │   └── review-source-pack/
 └── skills/
