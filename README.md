@@ -22,6 +22,9 @@
 发布前固定流程见：
 [docs/release-gate.md](./docs/release-gate.md)
 
+GitHub Social preview 上传说明见：
+[docs/github-social-preview.md](./docs/github-social-preview.md)
+
 ---
 
 ## 推荐安装方式：让 AI 帮你装
