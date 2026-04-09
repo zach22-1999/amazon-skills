@@ -4,6 +4,8 @@
 >
 > Learn in public！把亚马逊卖家的实战经验做成可安装、可执行、可交付的 AI skill。
 
+![Amazon Skills Cover](./assets/social/github-cover.svg)
+
 ---
 
 ## 这个仓库是什么

@@ -1,0 +1,70 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="50" x2="1180" y2="610" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF5E8"/>
+      <stop offset="0.46" stop-color="#FDEBDF"/>
+      <stop offset="1" stop-color="#F4F0FF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="240" y1="118" x2="1058" y2="524" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="72" width="950" height="492" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#7B3400" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="28" fill="url(#bg)"/>
+
+  <g opacity="0.42">
+    <circle cx="176" cy="102" r="88" fill="#F6B366"/>
+    <circle cx="1094" cy="112" r="110" fill="#F08B8B"/>
+    <circle cx="1118" cy="538" r="128" fill="#C3A6F3"/>
+    <circle cx="126" cy="550" r="124" fill="#F7D56C"/>
+  </g>
+
+  <g opacity="0.12" stroke="#7B3400">
+    <path d="M70 170H1210"/>
+    <path d="M70 250H1210"/>
+    <path d="M70 330H1210"/>
+    <path d="M70 410H1210"/>
+    <path d="M70 490H1210"/>
+    <path d="M180 60V580"/>
+    <path d="M360 60V580"/>
+    <path d="M540 60V580"/>
+    <path d="M720 60V580"/>
+    <path d="M900 60V580"/>
+    <path d="M1080 60V580"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="218" y="108" width="844" height="424" rx="36" fill="url(#card)"/>
+  </g>
+
+  <rect x="270" y="154" width="174" height="42" rx="21" fill="#7B3400"/>
+  <text x="357" y="181" text-anchor="middle" fill="#FFFFFF" font-size="20" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="700">PUBLIC REPO</text>
+
+  <text x="270" y="280" fill="#7B3400" font-size="78" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="800">Amazon Skills</text>
+  <text x="272" y="334" fill="#92542A" font-size="28" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="500">
+    Public AI skills for product research, feature validation, and listing checks
+  </text>
+
+  <text x="272" y="394" fill="#A16D4A" font-size="24" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="500">
+    Claude Code · Codex · Cursor · Natural-language installation
+  </text>
+
+  <g>
+    <rect x="272" y="438" width="182" height="46" rx="23" fill="#FFF4EA"/>
+    <text x="363" y="467" text-anchor="middle" fill="#7B3400" font-size="22" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="700">Research</text>
+
+    <rect x="472" y="438" width="196" height="46" rx="23" fill="#FFF0F0"/>
+    <text x="570" y="467" text-anchor="middle" fill="#A33C3C" font-size="22" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="700">Validation</text>
+
+    <rect x="686" y="438" width="188" height="46" rx="23" fill="#F4EEFF"/>
+    <text x="780" y="467" text-anchor="middle" fill="#6942A5" font-size="22" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="700">Listing Ops</text>
+  </g>
+
+  <text x="986" y="560" text-anchor="end" fill="#A16D4A" font-size="22" font-family="SF Pro Display, Inter, Arial, sans-serif" font-weight="600">
+    Zach's public Amazon workflow collection
+  </text>
+</svg>
