@@ -38,12 +38,13 @@ GitHub Social preview 上传说明见：
 把下面这句话直接发给你的 AI：
 
 ```text
-帮我安装 `zach-feature-demand-validator` 这个 skill，来源仓库是 `amazon-skills`。直接装到当前工作区，并把依赖一起检查好。
+帮我安装 `zach-seller-skill-creator` 这个 skill，来源仓库是 `amazon-skills`。直接装到当前工作区，并把依赖一起检查好。
 ```
 
-如果你要装 Listing 健康检查器，把 skill 名换成：
+如果你要装其他 skill，把 skill 名换成：
 
 ```text
+zach-feature-demand-validator
 zach-listing-health-checker
 ```
 
@@ -59,6 +60,7 @@ zach-listing-health-checker
 | [zach-product-research](./skills/zach-product-research/README.md) | 用 Sorftime 做选品分析，输出市场调研三件套与原始数据 | Sorftime MCP | Ready |
 | [zach-feature-demand-validator](./skills/zach-feature-demand-validator/README.md) | 验证一个微创新功能到底是不是用户真实在意 | Sorftime + WebSearch 或本地评论包 | Ready |
 | [zach-listing-health-checker](./skills/zach-listing-health-checker/README.md) | 用真实消费者视角巡检 Listing 健康状态 | Amazon 网页抓取 | Ready |
+| [zach-seller-skill-creator](./skills/zach-seller-skill-creator/README.md) | 把亚马逊卖家的实战流程沉淀成可安装、可评测、可迭代的 skill | 本地文件 + 可选评测脚本 | Ready |
 
 ---
 

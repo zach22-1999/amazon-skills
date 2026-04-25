@@ -13,6 +13,7 @@ cd amazon-skills
 
 当前示例：
 
+- `skills/zach-seller-skill-creator`
 - `skills/zach-feature-demand-validator`
 - `skills/zach-listing-health-checker`
 
@@ -24,12 +25,13 @@ cd amazon-skills
 
 ```bash
 mkdir -p /path/to/your-workspace/.claude/skills
-cp -R skills/zach-feature-demand-validator /path/to/your-workspace/.claude/skills/
+cp -R skills/zach-seller-skill-creator /path/to/your-workspace/.claude/skills/
 ```
 
 或：
 
 ```bash
+cp -R skills/zach-feature-demand-validator /path/to/your-workspace/.claude/skills/
 cp -R skills/zach-listing-health-checker /path/to/your-workspace/.claude/skills/
 ```
 
@@ -43,5 +45,5 @@ cp -R skills/zach-listing-health-checker /path/to/your-workspace/.claude/skills/
 安装完成后，对 AI 说：
 
 ```text
-请使用 zach-feature-demand-validator，帮我验证 air fryer 加 steam 功能在美国站是不是真需求。
+请使用 zach-seller-skill-creator，帮我把一个亚马逊运营流程做成可复用的 skill。
 ```
