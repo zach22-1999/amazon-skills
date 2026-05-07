@@ -12,10 +12,15 @@ __pycache__/
 runtime/
 RUNS/
 outputs/
+**/cleaned/
+**/analysis_output/
 工作成果/
 知识库/
 历史归档/
 data/
+*.xls
+*.xlsx
+*.xlsm
 BUSINESS.md
 PREAMBLE.md
 stores.yaml

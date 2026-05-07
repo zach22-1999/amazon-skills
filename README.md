@@ -46,6 +46,7 @@ GitHub Social preview 上传说明见：
 ```text
 zach-feature-demand-validator
 zach-listing-health-checker
+zach-search-term-report-analyzer
 ```
 
 手动安装仍然保留，但只作为降级方案：
@@ -60,6 +61,7 @@ zach-listing-health-checker
 | [zach-product-research](./skills/zach-product-research/README.md) | 用 Sorftime 做选品分析，输出市场调研三件套与原始数据 | Sorftime MCP | Ready |
 | [zach-feature-demand-validator](./skills/zach-feature-demand-validator/README.md) | 验证一个微创新功能到底是不是用户真实在意 | Sorftime + WebSearch 或本地评论包 | Ready |
 | [zach-listing-health-checker](./skills/zach-listing-health-checker/README.md) | 用真实消费者视角巡检 Listing 健康状态 | Amazon 网页抓取 | Ready |
+| [zach-search-term-report-analyzer](./skills/zach-search-term-report-analyzer/README.md) | 分析 Amazon Ads 搜索词报告，输出否词候选、控成本、放量和 Listing 反馈清单 | 本地报表 + 可选 Amazon 网页抓取 | Ready |
 | [zach-seller-skill-creator](./skills/zach-seller-skill-creator/README.md) | 把亚马逊卖家的实战流程沉淀成可安装、可评测、可迭代的 skill | 本地文件 + 可选评测脚本 | Ready |
 
 ---
