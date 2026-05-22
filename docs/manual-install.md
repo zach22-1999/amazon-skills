@@ -17,6 +17,7 @@ cd amazon-skills
 - `skills/zach-feature-demand-validator`
 - `skills/zach-listing-health-checker`
 - `skills/zach-search-term-report-analyzer`
+- `skills/zach-sif-cvr-threshold-analyzer`
 
 ## 3. 放到你的工作区
 
@@ -35,6 +36,7 @@ cp -R skills/zach-seller-skill-creator /path/to/your-workspace/.claude/skills/
 cp -R skills/zach-feature-demand-validator /path/to/your-workspace/.claude/skills/
 cp -R skills/zach-listing-health-checker /path/to/your-workspace/.claude/skills/
 cp -R skills/zach-search-term-report-analyzer /path/to/your-workspace/.claude/skills/
+cp -R skills/zach-sif-cvr-threshold-analyzer /path/to/your-workspace/.claude/skills/
 ```
 
 ### Codex / Cursor

@@ -47,6 +47,7 @@ GitHub Social preview 上传说明见：
 zach-feature-demand-validator
 zach-listing-health-checker
 zach-search-term-report-analyzer
+zach-sif-cvr-threshold-analyzer
 ```
 
 手动安装仍然保留，但只作为降级方案：
@@ -62,6 +63,7 @@ zach-search-term-report-analyzer
 | [zach-feature-demand-validator](./skills/zach-feature-demand-validator/README.md) | 验证一个微创新功能到底是不是用户真实在意 | Sorftime + WebSearch 或本地评论包 | Ready |
 | [zach-listing-health-checker](./skills/zach-listing-health-checker/README.md) | 用真实消费者视角巡检 Listing 健康状态 | Amazon 网页抓取 | Ready |
 | [zach-search-term-report-analyzer](./skills/zach-search-term-report-analyzer/README.md) | 分析 Amazon Ads 搜索词报告，输出否词候选、控成本、放量和 Listing 反馈清单 | 本地报表 + 可选 Amazon 网页抓取 | Ready |
+| [zach-sif-cvr-threshold-analyzer](./skills/zach-sif-cvr-threshold-analyzer/README.md) | 对齐 ASIN 360 业务报表和自然排名数据，输出 CVR 观察线、危险线和广告确认线 | 领星 ASIN 360 业务报表 + 用户自己的 SIF MCP | Ready |
 | [zach-seller-skill-creator](./skills/zach-seller-skill-creator/README.md) | 把亚马逊卖家的实战流程沉淀成可安装、可评测、可迭代的 skill | 本地文件 + 可选评测脚本 | Ready |
 
 ---
