@@ -1,6 +1,6 @@
 # Amazon Skills
 
-> **作者**：Zach ｜ 公众号「Zach的进化笔记」
+> **作者**：[Zach](https://github.com/zach22-1999) ｜ 公众号「Zach的进化笔记」
 >
 > Learn in public！把亚马逊卖家的实战经验做成可安装、可执行、可交付的 AI skill。
 
