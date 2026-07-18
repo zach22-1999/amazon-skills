@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>搜索词分析操作台</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --border: #e3e6ea;
+    --text: #1f2937;
+    --sub: #6b7280;
+    --accent: #1967d2;
+    --neg: #c5221f;      --neg-bg: #fdeceb;
+    --scale: #137333;    --scale-bg: #e6f4ea;
+    --reduce: #9a5b00;   --reduce-bg: #fdf0dd;
+    --hold: #1967d2;     --hold-bg: #e8f0fe;
+    --observe: #5f6368;  --observe-bg: #f1f3f4;
+    --manual: #7627bb;   --manual-bg: #f3e8fd;
+    --listing: #00796b;  --listing-bg: #e0f2f1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                 "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.5;
+  }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 16px 20px 40px; }
+  header h1 { font-size: 18px; font-weight: 700; }
+  header .meta { color: var(--sub); font-size: 12px; margin-top: 2px; }
+  header .meta b { color: var(--text); font-weight: 600; }
+
+  #fatal { max-width: 560px; margin: 80px auto; background: var(--card); border: 1px solid #f5c6c4;
+           border-left: 4px solid var(--neg); border-radius: 8px; padding: 24px; }
+  #fatal h2 { font-size: 16px; color: var(--neg); margin-bottom: 8px; }
+  #fatal .fatal-msg { color: var(--sub); word-break: break-all; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+           gap: 10px; margin: 14px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+          padding: 10px 12px; }
+  .card .k { font-size: 11px; color: var(--sub); }
+  .card .v { font-size: 19px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .card .s { font-size: 11px; color: var(--sub); margin-top: 2px; }
+  .card.warn .v { color: var(--neg); }
+  .card.good .v { color: var(--scale); }
+  .card.dim .v { color: var(--observe); }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 8px; }
+  .tab { border: 1px solid var(--border); background: var(--card); border-radius: 16px;
+         padding: 4px 12px; font-size: 12px; cursor: pointer; color: var(--sub); }
+  .tab .n { font-variant-numeric: tabular-nums; opacity: .75; margin-left: 2px; }
+  .tab:hover { border-color: var(--accent); color: var(--accent); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab.active .n { opacity: .9; }
+
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0 10px; }
+  .toolbar select, .toolbar input[type="search"] {
+    border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; font-size: 12px;
+    background: var(--card); color: var(--text); font-family: inherit; }
+  .toolbar input[type="search"] { width: 220px; }
+  .toolbar .spacer { flex: 1; }
+  .toolbar .selinfo { font-size: 12px; color: var(--sub); }
+  .toolbar .selinfo b { color: var(--accent); }
+  button.btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px;
+               padding: 5px 10px; font-size: 12px; cursor: pointer; color: var(--text);
+               font-family: inherit; }
+  button.btn:hover { border-color: var(--accent); color: var(--accent); }
+  button.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.btn.primary:hover { opacity: .9; color: #fff; }
+  button.btn.danger { color: var(--neg); border-color: #f5c6c4; }
+  button.btn.link { border: none; background: none; color: var(--sub); text-decoration: underline; padding: 5px 2px; }
+
+  .tablewrap { background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+               overflow: auto; max-height: 72vh; }
+  table { border-collapse: collapse; width: 100%; min-width: 1080px; }
+  thead th { position: sticky; top: 0; background: #fafbfc; z-index: 2; text-align: left;
+             font-size: 11px; color: var(--sub); font-weight: 600; padding: 7px 8px;
+             border-bottom: 1px solid var(--border); white-space: nowrap; user-select: none; }
+  thead th.sortable { cursor: pointer; }
+  thead th.sortable:hover { color: var(--accent); }
+  thead th.sorted-asc::after { content: " ▲"; font-size: 9px; color: var(--accent); }
+  thead th.sorted-desc::after { content: " ▼"; font-size: 9px; color: var(--accent); }
+  tbody td { padding: 6px 8px; border-bottom: 1px solid #f0f1f3; vertical-align: top;
+             font-size: 12.5px; }
+  tbody tr:hover { background: #f8fafd; }
+  tbody tr.checked { background: #eef4fe; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.sel, th.sel { width: 28px; text-align: center; }
+  td.term .tname { font-weight: 600; word-break: break-word; }
+  td.term .tsub { font-size: 11px; color: var(--sub); }
+  td.reason { max-width: 300px; color: var(--sub); font-size: 12px; }
+  .empty { padding: 28px; text-align: center; color: var(--sub); }
+
+  .badge { display: inline-block; border-radius: 4px; padding: 1px 7px; font-size: 11.5px;
+           font-weight: 600; white-space: nowrap; }
+  .d-scale   { color: var(--scale);   background: var(--scale-bg); }
+  .d-neg     { color: var(--neg);     background: var(--neg-bg); }
+  .d-reduce  { color: var(--reduce);  background: var(--reduce-bg); }
+  .d-hold    { color: var(--hold);    background: var(--hold-bg); }
+  .d-observe { color: var(--observe); background: var(--observe-bg); }
+  .d-manual  { color: var(--manual);  background: var(--manual-bg); }
+  .d-listing { color: var(--listing); background: var(--listing-bg); }
+  .cat { display: inline-block; border-radius: 4px; padding: 0 6px; font-size: 11px;
+         border: 1px solid; background: #fff; white-space: nowrap; }
+  .c-brand { color: #1967d2; border-color: #c6dafc; }
+  .c-comp  { color: #d93025; border-color: #f5c6c4; }
+  .c-core  { color: #188038; border-color: #c6e7d0; }
+  .c-attr  { color: #9a5b00; border-color: #f0ddb8; }
+  .c-scen  { color: #00796b; border-color: #b2dfdb; }
+  .c-irr   { color: #5f6368; border-color: #dadce0; }
+  .c-asin  { color: #7627bb; border-color: #e3ccf7; }
+  .basis { font-size: 11px; color: var(--sub); }
+  .basis.b-root { color: var(--accent); font-weight: 600; }
+  .basis.b-pool { color: var(--observe); }
+  .t-up   { color: var(--scale); }
+  .t-down { color: var(--neg); }
+  .t-flat { color: var(--sub); }
+  .t-mix  { color: var(--reduce); }
+  .t-na   { color: #9aa0a6; }
+  .flag { display: inline-block; background: var(--listing-bg); color: var(--listing);
+          border-radius: 3px; font-size: 10px; font-weight: 700; padding: 0 4px; margin-left: 4px; }
+
+  details.pool { margin-top: 12px; background: var(--card); border: 1px solid var(--border);
+                 border-radius: 8px; }
+  details.pool > summary { cursor: pointer; padding: 10px 14px; font-size: 12.5px;
+                           color: var(--sub); font-weight: 600; list-style: none; }
+  details.pool > summary::before { content: "▸ "; color: var(--sub); }
+  details.pool[open] > summary::before { content: "▾ "; }
+  details.pool .tablewrap { border: none; border-top: 1px solid var(--border);
+                            border-radius: 0 0 8px 8px; max-height: 40vh; }
+  footer { margin-top: 14px; font-size: 11px; color: #9aa0a6; }
+</style>
+</head>
+<body>
+<div id="fatal" hidden>
+  <h2>页面数据不可用</h2>
+  <div class="fatal-msg"></div>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <header>
+    <h1 id="hTitle">搜索词分析操作台</h1>
+    <div class="meta" id="hMeta"></div>
+  </header>
+
+  <div class="cards" id="cards"></div>
+  <div class="tabs" id="tabs"></div>
+
+  <div class="toolbar" id="toolbar">
+    <select id="catFilter"><option value="">全部类别</option></select>
+    <input type="search" id="searchBox" placeholder="搜索：词 / 词根 / 理由">
+    <div class="spacer"></div>
+    <span class="selinfo" id="selInfo">已选 <b>0</b> 词</span>
+    <button class="btn link" id="btnClearSel">清除选择</button>
+    <button class="btn danger" id="btnExpNeg">导出否词清单 CSV</button>
+    <button class="btn" id="btnExpScale">导出放量清单 CSV</button>
+    <button class="btn primary" id="btnExpSel">导出勾选行 CSV</button>
+  </div>
+
+  <div id="termsView">
+    <div class="tablewrap">
+      <table id="termTable">
+        <thead id="termHead"></thead>
+        <tbody id="termBody"></tbody>
+      </table>
+    </div>
+    <details class="pool" id="poolBox">
+      <summary id="poolSummary"></summary>
+      <div class="tablewrap">
+        <table>
+          <thead id="poolHead"></thead>
+          <tbody id="poolBody"></tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div id="rootsView" hidden>
+    <div class="tablewrap">
+      <table id="rootTable">
+        <thead id="rootHead"></thead>
+        <tbody id="rootBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="payload" type="application/json">__PAYLOAD_JSON__</script>
+<script>
+(function () {
+  'use strict';
+
+  function showFatal(msg) {
+    var f = document.getElementById('fatal');
+    f.hidden = false;
+    f.querySelector('.fatal-msg').textContent = msg;
+    document.getElementById('app').hidden = true;
+  }
+
+  // 占位符检测：拼接构造，避免自身被 finalize 的字符串替换命中
+  var PLACEHOLDER = '__' + 'PAYLOAD_JSON' + '__';
+  var payloadEl = document.getElementById('payload');
+  var raw = payloadEl ? payloadEl.textContent : '';
+  if (!raw || raw.replace(/\s/g, '') === '' || raw.indexOf(PLACEHOLDER) !== -1) {
+    showFatal('payload 未注入：模板占位符未被替换。请通过 finalize_search_term_report.py 生成本页面，不要直接打开模板文件。');
+    return;
+  }
+  var P;
+  try { P = JSON.parse(raw); } catch (e) {
+    showFatal('payload 解析失败：' + e.message);
+    return;
+  }
+  if (!P || !P.meta || !P.summary || !P.terms || !P.roots || !P.actions) {
+    showFatal('payload 结构不完整：缺少 meta / summary / terms / roots / actions 之一。');
+    return;
+  }
+  document.getElementById('app').hidden = false;
+
+  // ---------- 字典与格式化 ----------
+  var DEC = {
+    scale_up:           { label: '放量',        cls: 'd-scale' },
+    hold_test:          { label: '保持测试',    cls: 'd-hold' },
+    reduce_bid:         { label: '降Bid',       cls: 'd-reduce' },
+    negative_candidate: { label: '否词',        cls: 'd-neg' },
+    listing_feedback:   { label: 'Listing反馈', cls: 'd-listing' },
+    observe:            { label: '观察',        cls: 'd-observe' },
+    manual_review:      { label: '人工复核',    cls: 'd-manual' }
+  };
+  var CAT = {
+    brand_term:         { label: '品牌词',     cls: 'c-brand' },
+    competitor_term:    { label: '竞品词',     cls: 'c-comp' },
+    core_category_term: { label: '核心品类词', cls: 'c-core' },
+    attribute_term:     { label: '属性词',     cls: 'c-attr' },
+    scenario_term:      { label: '场景词',     cls: 'c-scen' },
+    irrelevant_term:    { label: '无关词',     cls: 'c-irr' },
+    asin_term:          { label: 'ASIN词',     cls: 'c-asin' }
+  };
+  var CONF = { high: '高', medium: '中', low: '低' };
+  var BASIS = { term: '词级', root: '词根', pool: '低量池' };
+  var TREND = {
+    improving: { label: '好转', cls: 't-up' },
+    worsening: { label: '恶化', cls: 't-down' },
+    stable: { label: '稳定', cls: 't-flat' },
+    mixed: { label: '混合', cls: 't-mix' },
+    insufficient_data: { label: '数据不足', cls: 't-na' }
+  };
+  var REL = { high: '高', medium: '中', low: '低' };
+  var CUR_MAP = { US: '$', CA: 'CA$', MX: 'MX$', UK: '£', GB: '£', DE: '€', FR: '€',
+                  IT: '€', ES: '€', NL: '€', JP: '¥' };
+  var CUR = CUR_MAP[String(P.meta.site || 'US').toUpperCase()] || '$';
+
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function isNil(v) { return v === null || v === undefined || (typeof v === 'number' && isNaN(v)); }
+  function fmtMoney(v) {
+    if (isNil(v)) return '—';
+    return CUR + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function fmtPct(v) { return isNil(v) ? '—' : (v * 100).toFixed(1) + '%'; }
+  function fmtInt(v) { return isNil(v) ? '—' : Number(v).toLocaleString('en-US'); }
+  function decBadge(d) {
+    var m = DEC[d] || { label: d, cls: 'd-observe' };
+    return '<span class="badge ' + m.cls + '">' + esc(m.label) + '</span>';
+  }
+  function catBadge(c) {
+    var m = CAT[c] || { label: c, cls: 'c-irr' };
+    return '<span class="cat ' + m.cls + '">' + esc(m.label) + '</span>';
+  }
+  function trendBadge(t, term) {
+    var m = TREND[t] || { label: t || '—', cls: 't-na' };
+    var tip = '';
+    if (term && term.w7 && term.w30) {
+      tip = '7天CVR ' + fmtPct(term.w7.cvr) + ' / 30天CVR ' + fmtPct(term.w30.cvr);
+    }
+    return '<span class="' + m.cls + '" title="' + esc(tip) + '">' + esc(m.label) + '</span>';
+  }
+  function isPool(t) { return t.decision === 'observe' && t.basis === 'pool'; }
+  function isPending(t) {
+    return t.decision === 'manual_review' || (t.decision === 'observe' && t.basis !== 'pool');
+  }
+
+  // ---------- 头部与摘要卡 ----------
+  var meta = P.meta, sm = P.summary;
+  document.title = '搜索词操作台 · ' + (meta.brand || '') + ' ' + (meta.asin || '');
+  document.getElementById('hTitle').textContent =
+    '搜索词分析操作台 · ' + (meta.brand || '') + ' ' + (meta.asin || '');
+  var dr = meta.date_range || ['?', '?'];
+  document.getElementById('hMeta').innerHTML =
+    '站点 <b>' + esc(meta.site) + '</b> · <b>' + esc(meta.report_type) + '</b> 报表 · ' +
+    esc(dr[0]) + ' ~ ' + esc(dr[1]) + ' · 目标 ACOS <b>' + fmtPct(meta.target_acos) + '</b>' +
+    (meta.has_orders_data === false ? ' · <b style="color:var(--neg)">本报表无订单数据，仅浪费检测</b>' : '');
+
+  var dc = sm.decision_counts || {}, ds = sm.decision_spend || {};
+  var cardsHtml = '';
+  function card(k, v, s, cls) {
+    cardsHtml += '<div class="card ' + (cls || '') + '"><div class="k">' + esc(k) +
+      '</div><div class="v">' + v + '</div><div class="s">' + s + '</div></div>';
+  }
+  card('总花费', fmtMoney((sm.baseline || {}).spend),
+       '点击 ' + fmtInt((sm.baseline || {}).clicks) + ' · 订单 ' + fmtInt((sm.baseline || {}).orders));
+  card('0单浪费花费', fmtMoney((sm.waste || {}).zero_order_spend),
+       '其中否词候选 ' + fmtMoney((sm.waste || {}).negative_candidate_spend), 'warn');
+  card('否词建议', fmtInt(dc.negative_candidate) + ' 词',
+       '词根否词 ' + fmtInt((P.actions.root_negatives || []).length) + ' 组 · 花费 ' + fmtMoney(ds.negative_candidate), 'warn');
+  card('放量机会', fmtInt(dc.scale_up) + ' 词', '花费 ' + fmtMoney(ds.scale_up), 'good');
+  card('降Bid', fmtInt(dc.reduce_bid) + ' 词', '花费 ' + fmtMoney(ds.reduce_bid));
+  card('待判定占比', fmtPct(sm.pending_ratio_terms),
+       '花费占比 ' + fmtPct(sm.pending_ratio_spend) + '（目标 ≤10%）',
+       (sm.pending_ratio_terms > 0.10 || sm.pending_ratio_spend > 0.10) ? 'warn' : 'good');
+  card('低量池', fmtInt((sm.pool || {}).terms) + ' 词',
+       '点击 ' + fmtInt((sm.pool || {}).clicks) + ' · 花费 ' + fmtMoney((sm.pool || {}).spend), 'dim');
+  card('基准 CVR / ACOS', fmtPct((sm.baseline || {}).cvr) + ' / ' + fmtPct((sm.baseline || {}).acos),
+       '全量口径 · 目标 ACOS ' + fmtPct(meta.target_acos));
+  document.getElementById('cards').innerHTML = cardsHtml;
+
+  // ---------- 状态 ----------
+  var state = {
+    tab: 'all', cat: '', q: '',
+    sortKey: 'spend', sortDir: -1,
+    rootSortKey: 'spend', rootSortDir: -1
+  };
+  // 勾选状态：必须用无原型对象——普通 {} 以 term 字符串作键会命中原型链属性
+  // （'constructor' 等真实搜索词被误判为已勾选、'__proto__' 无法勾选）
+  var selected = Object.create(null);
+
+  var TABS = [
+    { id: 'all',        label: '全部',        fn: function (t) { return !isPool(t); } },
+    { id: 'negative',   label: '否词',        fn: function (t) { return t.decision === 'negative_candidate'; } },
+    { id: 'scale',      label: '放量',        fn: function (t) { return t.decision === 'scale_up'; } },
+    { id: 'reduce',     label: '降Bid',       fn: function (t) { return t.decision === 'reduce_bid'; } },
+    { id: 'listing',    label: 'Listing反馈', fn: function (t) { return t.decision === 'listing_feedback' || t.listing_flag === true; } },
+    { id: 'brand',      label: '品牌',        fn: function (t) { return t.category === 'brand_term'; } },
+    { id: 'competitor', label: '竞品',        fn: function (t) { return t.category === 'competitor_term'; } },
+    { id: 'pending',    label: '待判定',      fn: isPending },
+    { id: 'pool',       label: '低量池',      fn: isPool },
+    { id: 'roots',      label: '词根视图' }
+  ];
+
+  var tabsEl = document.getElementById('tabs');
+  var tabsHtml = '';
+  TABS.forEach(function (tb) {
+    var n = tb.fn ? P.terms.filter(tb.fn).length : P.roots.length;
+    tabsHtml += '<button class="tab" data-tab="' + tb.id + '">' + esc(tb.label) +
+      '<span class="n">(' + n + ')</span></button>';
+  });
+  tabsEl.innerHTML = tabsHtml;
+  tabsEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.tab');
+    if (!b) return;
+    state.tab = b.getAttribute('data-tab');
+    render();
+  });
+
+  // 类别下拉：仅列出 payload 中出现的类别
+  var catSel = document.getElementById('catFilter');
+  var seenCats = [];
+  P.terms.forEach(function (t) { if (seenCats.indexOf(t.category) === -1) seenCats.push(t.category); });
+  Object.keys(CAT).forEach(function (c) {
+    if (seenCats.indexOf(c) === -1) return;
+    var o = document.createElement('option');
+    o.value = c; o.textContent = CAT[c].label;
+    catSel.appendChild(o);
+  });
+  catSel.addEventListener('change', function () { state.cat = catSel.value; render(); });
+  document.getElementById('searchBox').addEventListener('input', function (e) {
+    state.q = e.target.value.trim().toLowerCase(); render();
+  });
+
+  // ---------- 排序 ----------
+  var CONF_RANK = { high: 3, medium: 2, low: 1 };
+  var BASIS_RANK = { term: 3, root: 2, pool: 1 };
+  function sortVal(t, key) {
+    if (key === 'confidence') return CONF_RANK[t.confidence] || null;
+    if (key === 'basis') return BASIS_RANK[t.basis] || null;
+    if (key === 'decision') return DEC[t.decision] ? DEC[t.decision].label : t.decision;
+    if (key === 'category') return CAT[t.category] ? CAT[t.category].label : t.category;
+    if (key === 'trend') return TREND[t.trend] ? TREND[t.trend].label : (t.trend || null);
+    if (key === 'relevance') return CONF_RANK[t.relevance] || null;
+    var v = t[key];
+    return v === undefined ? null : v;
+  }
+  // null 恒排最后；数字/字符串混排时数字在前
+  function cmpVals(a, b, dir) {
+    var na = isNil(a), nb = isNil(b);
+    if (na && nb) return 0;
+    if (na) return 1;
+    if (nb) return -1;
+    var an = typeof a === 'number', bn = typeof b === 'number';
+    if (an && bn) return (a - b) * dir;
+    if (an) return -1;
+    if (bn) return 1;
+    return String(a).localeCompare(String(b), 'zh-Hans-CN') * dir;
+  }
+  function sortRows(rows, key, dir) {
+    var idx = rows.map(function (r, i) { return [r, i]; });
+    idx.sort(function (x, y) {
+      var c = cmpVals(sortVal(x[0], key), sortVal(y[0], key), dir);
+      return c !== 0 ? c : (x[1] - y[1]);   // 稳定排序
+    });
+    return idx.map(function (p) { return p[0]; });
+  }
+
+  // ---------- 表头 ----------
+  var TERM_COLS = [
+    { key: '_sel', label: '', cls: 'sel' },
+    { key: 'term', label: '搜索词' },
+    { key: 'category', label: '类别' },
+    { key: 'decision', label: '决策' },
+    { key: 'confidence', label: '置信度' },
+    { key: 'basis', label: '依据' },
+    { key: 'clicks', label: '点击', cls: 'num' },
+    { key: 'spend', label: '花费', cls: 'num' },
+    { key: 'orders', label: '订单', cls: 'num' },
+    { key: 'cvr', label: 'CVR', cls: 'num' },
+    { key: 'acos', label: 'ACOS', cls: 'num' },
+    { key: 'trend', label: '趋势' },
+    { key: 'reason', label: '理由' }
+  ];
+  var ROOT_COLS = [
+    { key: 'root', label: '词根' },
+    { key: 'category', label: '类别' },
+    { key: 'relevance', label: '相关度' },
+    { key: 'term_count', label: '成员词数', cls: 'num' },
+    { key: 'clicks', label: '点击', cls: 'num' },
+    { key: 'spend', label: '花费', cls: 'num' },
+    { key: 'orders', label: '订单', cls: 'num' },
+    { key: 'cvr', label: 'CVR', cls: 'num' },
+    { key: 'acos', label: 'ACOS', cls: 'num' },
+    { key: 'sample_terms', label: '样本词' }
+  ];
+  function headHtml(cols, sortKey, sortDir, withSelAll) {
+    var h = '<tr>';
+    cols.forEach(function (c) {
+      if (c.key === '_sel') {
+        h += '<th class="sel">' + (withSelAll ? '<input type="checkbox" id="selAll" title="全选当前筛选结果">' : '') + '</th>';
+        return;
+      }
+      var cls = (c.cls || '') + ' sortable' +
+        (c.key === sortKey ? (sortDir === 1 ? ' sorted-asc' : ' sorted-desc') : '');
+      h += '<th class="' + cls + '" data-key="' + c.key + '">' + esc(c.label) + '</th>';
+    });
+    return h + '</tr>';
+  }
+
+  // ---------- 行渲染 ----------
+  function termRow(t) {
+    var checked = selected[t.term] ? ' checked' : '';
+    return '<tr' + (selected[t.term] ? ' class="checked"' : '') + '>' +
+      '<td class="sel"><input type="checkbox" class="rowck" data-term="' + esc(t.term) + '"' + checked + '></td>' +
+      '<td class="term"><div class="tname">' + esc(t.term) +
+        (t.listing_flag ? '<span class="flag" title="Listing 反馈标记：属性/场景近7天点击上升且 Listing 未覆盖">L</span>' : '') +
+      '</div><div class="tsub">词根 ' + esc(t.root) + ' · ' + esc((t.match_types || []).join('/')) + '</div></td>' +
+      '<td>' + catBadge(t.category) + '</td>' +
+      '<td>' + decBadge(t.decision) + '</td>' +
+      '<td>' + esc(CONF[t.confidence] || t.confidence || '—') + '</td>' +
+      '<td><span class="basis b-' + esc(t.basis) + '">' + esc(BASIS[t.basis] || t.basis || '—') + '</span></td>' +
+      '<td class="num">' + fmtInt(t.clicks) + '</td>' +
+      '<td class="num">' + fmtMoney(t.spend) + '</td>' +
+      '<td class="num">' + fmtInt(t.orders) + '</td>' +
+      '<td class="num">' + fmtPct(t.cvr) + '</td>' +
+      '<td class="num">' + fmtPct(t.acos) + '</td>' +
+      '<td>' + trendBadge(t.trend, t) + '</td>' +
+      '<td class="reason">' + esc(t.reason) + '</td>' +
+      '</tr>';
+  }
+  function rootRow(r) {
+    return '<tr>' +
+      '<td class="term"><div class="tname">' + esc(r.root) + '</div></td>' +
+      '<td>' + catBadge(r.category) + '</td>' +
+      '<td>' + esc(REL[r.relevance] || r.relevance || '—') + '</td>' +
+      '<td class="num">' + fmtInt(r.term_count) + '</td>' +
+      '<td class="num">' + fmtInt(r.clicks) + '</td>' +
+      '<td class="num">' + fmtMoney(r.spend) + '</td>' +
+      '<td class="num">' + fmtInt(r.orders) + '</td>' +
+      '<td class="num">' + fmtPct(r.cvr) + '</td>' +
+      '<td class="num">' + fmtPct(r.acos) + '</td>' +
+      '<td class="reason">' + esc((r.sample_terms || []).join(', ')) + '</td>' +
+      '</tr>';
+  }
+
+  // ---------- 筛选 ----------
+  function currentTab() {
+    for (var i = 0; i < TABS.length; i++) if (TABS[i].id === state.tab) return TABS[i];
+    return TABS[0];
+  }
+  function filteredTerms() {
+    var tb = currentTab();
+    var rows = P.terms.filter(tb.fn || function () { return true; });
+    if (state.cat) rows = rows.filter(function (t) { return t.category === state.cat; });
+    if (state.q) {
+      rows = rows.filter(function (t) {
+        return (t.term || '').toLowerCase().indexOf(state.q) !== -1 ||
+               (t.root || '').toLowerCase().indexOf(state.q) !== -1 ||
+               (t.reason || '').toLowerCase().indexOf(state.q) !== -1;
+      });
+    }
+    return sortRows(rows, state.sortKey, state.sortDir);
+  }
+  function filteredRoots() {
+    var rows = P.roots.slice();
+    if (state.cat) rows = rows.filter(function (r) { return r.category === state.cat; });
+    if (state.q) {
+      rows = rows.filter(function (r) {
+        return (r.root || '').toLowerCase().indexOf(state.q) !== -1 ||
+               (r.sample_terms || []).join(' ').toLowerCase().indexOf(state.q) !== -1;
+      });
+    }
+    return sortRows(rows, state.rootSortKey, state.rootSortDir);
+  }
+
+  // ---------- 渲染 ----------
+  var lastFiltered = [];
+  function render() {
+    document.querySelectorAll('#tabs .tab').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-tab') === state.tab);
+    });
+    var rootsMode = state.tab === 'roots';
+    document.getElementById('termsView').hidden = rootsMode;
+    document.getElementById('rootsView').hidden = !rootsMode;
+
+    if (rootsMode) {
+      var rr = filteredRoots();
+      document.getElementById('rootHead').innerHTML = headHtml(ROOT_COLS, state.rootSortKey, state.rootSortDir, false);
+      document.getElementById('rootBody').innerHTML = rr.length
+        ? rr.map(rootRow).join('')
+        : '<tr><td colspan="' + ROOT_COLS.length + '"><div class="empty">没有匹配的词根</div></td></tr>';
+    } else {
+      lastFiltered = filteredTerms();
+      document.getElementById('termHead').innerHTML = headHtml(TERM_COLS, state.sortKey, state.sortDir, true);
+      document.getElementById('termBody').innerHTML = lastFiltered.length
+        ? lastFiltered.map(termRow).join('')
+        : '<tr><td colspan="' + TERM_COLS.length + '"><div class="empty">没有匹配的搜索词</div></td></tr>';
+
+      // 低量池折叠区：仅「全部」tab 展示，默认收起
+      var poolTerms = P.terms.filter(isPool);
+      var poolBox = document.getElementById('poolBox');
+      if (state.tab === 'all' && poolTerms.length) {
+        poolBox.style.display = '';
+        var pl = sortRows(poolTerms, state.sortKey, state.sortDir);
+        document.getElementById('poolSummary').textContent =
+          '低量长尾池 · ' + poolTerms.length + ' 词 · 点击 ' + fmtInt((sm.pool || {}).clicks) +
+          ' · 花费 ' + fmtMoney((sm.pool || {}).spend) +
+          ' —— 汇总监控，不逐词决策（已按低量池处理，不计入待判定）';
+        document.getElementById('poolHead').innerHTML = headHtml(TERM_COLS, state.sortKey, state.sortDir, false);
+        document.getElementById('poolBody').innerHTML = pl.map(termRow).join('');
+      } else {
+        poolBox.style.display = 'none';
+      }
+      var selAll = document.getElementById('selAll');
+      if (selAll) {
+        selAll.checked = lastFiltered.length > 0 &&
+          lastFiltered.every(function (t) { return selected[t.term]; });
+      }
+    }
+    updateSelInfo();
+  }
+
+  function updateSelInfo() {
+    var n = Object.keys(selected).length;
+    document.getElementById('selInfo').innerHTML = '已选 <b>' + n + '</b> 词';
+  }
+
+  // 表头点击排序（terms / pool / roots 共用委托）
+  document.getElementById('app').addEventListener('click', function (e) {
+    var th = e.target.closest('th.sortable');
+    if (!th) return;
+    var key = th.getAttribute('data-key');
+    if (state.tab === 'roots') {
+      if (state.rootSortKey === key) state.rootSortDir = -state.rootSortDir;
+      else { state.rootSortKey = key; state.rootSortDir = -1; }
+    } else {
+      if (state.sortKey === key) state.sortDir = -state.sortDir;
+      else { state.sortKey = key; state.sortDir = -1; }
+    }
+    render();
+  });
+
+  // 勾选（行 + 全选）
+  document.getElementById('app').addEventListener('change', function (e) {
+    if (e.target.id === 'selAll') {
+      var on = e.target.checked;
+      lastFiltered.forEach(function (t) {
+        if (on) selected[t.term] = true; else delete selected[t.term];
+      });
+      render();
+      return;
+    }
+    if (e.target.classList.contains('rowck')) {
+      var term = e.target.getAttribute('data-term');
+      if (e.target.checked) selected[term] = true; else delete selected[term];
+      var tr = e.target.closest('tr');
+      if (tr) tr.classList.toggle('checked', e.target.checked);
+      updateSelInfo();
+    }
+  });
+  document.getElementById('btnClearSel').addEventListener('click', function () {
+    selected = Object.create(null); render();
+  });
+
+  // ---------- CSV 导出（RFC4180 转义 + BOM + 公式注入防护）----------
+  function csvEscape(v) {
+    if (v === null || v === undefined) return '';
+    var s = String(v);
+    // Excel/Numbers 公式注入防护：以 = + - @ 或制表/回车开头且非纯数值的
+    // 单元格前置单引号（纯数值如 -12.5 / -3.5% 不受影响）
+    if (/^[=+\-@\t\r]/.test(s) && !/^-?\d+(\.\d+)?%?$/.test(s)) s = "'" + s;
+    if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  function downloadCsv(name, rows) {
+    var content = '\uFEFF' + rows.map(function (r) {
+      return r.map(csvEscape).join(',');
+    }).join('\r\n') + '\r\n';
+    var blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+  var fnPrefix = (dr[1] || 'export') + '_' + (meta.asin || 'ASIN');
+
+  document.getElementById('btnExpNeg').addEventListener('click', function () {
+    var rows = [['level', 'keyword', 'match_type', 'clicks_or_terms', 'spend', 'reason']];
+    (P.actions.negatives || []).forEach(function (n) {
+      rows.push(['term', n.term, n.match_type, n.clicks, isNil(n.spend) ? '' : n.spend.toFixed(2), n.reason]);
+    });
+    (P.actions.root_negatives || []).forEach(function (n) {
+      rows.push(['root', n.root, n.match_type, n.term_count, isNil(n.spend) ? '' : n.spend.toFixed(2), n.reason]);
+    });
+    downloadCsv(fnPrefix + '_否词清单.csv', rows);
+  });
+  document.getElementById('btnExpScale').addEventListener('click', function () {
+    var rows = [['keyword', 'clicks', 'cvr', 'acos', 'reason']];
+    (P.actions.scale_ups || []).forEach(function (s) {
+      rows.push([s.term, s.clicks,
+        isNil(s.cvr) ? '' : (s.cvr * 100).toFixed(2) + '%',
+        isNil(s.acos) ? '' : (s.acos * 100).toFixed(2) + '%',
+        s.reason]);
+    });
+    downloadCsv(fnPrefix + '_放量清单.csv', rows);
+  });
+  document.getElementById('btnExpSel').addEventListener('click', function () {
+    var picked = P.terms.filter(function (t) { return selected[t.term]; });
+    if (!picked.length) { alert('尚未勾选任何行'); return; }
+    var rows = [['search_term', 'category', 'relevance', 'decision', 'confidence', 'basis', 'root',
+                 'match_types', 'clicks', 'spend', 'orders', 'sales', 'ctr', 'cvr', 'acos', 'cpc',
+                 'trend', 'listing_flag', 'negative_match_suggestion', 'reason']];
+    picked.forEach(function (t) {
+      rows.push([t.term, t.category, t.relevance, t.decision, t.confidence, t.basis, t.root,
+        (t.match_types || []).join(';'), t.clicks,
+        isNil(t.spend) ? '' : t.spend.toFixed(2), t.orders,
+        isNil(t.sales) ? '' : t.sales.toFixed(2),
+        isNil(t.ctr) ? '' : (t.ctr * 100).toFixed(2) + '%',
+        isNil(t.cvr) ? '' : (t.cvr * 100).toFixed(2) + '%',
+        isNil(t.acos) ? '' : (t.acos * 100).toFixed(2) + '%',
+        isNil(t.cpc) ? '' : t.cpc.toFixed(2),
+        t.trend, t.listing_flag ? 'Y' : '', t.negative_match_suggestion || '', t.reason]);
+    });
+    downloadCsv(fnPrefix + '_勾选行.csv', rows);
+  });
+
+  document.getElementById('foot').textContent =
+    '生成于 ' + (meta.run_at || meta.generated_at || '') + ' · 数据源 ' + (meta.source_file || '') +
+    ' · zach-search-term-report-analyzer v2 · 本页零外部依赖，可离线打开';
+
+  render();
+})();
+</script>
+</body>
+</html>

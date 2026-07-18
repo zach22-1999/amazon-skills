@@ -53,7 +53,7 @@ class ListingContextFetchTests(unittest.TestCase):
     def test_extract_listing_context_parses_core_fields(self) -> None:
         payload = listing_fetch.extract_listing_context(
             SAMPLE_HTML,
-            asin="B0PUBLIC01",
+            asin="B0TEST1234",
             site_code="US",
             domain="amazon.com",
         )

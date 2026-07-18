@@ -21,8 +21,8 @@ class DecisionLogicTests(unittest.TestCase):
         df = pd.DataFrame(
             {
                 "search_term": [
-                    "jbl karaoke machine",
-                    "jbl karaoke machine with screen",
+                    "rivalbrand karaoke machine",
+                    "rivalbrand karaoke machine with screen",
                     "professional karaoke machine",
                     "portable karaoke machine",
                 ],
@@ -37,7 +37,7 @@ class DecisionLogicTests(unittest.TestCase):
             threshold=analyzer.DEFAULT_THRESHOLDS["brand_similarity_threshold"],
             min_frequency=2,
         )
-        self.assertIn("jbl", tokens)
+        self.assertIn("rivalbrand", tokens)
         self.assertNotIn("professional", tokens)
         self.assertNotIn("portable", tokens)
 

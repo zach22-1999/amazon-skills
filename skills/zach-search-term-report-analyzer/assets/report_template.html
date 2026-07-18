@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>搜索词分析汇报</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --border: #e3e6ea;
+    --text: #1f2937;
+    --sub: #6b7280;
+    --accent: #1967d2;
+    --neg: #c5221f;      --neg-bg: #fdeceb;
+    --scale: #137333;    --scale-bg: #e6f4ea;
+    --reduce: #9a5b00;   --reduce-bg: #fdf0dd;
+    --hold: #1967d2;     --hold-bg: #e8f0fe;
+    --observe: #5f6368;  --observe-bg: #f1f3f4;
+    --manual: #7627bb;   --manual-bg: #f3e8fd;
+    --listing: #00796b;  --listing-bg: #e0f2f1;
+    --fact: #1967d2;     --fact-bg: #e8f0fe;
+    --infer: #9a5b00;    --infer-bg: #fdf0dd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                 "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 13.5px; line-height: 1.6;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 24px 24px 48px; }
+  header h1 { font-size: 21px; font-weight: 700; }
+  header .meta { color: var(--sub); font-size: 12.5px; margin-top: 4px; }
+  header .meta b { color: var(--text); font-weight: 600; }
+  .legend { margin-top: 10px; font-size: 12px; color: var(--sub); }
+  .tag { display: inline-block; border-radius: 4px; padding: 1px 8px; font-size: 11.5px;
+         font-weight: 600; margin-right: 6px; }
+  .tag.fact  { color: var(--fact);  background: var(--fact-bg); }
+  .tag.infer { color: var(--infer); background: var(--infer-bg); }
+
+  #fatal { max-width: 560px; margin: 80px auto; background: var(--card); border: 1px solid #f5c6c4;
+           border-left: 4px solid var(--neg); border-radius: 8px; padding: 24px; }
+  #fatal h2 { font-size: 16px; color: var(--neg); margin-bottom: 8px; }
+  #fatal .fatal-msg { color: var(--sub); word-break: break-all; }
+
+  section { margin-top: 22px; }
+  section > h2 { font-size: 15.5px; font-weight: 700; margin-bottom: 10px; }
+  section > h2 .tag { vertical-align: 2px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+          padding: 16px 18px; }
+  section.infer-block .card { border-left: 3px solid var(--infer); }
+  section.fact-block .card { border-left: 3px solid var(--fact); }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+         padding: 12px 14px; }
+  .kpi .k { font-size: 11.5px; color: var(--sub); }
+  .kpi .v { font-size: 20px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .kpi .s { font-size: 11.5px; color: var(--sub); margin-top: 2px; }
+  .kpi.warn .v { color: var(--neg); }
+  .kpi.good .v { color: var(--scale); }
+  .kpi.dim .v { color: var(--observe); }
+
+  .bars .row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
+  .bars .lbl { width: 108px; flex: none; text-align: right; }
+  .bars .track { flex: 1; background: #f1f3f4; border-radius: 4px; height: 18px; overflow: hidden; }
+  .bars .fill { height: 100%; border-radius: 4px; min-width: 2px; }
+  .bars .val { width: 170px; flex: none; font-size: 12px; color: var(--sub);
+               font-variant-numeric: tabular-nums; }
+  .badge { display: inline-block; border-radius: 4px; padding: 1px 8px; font-size: 11.5px;
+           font-weight: 600; white-space: nowrap; }
+  .d-scale   { color: var(--scale);   background: var(--scale-bg); }
+  .d-neg     { color: var(--neg);     background: var(--neg-bg); }
+  .d-reduce  { color: var(--reduce);  background: var(--reduce-bg); }
+  .d-hold    { color: var(--hold);    background: var(--hold-bg); }
+  .d-observe { color: var(--observe); background: var(--observe-bg); }
+  .d-manual  { color: var(--manual);  background: var(--manual-bg); }
+  .d-listing { color: var(--listing); background: var(--listing-bg); }
+  .bg-scale   { background: #34a853; }
+  .bg-neg     { background: #d93025; }
+  .bg-reduce  { background: #f9ab00; }
+  .bg-hold    { background: #4285f4; }
+  .bg-observe { background: #9aa0a6; }
+  .bg-manual  { background: #a142f4; }
+  .bg-listing { background: #12b5a5; }
+
+  .stacked .row { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  .stacked .lbl { width: 108px; flex: none; text-align: right; font-size: 12.5px; }
+  .stacked .track { flex: 1; display: flex; height: 18px; border-radius: 4px; overflow: hidden;
+                    background: #f1f3f4; }
+  .stacked .seg { height: 100%; }
+  .stacked .val { width: 150px; flex: none; font-size: 12px; color: var(--sub);
+                  font-variant-numeric: tabular-nums; }
+  .chart-legend { margin-top: 10px; font-size: 11.5px; color: var(--sub); }
+  .chart-legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px;
+                       margin: 0 4px 0 10px; vertical-align: -1px; }
+
+  .tbl { width: 100%; border-collapse: collapse; }
+  .tbl th { text-align: left; font-size: 11.5px; color: var(--sub); font-weight: 600;
+            padding: 6px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .tbl td { padding: 6px 8px; border-bottom: 1px solid #f0f1f3; vertical-align: top;
+            font-size: 12.5px; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tbl .kw { font-weight: 600; word-break: break-word; }
+  .tbl .rsn { color: var(--sub); font-size: 12px; }
+  .subhead { font-size: 12.5px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+  .none { color: var(--sub); font-size: 12.5px; }
+
+  .insight { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;
+             margin: 8px 0; background: #fcfdfe; }
+  .insight .term { font-weight: 700; margin-bottom: 4px; }
+  .insight .line { font-size: 12.5px; margin: 3px 0; }
+  .insight .line .tag { margin-right: 8px; }
+
+  ul.points { padding-left: 4px; list-style: none; }
+  ul.points li { margin: 7px 0; font-size: 13px; }
+  ul.points li .tag { margin-right: 8px; }
+
+  .footnote { font-size: 12px; color: var(--sub); }
+  .footnote p { margin: 6px 0; }
+  .footnote b { color: var(--text); }
+  footer { margin-top: 18px; font-size: 11px; color: #9aa0a6; }
+
+  .limitation { margin-top: 10px; background: var(--reduce-bg); border: 1px solid #f0ddb8;
+                border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: var(--reduce); }
+
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .wrap { max-width: none; padding: 0; }
+    .card, .kpi, .insight { border: 1px solid #ccc; box-shadow: none; }
+    section, .kpi, .insight, .card { break-inside: avoid; page-break-inside: avoid; }
+    header { break-after: avoid; }
+    .bars .fill, .stacked .seg, .tag, .badge, .bg-scale, .bg-neg, .bg-reduce, .bg-hold,
+    .bg-observe, .bg-manual, .bg-listing {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="fatal" hidden>
+  <h2>页面数据不可用</h2>
+  <div class="fatal-msg"></div>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <header>
+    <h1 id="hTitle">搜索词广告分析汇报</h1>
+    <div class="meta" id="hMeta"></div>
+    <div class="legend">
+      <span class="tag fact">📊 数据事实</span>来自报表的可复现数值
+      <span class="tag infer" style="margin-left:12px">💡 分析推断</span>基于规则与语义分类的建议，需结合业务判断
+    </div>
+    <div class="limitation" id="limitation" hidden></div>
+  </header>
+
+  <section class="fact-block">
+    <h2><span class="tag fact">📊 数据事实</span>核心指标</h2>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="fact-block">
+    <h2><span class="tag fact">📊 数据事实</span>决策分布</h2>
+    <div class="card"><div class="bars" id="decisionBars"></div></div>
+  </section>
+
+  <section class="fact-block">
+    <h2><span class="tag fact">📊 数据事实</span>花费去向（类别 × 决策）</h2>
+    <div class="card">
+      <div class="stacked" id="spendMatrix"></div>
+      <div class="chart-legend" id="spendLegend"></div>
+    </div>
+  </section>
+
+  <section class="infer-block">
+    <h2><span class="tag infer">💡 分析推断</span>TOP 10 否词建议</h2>
+    <div class="card" id="negTable"></div>
+  </section>
+
+  <section class="infer-block">
+    <h2><span class="tag infer">💡 分析推断</span>TOP 10 放量建议</h2>
+    <div class="card" id="scaleTable"></div>
+  </section>
+
+  <section class="infer-block">
+    <h2><span class="tag infer">💡 分析推断</span>属性 / 场景洞察（Listing 反馈）</h2>
+    <div class="card" id="listingBox"></div>
+  </section>
+
+  <section>
+    <h2>趋势要点</h2>
+    <div class="card"><ul class="points" id="trendPoints"></ul></div>
+  </section>
+
+  <section>
+    <h2>方法论脚注</h2>
+    <div class="card footnote" id="methodBox"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="payload" type="application/json">__PAYLOAD_JSON__</script>
+<script>
+(function () {
+  'use strict';
+
+  function showFatal(msg) {
+    var f = document.getElementById('fatal');
+    f.hidden = false;
+    f.querySelector('.fatal-msg').textContent = msg;
+    document.getElementById('app').hidden = true;
+  }
+
+  // 占位符检测：拼接构造，避免自身被 finalize 的字符串替换命中
+  var PLACEHOLDER = '__' + 'PAYLOAD_JSON' + '__';
+  var payloadEl = document.getElementById('payload');
+  var raw = payloadEl ? payloadEl.textContent : '';
+  if (!raw || raw.replace(/\s/g, '') === '' || raw.indexOf(PLACEHOLDER) !== -1) {
+    showFatal('payload 未注入：模板占位符未被替换。请通过 finalize_search_term_report.py 生成本页面，不要直接打开模板文件。');
+    return;
+  }
+  var P;
+  try { P = JSON.parse(raw); } catch (e) {
+    showFatal('payload 解析失败：' + e.message);
+    return;
+  }
+  if (!P || !P.meta || !P.summary || !P.terms || !P.roots || !P.actions) {
+    showFatal('payload 结构不完整：缺少 meta / summary / terms / roots / actions 之一。');
+    return;
+  }
+  document.getElementById('app').hidden = false;
+
+  var DEC_ORDER = ['negative_candidate', 'reduce_bid', 'scale_up', 'hold_test',
+                   'listing_feedback', 'manual_review', 'observe'];
+  var DEC = {
+    scale_up:           { label: '放量',        cls: 'd-scale',   bg: 'bg-scale' },
+    hold_test:          { label: '保持测试',    cls: 'd-hold',    bg: 'bg-hold' },
+    reduce_bid:         { label: '降Bid',       cls: 'd-reduce',  bg: 'bg-reduce' },
+    negative_candidate: { label: '否词',        cls: 'd-neg',     bg: 'bg-neg' },
+    listing_feedback:   { label: 'Listing反馈', cls: 'd-listing', bg: 'bg-listing' },
+    observe:            { label: '观察',        cls: 'd-observe', bg: 'bg-observe' },
+    manual_review:      { label: '人工复核',    cls: 'd-manual',  bg: 'bg-manual' }
+  };
+  var CAT_LABEL = {
+    brand_term: '品牌词', competitor_term: '竞品词', core_category_term: '核心品类词',
+    attribute_term: '属性词', scenario_term: '场景词', irrelevant_term: '无关词',
+    asin_term: 'ASIN词'
+  };
+  var CUR_MAP = { US: '$', CA: 'CA$', MX: 'MX$', UK: '£', GB: '£', DE: '€', FR: '€',
+                  IT: '€', ES: '€', NL: '€', JP: '¥' };
+  var CUR = CUR_MAP[String(P.meta.site || 'US').toUpperCase()] || '$';
+
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function isNil(v) { return v === null || v === undefined || (typeof v === 'number' && isNaN(v)); }
+  function fmtMoney(v) {
+    if (isNil(v)) return '—';
+    return CUR + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function fmtPct(v) { return isNil(v) ? '—' : (v * 100).toFixed(1) + '%'; }
+  function fmtInt(v) { return isNil(v) ? '—' : Number(v).toLocaleString('en-US'); }
+
+  var meta = P.meta, sm = P.summary;
+  var dr = meta.date_range || ['?', '?'];
+  document.title = '搜索词汇报 · ' + (meta.brand || '') + ' ' + (meta.asin || '');
+  document.getElementById('hTitle').textContent =
+    '搜索词广告分析汇报 · ' + (meta.brand || '') + ' ' + (meta.asin || '');
+  document.getElementById('hMeta').innerHTML =
+    '站点 <b>' + esc(meta.site) + '</b> · <b>' + esc(meta.report_type) + '</b> 报表 · ' +
+    esc(dr[0]) + ' ~ ' + esc(dr[1]) + ' · 目标 ACOS <b>' + fmtPct(meta.target_acos) +
+    '</b> · 生成于 ' + esc(meta.run_at || meta.generated_at || '');
+
+  if (meta.has_orders_data === false) {
+    var lim = document.getElementById('limitation');
+    lim.hidden = false;
+    lim.textContent = '⚠️ 本报表不含订单 / 销售字段（SB/SD 类报表），本页仅做花费浪费检测，不做 CVR/ACOS 判断。';
+  }
+
+  // ---------- KPI ----------
+  var base = sm.baseline || {};
+  var metaBase = meta.baseline || {};
+  var dc = sm.decision_counts || {}, dsp = sm.decision_spend || {};
+  var kpiHtml = '';
+  function kpi(k, v, s, cls) {
+    kpiHtml += '<div class="kpi ' + (cls || '') + '"><div class="k">' + esc(k) +
+      '</div><div class="v">' + v + '</div><div class="s">' + s + '</div></div>';
+  }
+  kpi('广告花费', fmtMoney(base.spend), '点击 ' + fmtInt(base.clicks) + ' · 订单 ' + fmtInt(base.orders));
+  kpi('广告销售额', fmtMoney(metaBase.sales), '整体 ACOS ' + fmtPct(base.acos) +
+      (isNil(base.acos) || isNil(meta.target_acos) ? '' :
+        (base.acos <= meta.target_acos ? '（达标）' : '（超目标）')));
+  kpi('基准 CVR', fmtPct(base.cvr), '全量口径，用于分带判定');
+  kpi('0单浪费花费', fmtMoney((sm.waste || {}).zero_order_spend),
+      '占总花费 ' + (isNil(base.spend) || !base.spend ? '—'
+        : fmtPct((sm.waste || {}).zero_order_spend / base.spend)), 'warn');
+  kpi('否词建议', fmtInt(dc.negative_candidate) + ' 词 + ' +
+      fmtInt((P.actions.root_negatives || []).length) + ' 词根',
+      '涉及花费 ' + fmtMoney(dsp.negative_candidate), 'warn');
+  kpi('放量机会', fmtInt(dc.scale_up) + ' 词', '当前花费 ' + fmtMoney(dsp.scale_up), 'good');
+  kpi('待判定占比', fmtPct(sm.pending_ratio_terms),
+      '花费占比 ' + fmtPct(sm.pending_ratio_spend) + '（目标 ≤10%）',
+      (sm.pending_ratio_terms > 0.10 || sm.pending_ratio_spend > 0.10) ? 'warn' : 'good');
+  kpi('低量池', fmtInt((sm.pool || {}).terms) + ' 词',
+      '花费 ' + fmtMoney((sm.pool || {}).spend) + ' · 汇总监控不逐词决策', 'dim');
+  document.getElementById('kpis').innerHTML = kpiHtml;
+
+  // ---------- 决策分布（纯 CSS 横条图）----------
+  var maxCount = 1;
+  DEC_ORDER.forEach(function (d) { maxCount = Math.max(maxCount, dc[d] || 0); });
+  var barsHtml = '';
+  DEC_ORDER.forEach(function (d) {
+    var n = dc[d] || 0;
+    var w = Math.round(n / maxCount * 100);
+    barsHtml += '<div class="row">' +
+      '<div class="lbl"><span class="badge ' + DEC[d].cls + '">' + esc(DEC[d].label) + '</span></div>' +
+      '<div class="track"><div class="fill ' + DEC[d].bg + '" style="width:' + w + '%"></div></div>' +
+      '<div class="val">' + fmtInt(n) + ' 词 · ' + fmtMoney(dsp[d]) + '</div>' +
+      '</div>';
+  });
+  document.getElementById('decisionBars').innerHTML = barsHtml;
+
+  // ---------- 花费去向：类别 × 决策 堆叠条 ----------
+  var matrix = {};
+  P.terms.forEach(function (t) {
+    var c = t.category, d = t.decision;
+    if (!matrix[c]) matrix[c] = { total: 0 };
+    matrix[c][d] = (matrix[c][d] || 0) + (t.spend || 0);
+    matrix[c].total += (t.spend || 0);
+  });
+  var cats = Object.keys(matrix).sort(function (a, b) { return matrix[b].total - matrix[a].total; });
+  var maxCat = 1;
+  cats.forEach(function (c) { maxCat = Math.max(maxCat, matrix[c].total); });
+  var totalSpend = base.spend || 0;
+  var mHtml = '';
+  cats.forEach(function (c) {
+    var rowW = matrix[c].total / maxCat * 100;
+    var segs = '';
+    DEC_ORDER.forEach(function (d) {
+      var v = matrix[c][d] || 0;
+      if (v <= 0) return;
+      var segW = matrix[c].total > 0 ? (v / matrix[c].total * 100) : 0;
+      segs += '<div class="seg ' + DEC[d].bg + '" style="width:' + segW.toFixed(2) +
+        '%" title="' + esc(CAT_LABEL[c] || c) + ' · ' + esc(DEC[d].label) + ' ' + fmtMoney(v) + '"></div>';
+    });
+    mHtml += '<div class="row">' +
+      '<div class="lbl">' + esc(CAT_LABEL[c] || c) + '</div>' +
+      '<div class="track" style="max-width:' + rowW.toFixed(1) + '%">' + segs + '</div>' +
+      '<div class="val">' + fmtMoney(matrix[c].total) +
+        (totalSpend ? '（' + fmtPct(matrix[c].total / totalSpend) + '）' : '') + '</div>' +
+      '</div>';
+  });
+  document.getElementById('spendMatrix').innerHTML = mHtml;
+  var legHtml = '色块 = 决策去向：';
+  DEC_ORDER.forEach(function (d) {
+    legHtml += '<span class="dot ' + DEC[d].bg + '"></span>' + esc(DEC[d].label);
+  });
+  document.getElementById('spendLegend').innerHTML = legHtml;
+
+  // ---------- TOP10 否词 ----------
+  var negs = (P.actions.negatives || []).slice()
+    .sort(function (a, b) { return (b.spend || 0) - (a.spend || 0); }).slice(0, 10);
+  var nHtml;
+  if (negs.length) {
+    nHtml = '<table class="tbl"><thead><tr><th>#</th><th>搜索词</th><th>建议匹配</th>' +
+      '<th class="num">点击</th><th class="num">花费</th><th>理由</th></tr></thead><tbody>';
+    negs.forEach(function (n, i) {
+      nHtml += '<tr><td class="num">' + (i + 1) + '</td><td class="kw">' + esc(n.term) + '</td>' +
+        '<td>' + esc(n.match_type) + '</td><td class="num">' + fmtInt(n.clicks) + '</td>' +
+        '<td class="num">' + fmtMoney(n.spend) + '</td><td class="rsn">' + esc(n.reason) + '</td></tr>';
+    });
+    nHtml += '</tbody></table>';
+  } else {
+    nHtml = '<div class="none">本期无词级否词建议。</div>';
+  }
+  var rootNegs = P.actions.root_negatives || [];
+  if (rootNegs.length) {
+    nHtml += '<div class="subhead">词根级否词建议（negative phrase）</div>' +
+      '<table class="tbl"><thead><tr><th>词根</th><th>建议匹配</th><th class="num">成员词数</th>' +
+      '<th class="num">花费</th><th>理由</th></tr></thead><tbody>';
+    rootNegs.forEach(function (n) {
+      nHtml += '<tr><td class="kw">' + esc(n.root) + '</td><td>' + esc(n.match_type) + '</td>' +
+        '<td class="num">' + fmtInt(n.term_count) + '</td><td class="num">' + fmtMoney(n.spend) + '</td>' +
+        '<td class="rsn">' + esc(n.reason) + '</td></tr>';
+    });
+    nHtml += '</tbody></table>';
+  }
+  document.getElementById('negTable').innerHTML = nHtml;
+
+  // ---------- TOP10 放量 ----------
+  var ups = (P.actions.scale_ups || []).slice()
+    .sort(function (a, b) { return (b.clicks || 0) - (a.clicks || 0); }).slice(0, 10);
+  var uHtml;
+  if (ups.length) {
+    uHtml = '<table class="tbl"><thead><tr><th>#</th><th>搜索词</th><th class="num">点击</th>' +
+      '<th class="num">CVR</th><th class="num">ACOS</th><th>理由</th></tr></thead><tbody>';
+    ups.forEach(function (u, i) {
+      uHtml += '<tr><td class="num">' + (i + 1) + '</td><td class="kw">' + esc(u.term) + '</td>' +
+        '<td class="num">' + fmtInt(u.clicks) + '</td><td class="num">' + fmtPct(u.cvr) + '</td>' +
+        '<td class="num">' + fmtPct(u.acos) + '</td><td class="rsn">' + esc(u.reason) + '</td></tr>';
+    });
+    uHtml += '</tbody></table>';
+  } else {
+    uHtml = '<div class="none">本期无放量建议。</div>';
+  }
+  document.getElementById('scaleTable').innerHTML = uHtml;
+
+  // ---------- 属性/场景洞察 ----------
+  var lfs = P.actions.listing_feedback || [];
+  var lHtml = '';
+  if (lfs.length) {
+    lfs.forEach(function (f) {
+      lHtml += '<div class="insight"><div class="term">' + esc(f.term) + '</div>' +
+        '<div class="line"><span class="tag fact">📊</span>' + esc(f.insight) + '</div>' +
+        '<div class="line"><span class="tag infer">💡</span>' + esc(f.suggestion) + '</div></div>';
+    });
+  } else {
+    lHtml = '<div class="none">本期无属性 / 场景类 Listing 反馈。</div>';
+  }
+  document.getElementById('listingBox').innerHTML = lHtml;
+
+  // ---------- 趋势要点（动态计算）----------
+  function byTrend(flag) { return P.terms.filter(function (t) { return t.trend === flag; }); }
+  function topSpendNames(list, n) {
+    return list.slice().sort(function (a, b) { return (b.spend || 0) - (a.spend || 0); })
+      .slice(0, n).map(function (t) { return t.term + '（' + fmtMoney(t.spend) + '）'; }).join('、');
+  }
+  var worsening = byTrend('worsening'), improving = byTrend('improving'),
+      mixed = byTrend('mixed'), insuff = byTrend('insufficient_data');
+  var band = ((meta.thresholds || {}).trend_change_band);
+  var pts = [];
+  pts.push('<span class="tag fact">📊</span>趋势口径：近7天 vs 近30天 CVR / ACOS 变化超过 ±' +
+    (isNil(band) ? '20.0%' : fmtPct(band)) + ' 判定好转 / 恶化；样本不足的词不判趋势。');
+  if (worsening.length) {
+    pts.push('<span class="tag fact">📊</span>恶化 ' + worsening.length + ' 词（花费 ' +
+      fmtMoney(worsening.reduce(function (s, t) { return s + (t.spend || 0); }, 0)) + '），花费前列：' +
+      esc(topSpendNames(worsening, 3)) +
+      '。<span class="tag infer" style="margin-left:6px">💡</span>已分别给出降bid / 否词建议，一周后复查。');
+  }
+  if (improving.length) {
+    pts.push('<span class="tag fact">📊</span>好转 ' + improving.length + ' 词，花费前列：' +
+      esc(topSpendNames(improving, 3)) +
+      '。<span class="tag infer" style="margin-left:6px">💡</span>其中满足放量门槛的已列入放量建议。');
+  }
+  if (mixed.length) {
+    // 与 worsening/improving 同口径：只列花费 top3，避免 mixed 词多时变成文字墙
+    pts.push('<span class="tag fact">📊</span>窗口信号打架（mixed）' + mixed.length + ' 词，花费前列：' +
+      esc(topSpendNames(mixed, 3)) +
+      (mixed.length > 3 ? ' 等 ' + mixed.length + ' 词' : '') +
+      '。<span class="tag infer" style="margin-left:6px">💡</span>放量判定已按规则降级为保持测试，先稳一周。');
+  }
+  pts.push('<span class="tag fact">📊</span>样本不足 ' + insuff.length + ' 词：按词根继承决策或进入低量池（' +
+    fmtInt((sm.pool || {}).terms) + ' 词 / ' + fmtMoney((sm.pool || {}).spend) + '）汇总监控。');
+  document.getElementById('trendPoints').innerHTML =
+    pts.map(function (p) { return '<li>' + p + '</li>'; }).join('');
+
+  // ---------- 方法论脚注 ----------
+  var th = meta.thresholds || {};
+  var mB = '';
+  mB += '<p><b>词根继承机制：</b>长尾词按词根聚合，AI 助手只对词根做语义分类；点击不足的长尾词继承词根级决策' +
+        '（词根聚合后样本量足够下结论）；词根样本也不足的进入低量池，汇总监控、明确不逐词决策——低量池是决策，不是未决。</p>';
+  mB += '<p><b>分工：</b>数值清洗 / 聚合 / 决策规则由确定性脚本完成（可复现）；词根级语义分类与相关性判断由 AI 助手结合 Listing 上下文完成。</p>';
+  mB += '<p><b>判定门槛：</b>词级样本 ≥' + fmtInt(th.min_clicks_for_judgement) +
+        ' 点击、词根级 ≥' + fmtInt(th.root_min_clicks_for_judgement) +
+        ' 点击；放量需 ≥' + fmtInt(th.min_clicks_for_scale_up) + ' 点击且 ACOS ≤ 目标 ×' +
+        (isNil(th.max_target_acos_multiple_for_scale_up) ? '—' : th.max_target_acos_multiple_for_scale_up) +
+        '；无关词否定门槛：点击 ≥' + fmtInt(th.negative_min_clicks) + ' 或花费 ≥' +
+        fmtMoney(th.negative_min_spend) + '。</p>';
+  mB += '<p><b>数据来源：</b>' + esc(meta.source_file || '—') + '（' + esc(dr[0]) + ' ~ ' + esc(dr[1]) +
+        '，窗口 ' + esc((meta.windows || []).join('/')) + ' 天）；派生指标一律由脚本复算，不使用报表原值。</p>';
+  if ((meta.unused_fields || []).length) {
+    mB += '<p><b>未使用字段：</b>' + esc(meta.unused_fields.join('、')) + '。</p>';
+  }
+  document.getElementById('methodBox').innerHTML = mB;
+
+  document.getElementById('foot').textContent =
+    'zach-search-term-report-analyzer v2 · 生成于 ' + (meta.run_at || meta.generated_at || '') +
+    ' · 本页零外部依赖，可离线打开 / 打印';
+})();
+</script>
+</body>
+</html>

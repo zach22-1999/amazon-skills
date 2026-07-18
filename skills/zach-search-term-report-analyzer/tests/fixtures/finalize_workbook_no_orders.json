@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "generated_at": "2026-07-08 10:00",
+    "source_file": "fixtures/finalize_source_report_sb.csv",
+    "brand": "ExampleBrand",
+    "asin": "B0TEST1234",
+    "report_type": "SB",
+    "site": "US",
+    "target_acos": 0.3,
+    "date_range": [
+      "2026-06-08",
+      "2026-07-07"
+    ],
+    "windows": [
+      7,
+      14,
+      30
+    ],
+    "baseline": {
+      "clicks": 300,
+      "spend": 200.0,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": null,
+      "acos": null
+    },
+    "has_orders_data": false,
+    "listing_context": null,
+    "thresholds": {},
+    "unused_fields": [
+      "orders",
+      "sales"
+    ]
+  },
+  "terms": [
+    {
+      "search_term": "generic term high spend",
+      "root_id": "generic term",
+      "match_types": [
+        "PHRASE"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 20.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w7": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 10.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 20.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 1.0
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "generic term low spend",
+      "root_id": "generic term",
+      "match_types": [
+        "PHRASE"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.25,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.625
+        },
+        "w14": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "insufficient_data"
+    }
+  ],
+  "roots": [
+    {
+      "root_id": "generic term",
+      "term_count": 2,
+      "sample_terms": [
+        "generic term high spend",
+        "generic term low spend"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 25.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.833333
+        },
+        "w7": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 6.25,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.892857
+        },
+        "w14": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 12.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.833333
+        },
+        "w30": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 25.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": null,
+          "acos": null,
+          "cpc": 0.833333
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    }
+  ],
+  "classification_request": {
+    "schema_pointer": "references/term_classification.md",
+    "roots_to_classify": [
+      "generic term"
+    ],
+    "top_terms_for_override": []
+  }
+}
