@@ -12,8 +12,7 @@ from typing import Any
 
 import pandas as pd
 
-ASIN_RE = re.compile(r"\bB0[A-Z0-9]{8}\b", re.IGNORECASE)
-ASIN_EXTRACT_PATTERN = r"(\bB0[A-Z0-9]{8}\b)"
+ASIN_RE = re.compile(r"(?<![A-Z0-9])(B0[A-Z0-9]{8})(?![A-Z0-9])", re.IGNORECASE)
 
 FIELD_ALIASES = {
     "date": ["日期", "date", "start date", "report date"],
@@ -49,6 +48,27 @@ NUMERIC_FIELDS = [
     "acos",
     "roas",
 ]
+
+# 数值列容错解析：货币前缀 / 货币符号 / 千分位与空白（中文后台、Excel 转存常见格式）。
+# 注意：不剥 %（百分比原值属于 ctr/cvr/acos 等比率字段，聚合后一律复算，不使用原值）。
+_CURRENCY_PREFIX_RE = re.compile(r"(?i)(us\$|hk\$|a\$|c\$|usd|cny|rmb|eur|gbp|jpy)")
+_CURRENCY_SYMBOL_RE = re.compile(r"[$￥¥€£]")
+_THOUSANDS_SPACE_RE = re.compile(r"[,\s ]+")
+
+
+def to_numeric_lenient(series: pd.Series) -> pd.Series:
+    """容错版 pd.to_numeric：先剥货币符号/千分位再解析；仍失败的值保留 NaN。
+
+    失败值由 build_normalized_frame 统计进 metadata["numeric_coercion_failures"]，
+    下游（prepare）必须显式声明，不允许静默清零（契约 §2.4 数据诚信）。
+    """
+    if series.dtype == object or pd.api.types.is_string_dtype(series):
+        cleaned = series.astype("string").str.strip()
+        cleaned = cleaned.str.replace(_THOUSANDS_SPACE_RE, "", regex=True)
+        cleaned = cleaned.str.replace(_CURRENCY_PREFIX_RE, "", regex=True)
+        cleaned = cleaned.str.replace(_CURRENCY_SYMBOL_RE, "", regex=True)
+        return pd.to_numeric(cleaned, errors="coerce")
+    return pd.to_numeric(series, errors="coerce")
 
 
 def normalize_header(value: Any) -> str:
@@ -121,7 +141,7 @@ def coerce_types(df: pd.DataFrame) -> pd.DataFrame:
 
     for field in NUMERIC_FIELDS:
         if field in result.columns:
-            result[field] = pd.to_numeric(result[field], errors="coerce")
+            result[field] = to_numeric_lenient(result[field])
 
     if "ctr" not in result.columns and {"clicks", "impressions"}.issubset(result.columns):
         denom = result["impressions"].replace({0: pd.NA})
@@ -150,7 +170,7 @@ def extract_asin_from_text(text: Any) -> str | None:
 
 def infer_row_asin(df: pd.DataFrame) -> pd.Series:
     if "asin" in df.columns:
-        series = df["asin"].astype(str).str.upper().str.extract(ASIN_EXTRACT_PATTERN, expand=False)
+        series = df["asin"].astype(str).str.upper().str.extract(ASIN_RE.pattern, expand=False)
         if series.notna().any():
             return series
 
@@ -189,7 +209,11 @@ def infer_brand_candidates(input_path: Path, df: pd.DataFrame, explicit_brand: s
             if value:
                 scores[value] += int(count)
 
-    filename_match = re.search(r"(?:brand|品牌)[-_ ]?([A-Za-z0-9][A-Za-z0-9_-]{1,40})", input_path.stem)
+    filename_match = re.search(
+        r"(?:brand|品牌)[-_ ]?([A-Za-z0-9][A-Za-z0-9_-]{1,40})",
+        input_path.stem,
+        re.IGNORECASE,
+    )
     if filename_match:
         scores[filename_match.group(1)] += 5
 
@@ -201,7 +225,24 @@ def infer_brand_candidates(input_path: Path, df: pd.DataFrame, explicit_brand: s
 def build_normalized_frame(input_path: Path, brand: str | None = None) -> tuple[pd.DataFrame, dict[str, Any]]:
     raw_df = load_table(input_path)
     mapped_df, mapping = canonicalize_columns(raw_df)
+
+    # 数值诚信：记录 coerce 前的非空值掩码，转换后统计解析失败数（不允许静默变 NaN→0）
+    pre_nonempty_masks = {}
+    for field in NUMERIC_FIELDS:
+        if field in mapped_df.columns:
+            col = mapped_df[field]
+            pre_nonempty_masks[field] = col.notna() & (col.astype(str).str.strip() != "")
+
     mapped_df = coerce_types(mapped_df)
+
+    numeric_coercion_failures: dict[str, dict[str, int]] = {}
+    for field, mask in pre_nonempty_masks.items():
+        failed = int((mask & mapped_df[field].isna()).sum())
+        if failed:
+            numeric_coercion_failures[field] = {
+                "failed": failed,
+                "non_empty": int(mask.sum()),
+            }
 
     mapped_df["asin"] = infer_row_asin(mapped_df)
     if "asin" in mapped_df.columns:
@@ -209,12 +250,9 @@ def build_normalized_frame(input_path: Path, brand: str | None = None) -> tuple[
     report_type = detect_report_type(input_path, mapped_df)
     brand_candidates = infer_brand_candidates(input_path, mapped_df, brand)
     selected_brand = brand or (brand_candidates[0]["brand"] if brand_candidates else None)
-    if selected_brand:
-        mapped_df["brand"] = selected_brand
-    elif "brand" not in mapped_df.columns:
-        mapped_df["brand"] = None
+    mapped_df["brand"] = selected_brand
     mapped_df["report_type"] = report_type
-    mapped_df["source_file"] = str(input_path)
+    mapped_df["source_file"] = input_path.name
 
     asin_counts = (
         mapped_df["asin"].dropna().astype(str).str.upper().value_counts().head(20)
@@ -224,12 +262,13 @@ def build_normalized_frame(input_path: Path, brand: str | None = None) -> tuple[
 
     missing_core_fields = [field for field in CORE_FIELDS if field not in mapped_df.columns]
     metadata = {
-        "input_file": str(input_path),
+        "input_file": input_path.name,
         "report_type": report_type,
         "row_count": int(len(mapped_df)),
         "column_count": int(len(mapped_df.columns)),
         "mapped_columns": mapping,
         "missing_core_fields": missing_core_fields,
+        "numeric_coercion_failures": numeric_coercion_failures,
         "brand_candidates": brand_candidates,
         "asin_candidates": [
             {"asin": asin, "rows": int(count)} for asin, count in asin_counts.items()

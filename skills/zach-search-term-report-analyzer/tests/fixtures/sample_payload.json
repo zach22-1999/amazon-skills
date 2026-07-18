@@ -1,0 +1,2421 @@
+{
+  "meta": {
+    "generated_at": "2026-07-08 21:30",
+    "source_file": "Sponsored Products Search term report_2026-06-08_2026-07-07.xlsx",
+    "brand": "ExampleBrand",
+    "asin": "B0TEST5678",
+    "report_type": "SP",
+    "site": "US",
+    "target_acos": 0.35,
+    "date_range": [
+      "2026-06-08",
+      "2026-07-07"
+    ],
+    "windows": [
+      7,
+      14,
+      30
+    ],
+    "baseline": {
+      "clicks": 1489,
+      "spend": 1757.4,
+      "orders": 62,
+      "sales": 5637.89,
+      "cvr": 0.0416,
+      "acos": 0.3117
+    },
+    "has_orders_data": true,
+    "listing_context": "ExampleBrand Demo K1 便携卡拉OK一体机：蓝牙音箱 + 2 支无线麦克风，10 小时续航，支持 TF 卡 / USB，适合家庭聚会与生日派对。主图与五点未提及：屏幕显示、户外防水、车载使用。",
+    "thresholds": {
+      "min_clicks_for_judgement": 8,
+      "root_min_clicks_for_judgement": 12,
+      "min_clicks_for_priority": 15,
+      "min_clicks_for_scale_up": 12,
+      "min_spend_for_attention": 10.0,
+      "high_spend_without_orders": 15.0,
+      "near_avg_cvr_band": 0.15,
+      "high_cvr_band": 0.2,
+      "low_cvr_band": 0.2,
+      "trend_change_band": 0.2,
+      "max_target_acos_multiple_for_scale_up": 1.15,
+      "very_high_target_acos_multiple": 1.5,
+      "negative_min_clicks": 2,
+      "negative_min_spend": 1.0
+    },
+    "unused_fields": [
+      "Campaign Budget Amount",
+      "7 Day Advertised SKU Units"
+    ],
+    "run_at": "2026-07-08 21:42"
+  },
+  "summary": {
+    "decision_counts": {
+      "scale_up": 4,
+      "hold_test": 11,
+      "reduce_bid": 11,
+      "negative_candidate": 8,
+      "listing_feedback": 2,
+      "observe": 8,
+      "manual_review": 3
+    },
+    "decision_spend": {
+      "scale_up": 665.5,
+      "hold_test": 497.7,
+      "reduce_bid": 390.2,
+      "negative_candidate": 72.7,
+      "listing_feedback": 69.9,
+      "observe": 17.7,
+      "manual_review": 43.7
+    },
+    "category_counts": {
+      "brand_term": 5,
+      "competitor_term": 7,
+      "core_category_term": 13,
+      "attribute_term": 9,
+      "scenario_term": 5,
+      "irrelevant_term": 7,
+      "asin_term": 1
+    },
+    "category_spend": {
+      "brand_term": 293.7,
+      "competitor_term": 168.0,
+      "core_category_term": 854.1,
+      "attribute_term": 262.6,
+      "scenario_term": 134.1,
+      "irrelevant_term": 40.7,
+      "asin_term": 4.2
+    },
+    "pending_ratio_terms": 0.0638,
+    "pending_ratio_spend": 0.0249,
+    "pool": {
+      "terms": 8,
+      "clicks": 16,
+      "spend": 17.7,
+      "orders": 0
+    },
+    "waste": {
+      "zero_order_spend": 353.8,
+      "negative_candidate_spend": 72.7
+    },
+    "baseline": {
+      "cvr": 0.0416,
+      "acos": 0.3117,
+      "clicks": 1489,
+      "spend": 1757.4,
+      "orders": 62
+    }
+  },
+  "terms": [
+    {
+      "term": "karaoke machine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "scale_up",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 5.3% 高于基准带且 ACOS 27.2% 低于放量上限，点击充足，建议提bid放量",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD",
+        "EXACT"
+      ],
+      "clicks": 320,
+      "spend": 412.8,
+      "orders": 17,
+      "sales": 1519.8,
+      "cvr": 0.0531,
+      "acos": 0.2716,
+      "cpc": 1.29,
+      "ctr": 0.0111,
+      "w7": {
+        "clicks": 83,
+        "cvr": 0.0717,
+        "acos": 0.2012
+      },
+      "w14": {
+        "clicks": 166,
+        "cvr": 0.0611,
+        "acos": 0.2362
+      },
+      "w30": {
+        "clicks": 320,
+        "cvr": 0.0531,
+        "acos": 0.2716
+      },
+      "trend": "improving",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine for adults",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "scale_up",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 5.5% 高于基准带，ACOS 27.7% 达标，建议放量",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD",
+        "PHRASE"
+      ],
+      "clicks": 145,
+      "spend": 198.4,
+      "orders": 8,
+      "sales": 715.2,
+      "cvr": 0.0552,
+      "acos": 0.2774,
+      "cpc": 1.37,
+      "ctr": 0.0079,
+      "w7": {
+        "clicks": 38,
+        "cvr": 0.0552,
+        "acos": 0.2774
+      },
+      "w14": {
+        "clicks": 75,
+        "cvr": 0.0552,
+        "acos": 0.2774
+      },
+      "w30": {
+        "clicks": 145,
+        "cvr": 0.0552,
+        "acos": 0.2774
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "portable karaoke machine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 3.1% 低于基准带且 ACOS 53.1% 超过 1.5×目标，先压bid",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 98,
+      "spend": 142.5,
+      "orders": 3,
+      "sales": 268.2,
+      "cvr": 0.0306,
+      "acos": 0.5313,
+      "cpc": 1.45,
+      "ctr": 0.0106,
+      "w7": {
+        "clicks": 25,
+        "cvr": 0.0168,
+        "acos": 0.966
+      },
+      "w14": {
+        "clicks": 51,
+        "cvr": 0.0245,
+        "acos": 0.6641
+      },
+      "w30": {
+        "clicks": 98,
+        "cvr": 0.0306,
+        "acos": 0.5313
+      },
+      "trend": "worsening",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine with 2 wireless microphones",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "root",
+      "reason": "词级样本不足，继承词根「karaoke machine」：词根 ACOS 36.9% 超目标，随词根小步降bid",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 6,
+      "spend": 9.8,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.63,
+      "ctr": 0.0076,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 6,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine set",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "root",
+      "reason": "词级样本不足，继承词根「karaoke machine」决策：随词根小步降bid",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 3.1,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.55,
+      "ctr": 0.0102,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "examplebrand",
+      "category": "brand_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "品牌防守词，转化健康（CVR 5.2%），保持现有出价",
+      "root": "examplebrand",
+      "match_types": [
+        "EXACT"
+      ],
+      "clicks": 210,
+      "spend": 156.3,
+      "orders": 11,
+      "sales": 1043.9,
+      "cvr": 0.0524,
+      "acos": 0.1497,
+      "cpc": 0.74,
+      "ctr": 0.0074,
+      "w7": {
+        "clicks": 55,
+        "cvr": 0.0524,
+        "acos": 0.1497
+      },
+      "w14": {
+        "clicks": 109,
+        "cvr": 0.0524,
+        "acos": 0.1497
+      },
+      "w30": {
+        "clicks": 210,
+        "cvr": 0.0524,
+        "acos": 0.1497
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "examplebrand karaoke machine",
+      "category": "brand_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "品牌承接词，转化正常，保持",
+      "root": "examplebrand",
+      "match_types": [
+        "PHRASE"
+      ],
+      "clicks": 88,
+      "spend": 72.4,
+      "orders": 5,
+      "sales": 474.5,
+      "cvr": 0.0568,
+      "acos": 0.1526,
+      "cpc": 0.82,
+      "ctr": 0.0098,
+      "w7": {
+        "clicks": 23,
+        "cvr": 0.0568,
+        "acos": 0.1526
+      },
+      "w14": {
+        "clicks": 46,
+        "cvr": 0.0568,
+        "acos": 0.1526
+      },
+      "w30": {
+        "clicks": 88,
+        "cvr": 0.0568,
+        "acos": 0.1526
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "examplebrand demo k1",
+      "category": "brand_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "品牌型号词，转化良好，保持",
+      "root": "examplebrand",
+      "match_types": [
+        "EXACT"
+      ],
+      "clicks": 34,
+      "spend": 30.1,
+      "orders": 2,
+      "sales": 189.8,
+      "cvr": 0.0588,
+      "acos": 0.1586,
+      "cpc": 0.89,
+      "ctr": 0.0072,
+      "w7": {
+        "clicks": 9,
+        "cvr": 0.0588,
+        "acos": 0.1586
+      },
+      "w14": {
+        "clicks": 18,
+        "cvr": 0.0588,
+        "acos": 0.1586
+      },
+      "w30": {
+        "clicks": 34,
+        "cvr": 0.0588,
+        "acos": 0.1586
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "examplbrand",
+      "category": "brand_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "品牌拼写变体（模糊匹配命中），承接正常，保持",
+      "root": "examplebrand",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 12,
+      "spend": 8.9,
+      "orders": 1,
+      "sales": 94.9,
+      "cvr": 0.0833,
+      "acos": 0.0938,
+      "cpc": 0.74,
+      "ctr": 0.0094,
+      "w7": {
+        "clicks": 3,
+        "cvr": 0.0833,
+        "acos": 0.0938
+      },
+      "w14": {
+        "clicks": 6,
+        "cvr": 0.0833,
+        "acos": 0.0938
+      },
+      "w30": {
+        "clicks": 12,
+        "cvr": 0.0833,
+        "acos": 0.0938
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "examplebrand demo x1 pro",
+      "category": "brand_term",
+      "relevance": "high",
+      "decision": "manual_review",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "品牌词高耗0单（$26.00 / 21次点击），检查该型号承接页与库存状态",
+      "root": "examplebrand",
+      "match_types": [
+        "PHRASE"
+      ],
+      "clicks": 21,
+      "spend": 26.0,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.24,
+      "ctr": 0.007,
+      "w7": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 11,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 21,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "b0test5678",
+      "category": "asin_term",
+      "relevance": "high",
+      "decision": "manual_review",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "ASIN 串号词，人工判断承接来源（本品直购或竞品引流）",
+      "root": "b0test5678",
+      "match_types": [
+        "EXACT"
+      ],
+      "clicks": 3,
+      "spend": 4.2,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.3333,
+      "acos": 0.047,
+      "cpc": 1.4,
+      "ctr": 0.0091,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.3333,
+        "acos": 0.047
+      },
+      "w14": {
+        "clicks": 2,
+        "cvr": 0.3333,
+        "acos": 0.047
+      },
+      "w30": {
+        "clicks": 3,
+        "cvr": 0.3333,
+        "acos": 0.047
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivaltwo karaoke machine",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "reduce_bid",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "竞品词高耗无单（$68.20 / 45次点击），先控bid止损",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 45,
+      "spend": 68.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.52,
+      "ctr": 0.0068,
+      "w7": {
+        "clicks": 12,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 23,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 45,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "worsening",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivaltwo microphone",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "竞品词有转化（CVR 5.6%），保持观察，加码属策略决策",
+      "root": "rivaltwo",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 18,
+      "spend": 22.4,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.0556,
+      "acos": 0.2506,
+      "cpc": 1.24,
+      "ctr": 0.0088,
+      "w7": {
+        "clicks": 5,
+        "cvr": 0.0556,
+        "acos": 0.2506
+      },
+      "w14": {
+        "clicks": 9,
+        "cvr": 0.0556,
+        "acos": 0.2506
+      },
+      "w30": {
+        "clicks": 18,
+        "cvr": 0.0556,
+        "acos": 0.2506
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivalalpha karaoke machine",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "竞品词转化尚可（CVR 3.8%，基准带内），保持现状",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 26,
+      "spend": 31.5,
+      "orders": 1,
+      "sales": 79.99,
+      "cvr": 0.0385,
+      "acos": 0.3938,
+      "cpc": 1.21,
+      "ctr": 0.0066,
+      "w7": {
+        "clicks": 7,
+        "cvr": 0.0385,
+        "acos": 0.3938
+      },
+      "w14": {
+        "clicks": 14,
+        "cvr": 0.0385,
+        "acos": 0.3938
+      },
+      "w30": {
+        "clicks": 26,
+        "cvr": 0.0385,
+        "acos": 0.3938
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivalbeta karaoke machine",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "reduce_bid",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "竞品词高耗无单（$19.80），先控bid",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 15,
+      "spend": 19.8,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.32,
+      "ctr": 0.0085,
+      "w7": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 8,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 15,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivalone karaoke machine",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "竞品词 CVR 0% 低于基准带，降bid控成本",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 11,
+      "spend": 13.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.2,
+      "ctr": 0.0065,
+      "w7": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 6,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 11,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine with two microphones",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "相关属性词但 ACOS 62.2% 超 1.5×目标，压bid等 CPC 回落",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 42,
+      "spend": 55.6,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.0238,
+      "acos": 0.6219,
+      "cpc": 1.32,
+      "ctr": 0.0082,
+      "w7": {
+        "clicks": 11,
+        "cvr": 0.0131,
+        "acos": 1.1307
+      },
+      "w14": {
+        "clicks": 22,
+        "cvr": 0.019,
+        "acos": 0.7774
+      },
+      "w30": {
+        "clicks": 42,
+        "cvr": 0.0238,
+        "acos": 0.6219
+      },
+      "trend": "worsening",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine with screen",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "listing_feedback",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "属性词高点击0单（24次 / $31.70），Listing 未覆盖“屏幕”卖点，先补承接再评估广告",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 24,
+      "spend": 31.7,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.32,
+      "ctr": 0.0063,
+      "w7": {
+        "clicks": 6,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 12,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 24,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": true,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "bluetooth karaoke machine",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 4.3% 处于基准带内且 ACOS 29.4% 达标，保持",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD",
+        "PHRASE"
+      ],
+      "clicks": 70,
+      "spend": 78.9,
+      "orders": 3,
+      "sales": 268.2,
+      "cvr": 0.0429,
+      "acos": 0.2942,
+      "cpc": 1.13,
+      "ctr": 0.0079,
+      "w7": {
+        "clicks": 18,
+        "cvr": 0.0429,
+        "acos": 0.2942
+      },
+      "w14": {
+        "clicks": 36,
+        "cvr": 0.0429,
+        "acos": 0.2942
+      },
+      "w30": {
+        "clicks": 70,
+        "cvr": 0.0429,
+        "acos": 0.2942
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rechargeable karaoke machine",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "CVR 0% 低于基准带，样本尚少，先小步降bid",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 9,
+      "spend": 11.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.24,
+      "ctr": 0.0108,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 9,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine for party",
+      "category": "scenario_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 5.8% 达放量线，但 7/30 天窗口信号打架（mixed），由放量降级为先稳",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 52,
+      "spend": 61.3,
+      "orders": 3,
+      "sales": 268.2,
+      "cvr": 0.0577,
+      "acos": 0.2286,
+      "cpc": 1.18,
+      "ctr": 0.0077,
+      "w7": {
+        "clicks": 14,
+        "cvr": 0.075,
+        "acos": 0.1758
+      },
+      "w14": {
+        "clicks": 27,
+        "cvr": 0.0404,
+        "acos": 0.3266
+      },
+      "w30": {
+        "clicks": 52,
+        "cvr": 0.0577,
+        "acos": 0.2286
+      },
+      "trend": "mixed",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine for kids party",
+      "category": "scenario_term",
+      "relevance": "medium",
+      "decision": "negative_candidate",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "中相关场景词0单且花费 $16.80 超门槛，止损",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 14,
+      "spend": 16.8,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.2,
+      "ctr": 0.0103,
+      "w7": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 7,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 14,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "outdoor karaoke machine",
+      "category": "scenario_term",
+      "relevance": "high",
+      "decision": "listing_feedback",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "场景词高耗0单（$38.20），Listing 未覆盖户外场景卖点，先补承接",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 31,
+      "spend": 38.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.23,
+      "ctr": 0.0075,
+      "w7": {
+        "clicks": 8,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 16,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 31,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": true,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine for car",
+      "category": "scenario_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "低相关场景词（车载）0单花费 $15.60，建议精准否定",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 12,
+      "spend": 15.6,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.0099,
+      "w7": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 6,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 12,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "dj mixer",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "无关词（DJ 设备需求），8次点击 $12.40，精准否定",
+      "root": "dj",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 8,
+      "spend": 12.4,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.55,
+      "ctr": 0.0072,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 8,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "dj controller",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "low",
+      "basis": "root",
+      "reason": "无关词，随词根「dj」整体否定",
+      "root": "dj",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 5,
+      "spend": 7.9,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.58,
+      "ctr": 0.0095,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "dj speaker",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "low",
+      "basis": "root",
+      "reason": "无关词，随词根「dj」整体否定",
+      "root": "dj",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 4,
+      "spend": 5.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.007,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "dj lights",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "low",
+      "basis": "root",
+      "reason": "无关词，随词根「dj」整体否定",
+      "root": "dj",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 2.1,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.05,
+      "ctr": 0.0092,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "guitar amplifier",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "无关词，6次点击 $8.80，达否词门槛，精准否定",
+      "root": "guitar amplifier",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 6,
+      "spend": 8.8,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.47,
+      "ctr": 0.0068,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 6,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "hearing aid amplifier",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "negative_candidate",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "无关词，3次点击 $3.90，达否词门槛，精准否定",
+      "root": "hearing aid amplifier",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 3,
+      "spend": 3.9,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.0088,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": "negative exact"
+    },
+    {
+      "term": "voice changer toy",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "无关低量词（1次点击 $0.40），未达否词门槛，进低量池监控",
+      "root": "voice changer toy",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 1,
+      "spend": 0.4,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 0.4,
+      "ctr": 0.0067,
+      "w7": {
+        "clicks": 0,
+        "cvr": null,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivalgamma model 2035",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "竞品型号词 CVR 0% 低于基准带，降bid控成本",
+      "root": "rivalgamma",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 9,
+      "spend": 10.5,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.17,
+      "ctr": 0.0085,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 9,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke system",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 2.6% 低于基准带且 ACOS 52.8% 超 1.5×目标，压bid",
+      "root": "karaoke system",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 38,
+      "spend": 47.2,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.0263,
+      "acos": 0.528,
+      "cpc": 1.24,
+      "ctr": 0.0065,
+      "w7": {
+        "clicks": 10,
+        "cvr": 0.0145,
+        "acos": 0.96
+      },
+      "w14": {
+        "clicks": 20,
+        "cvr": 0.021,
+        "acos": 0.66
+      },
+      "w30": {
+        "clicks": 38,
+        "cvr": 0.0263,
+        "acos": 0.528
+      },
+      "trend": "worsening",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "home karaoke system",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "scale_up",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 6.3% 高于基准带，ACOS 22.8% 达标，放量",
+      "root": "karaoke system",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 16,
+      "spend": 20.4,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.0625,
+      "acos": 0.2282,
+      "cpc": 1.28,
+      "ctr": 0.0083,
+      "w7": {
+        "clicks": 4,
+        "cvr": 0.0625,
+        "acos": 0.2282
+      },
+      "w14": {
+        "clicks": 8,
+        "cvr": 0.0625,
+        "acos": 0.2282
+      },
+      "w30": {
+        "clicks": 16,
+        "cvr": 0.0625,
+        "acos": 0.2282
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke system with speakers",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "hold_test",
+      "confidence": "medium",
+      "basis": "root",
+      "reason": "词级样本不足，继承词根「karaoke system」：词根 CVR 介于判定带之间，维持观察",
+      "root": "karaoke system",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 5,
+      "spend": 6.7,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.34,
+      "ctr": 0.0063,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine that connects to tv",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "scale_up",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 7.4% 显著高于基准，ACOS 19.0%，放量",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 27,
+      "spend": 33.9,
+      "orders": 2,
+      "sales": 178.8,
+      "cvr": 0.0741,
+      "acos": 0.1896,
+      "cpc": 1.26,
+      "ctr": 0.008,
+      "w7": {
+        "clicks": 7,
+        "cvr": 0.1,
+        "acos": 0.1404
+      },
+      "w14": {
+        "clicks": 14,
+        "cvr": 0.0852,
+        "acos": 0.1649
+      },
+      "w30": {
+        "clicks": 27,
+        "cvr": 0.0741,
+        "acos": 0.1896
+      },
+      "trend": "improving",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke maschine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "拼写变体低量词（2次点击），词根样本不足，进低量池汇总监控",
+      "root": "karaoke maschine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 2.6,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.0109,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karoke machine bluetooth speaker",
+      "category": "core_category_term",
+      "relevance": "medium",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "低量长尾词，词根样本不足，进低量池汇总监控",
+      "root": "bluetooth speaker",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 1,
+      "spend": 1.3,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.0078,
+      "w7": {
+        "clicks": 0,
+        "cvr": null,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "rivaldelta",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "decision": "hold_test",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "竞品词低量（2次点击），维持现状不加码",
+      "root": "rivaldelta",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 2.4,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.2,
+      "ctr": 0.0104,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "singing microphone for adults",
+      "category": "core_category_term",
+      "relevance": "medium",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "低量长尾词，词根样本不足，进低量池汇总监控",
+      "root": "singing microphone for adults",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 3,
+      "spend": 3.8,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.27,
+      "ctr": 0.0075,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "party speaker with microphone",
+      "category": "scenario_term",
+      "relevance": "medium",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "低量场景词，词根样本不足，进低量池汇总监控",
+      "root": "party speaker with microphone",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 2.2,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.1,
+      "ctr": 0.01,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "bluetooth speaker karaoke",
+      "category": "attribute_term",
+      "relevance": "medium",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "低量属性词，词根「bluetooth speaker」样本不足，进低量池",
+      "root": "bluetooth speaker",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 2,
+      "spend": 1.9,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 0.95,
+      "ctr": 0.0073,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "kareoke machine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "拼写变体低量词（4次点击），词根样本不足，进低量池汇总监控",
+      "root": "kareoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 4,
+      "spend": 4.6,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.15,
+      "ctr": 0.0096,
+      "w7": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "mic machine for singing",
+      "category": "core_category_term",
+      "relevance": "medium",
+      "decision": "observe",
+      "confidence": "low",
+      "basis": "pool",
+      "reason": "低量长尾词，词根样本不足，进低量池汇总监控",
+      "root": "mic machine for singing",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 1,
+      "spend": 0.9,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 0.9,
+      "ctr": 0.0071,
+      "w7": {
+        "clicks": 0,
+        "cvr": null,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 1,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "echo effect mixer amp",
+      "category": "attribute_term",
+      "relevance": "low",
+      "decision": "manual_review",
+      "confidence": "medium",
+      "basis": "term",
+      "reason": "AI 助手标记 needs_listing_check=\"true\", 分类存疑, 需人工核对 Listing 卖点后定类",
+      "root": "echo effect mixer amp",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 10,
+      "spend": 13.5,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.35,
+      "ctr": 0.0093,
+      "w7": {
+        "clicks": 3,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 5,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 10,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "karaoke machine for adults with screen",
+      "category": "attribute_term",
+      "relevance": "high",
+      "decision": "reduce_bid",
+      "confidence": "medium",
+      "basis": "root",
+      "reason": "继承词根「karaoke machine」ACOS 超标随根降bid；另：“屏幕”属性近7天点击上升且 Listing 未覆盖（listing_flag）",
+      "root": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 7,
+      "spend": 9.1,
+      "orders": 0,
+      "sales": 0.0,
+      "cvr": 0.0,
+      "acos": null,
+      "cpc": 1.3,
+      "ctr": 0.0069,
+      "w7": {
+        "clicks": 2,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w14": {
+        "clicks": 4,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "w30": {
+        "clicks": 7,
+        "cvr": 0.0,
+        "acos": null
+      },
+      "trend": "insufficient_data",
+      "listing_flag": true,
+      "negative_match_suggestion": null
+    },
+    {
+      "term": "wireless karaoke microphone",
+      "category": "attribute_term",
+      "relevance": "medium",
+      "decision": "hold_test",
+      "confidence": "high",
+      "basis": "term",
+      "reason": "CVR 4.3% 基准带内，ACOS 30.0% 达标，保持",
+      "root": "wireless karaoke microphone",
+      "match_types": [
+        "BROAD"
+      ],
+      "clicks": 23,
+      "spend": 26.8,
+      "orders": 1,
+      "sales": 89.4,
+      "cvr": 0.0435,
+      "acos": 0.2998,
+      "cpc": 1.17,
+      "ctr": 0.0089,
+      "w7": {
+        "clicks": 6,
+        "cvr": 0.0435,
+        "acos": 0.2998
+      },
+      "w14": {
+        "clicks": 12,
+        "cvr": 0.0435,
+        "acos": 0.2998
+      },
+      "w30": {
+        "clicks": 23,
+        "cvr": 0.0435,
+        "acos": 0.2998
+      },
+      "trend": "stable",
+      "listing_flag": false,
+      "negative_match_suggestion": null
+    }
+  ],
+  "roots": [
+    {
+      "root": "karaoke machine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "term_count": 19,
+      "clicks": 956,
+      "spend": 1251.6,
+      "orders": 38,
+      "cvr": 0.0397,
+      "acos": 0.3694,
+      "sample_terms": [
+        "karaoke machine",
+        "karaoke machine for adults",
+        "portable karaoke machine",
+        "bluetooth karaoke machine",
+        "karaoke machine for party"
+      ]
+    },
+    {
+      "root": "examplebrand",
+      "category": "brand_term",
+      "relevance": "high",
+      "term_count": 5,
+      "clicks": 365,
+      "spend": 293.7,
+      "orders": 19,
+      "cvr": 0.0521,
+      "acos": 0.1629,
+      "sample_terms": [
+        "examplebrand",
+        "examplebrand karaoke machine",
+        "examplebrand demo k1",
+        "examplebrand demo x1 pro",
+        "examplbrand"
+      ]
+    },
+    {
+      "root": "karaoke system",
+      "category": "core_category_term",
+      "relevance": "high",
+      "term_count": 3,
+      "clicks": 59,
+      "spend": 74.3,
+      "orders": 2,
+      "cvr": 0.0339,
+      "acos": 0.4155,
+      "sample_terms": [
+        "karaoke system",
+        "home karaoke system",
+        "karaoke system with speakers"
+      ]
+    },
+    {
+      "root": "dj",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "term_count": 4,
+      "clicks": 19,
+      "spend": 27.6,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "dj mixer",
+        "dj controller",
+        "dj speaker",
+        "dj lights"
+      ]
+    },
+    {
+      "root": "wireless karaoke microphone",
+      "category": "attribute_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 23,
+      "spend": 26.8,
+      "orders": 1,
+      "cvr": 0.0435,
+      "acos": 0.2998,
+      "sample_terms": [
+        "wireless karaoke microphone"
+      ]
+    },
+    {
+      "root": "rivaltwo",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 18,
+      "spend": 22.4,
+      "orders": 1,
+      "cvr": 0.0556,
+      "acos": 0.2506,
+      "sample_terms": [
+        "rivaltwo microphone"
+      ]
+    },
+    {
+      "root": "echo effect mixer amp",
+      "category": "attribute_term",
+      "relevance": "low",
+      "term_count": 1,
+      "clicks": 10,
+      "spend": 13.5,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "echo effect mixer amp"
+      ]
+    },
+    {
+      "root": "rivalgamma",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 9,
+      "spend": 10.5,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "rivalgamma model 2035"
+      ]
+    },
+    {
+      "root": "guitar amplifier",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "term_count": 1,
+      "clicks": 6,
+      "spend": 8.8,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "guitar amplifier"
+      ]
+    },
+    {
+      "root": "kareoke machine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "term_count": 1,
+      "clicks": 4,
+      "spend": 4.6,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "kareoke machine"
+      ]
+    },
+    {
+      "root": "b0test5678",
+      "category": "asin_term",
+      "relevance": "high",
+      "term_count": 1,
+      "clicks": 3,
+      "spend": 4.2,
+      "orders": 1,
+      "cvr": 0.3333,
+      "acos": 0.047,
+      "sample_terms": [
+        "b0test5678"
+      ]
+    },
+    {
+      "root": "hearing aid amplifier",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "term_count": 1,
+      "clicks": 3,
+      "spend": 3.9,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "hearing aid amplifier"
+      ]
+    },
+    {
+      "root": "singing microphone for adults",
+      "category": "core_category_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 3,
+      "spend": 3.8,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "singing microphone for adults"
+      ]
+    },
+    {
+      "root": "bluetooth speaker",
+      "category": "attribute_term",
+      "relevance": "medium",
+      "term_count": 2,
+      "clicks": 3,
+      "spend": 3.2,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "bluetooth speaker karaoke",
+        "karoke machine bluetooth speaker"
+      ]
+    },
+    {
+      "root": "karaoke maschine",
+      "category": "core_category_term",
+      "relevance": "high",
+      "term_count": 1,
+      "clicks": 2,
+      "spend": 2.6,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "karaoke maschine"
+      ]
+    },
+    {
+      "root": "rivaldelta",
+      "category": "competitor_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 2,
+      "spend": 2.4,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "rivaldelta"
+      ]
+    },
+    {
+      "root": "party speaker with microphone",
+      "category": "scenario_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 2,
+      "spend": 2.2,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "party speaker with microphone"
+      ]
+    },
+    {
+      "root": "mic machine for singing",
+      "category": "core_category_term",
+      "relevance": "medium",
+      "term_count": 1,
+      "clicks": 1,
+      "spend": 0.9,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "mic machine for singing"
+      ]
+    },
+    {
+      "root": "voice changer toy",
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "term_count": 1,
+      "clicks": 1,
+      "spend": 0.4,
+      "orders": 0,
+      "cvr": 0.0,
+      "acos": null,
+      "sample_terms": [
+        "voice changer toy"
+      ]
+    }
+  ],
+  "actions": {
+    "negatives": [
+      {
+        "term": "karaoke machine for kids party",
+        "match_type": "negative exact",
+        "reason": "中相关场景词0单且花费 $16.80 超门槛，止损",
+        "spend": 16.8,
+        "clicks": 14
+      },
+      {
+        "term": "karaoke machine for car",
+        "match_type": "negative exact",
+        "reason": "低相关场景词（车载）0单花费 $15.60，建议精准否定",
+        "spend": 15.6,
+        "clicks": 12
+      },
+      {
+        "term": "dj mixer",
+        "match_type": "negative exact",
+        "reason": "无关词（DJ 设备需求），8次点击 $12.40，精准否定",
+        "spend": 12.4,
+        "clicks": 8
+      },
+      {
+        "term": "guitar amplifier",
+        "match_type": "negative exact",
+        "reason": "无关词，6次点击 $8.80，达否词门槛，精准否定",
+        "spend": 8.8,
+        "clicks": 6
+      },
+      {
+        "term": "dj controller",
+        "match_type": "negative exact",
+        "reason": "无关词，随词根「dj」整体否定",
+        "spend": 7.9,
+        "clicks": 5
+      },
+      {
+        "term": "dj speaker",
+        "match_type": "negative exact",
+        "reason": "无关词，随词根「dj」整体否定",
+        "spend": 5.2,
+        "clicks": 4
+      },
+      {
+        "term": "hearing aid amplifier",
+        "match_type": "negative exact",
+        "reason": "无关词，3次点击 $3.90，达否词门槛，精准否定",
+        "spend": 3.9,
+        "clicks": 3
+      },
+      {
+        "term": "dj lights",
+        "match_type": "negative exact",
+        "reason": "无关词，随词根「dj」整体否定",
+        "spend": 2.1,
+        "clicks": 2
+      }
+    ],
+    "root_negatives": [
+      {
+        "root": "dj",
+        "match_type": "negative phrase",
+        "reason": "词根「dj」4 个成员词全部无关（DJ 设备需求），建议 negative phrase 整根否定",
+        "term_count": 4,
+        "spend": 27.6
+      }
+    ],
+    "scale_ups": [
+      {
+        "term": "karaoke machine",
+        "reason": "CVR 5.3% 高于基准带且 ACOS 27.2% 低于放量上限，点击充足，建议提bid放量",
+        "clicks": 320,
+        "cvr": 0.0531,
+        "acos": 0.2716
+      },
+      {
+        "term": "karaoke machine for adults",
+        "reason": "CVR 5.5% 高于基准带，ACOS 27.7% 达标，建议放量",
+        "clicks": 145,
+        "cvr": 0.0552,
+        "acos": 0.2774
+      },
+      {
+        "term": "karaoke machine that connects to tv",
+        "reason": "CVR 7.4% 显著高于基准，ACOS 19.0%，放量",
+        "clicks": 27,
+        "cvr": 0.0741,
+        "acos": 0.1896
+      },
+      {
+        "term": "home karaoke system",
+        "reason": "CVR 6.3% 高于基准带，ACOS 22.8% 达标，放量",
+        "clicks": 16,
+        "cvr": 0.0625,
+        "acos": 0.2282
+      }
+    ],
+    "reduce_bids": [
+      {
+        "term": "portable karaoke machine",
+        "reason": "CVR 3.1% 低于基准带且 ACOS 53.1% 超过 1.5×目标，先压bid",
+        "spend": 142.5,
+        "acos": 0.5313
+      },
+      {
+        "term": "rivaltwo karaoke machine",
+        "reason": "竞品词高耗无单（$68.20 / 45次点击），先控bid止损",
+        "spend": 68.2,
+        "acos": null
+      },
+      {
+        "term": "karaoke machine with two microphones",
+        "reason": "相关属性词但 ACOS 62.2% 超 1.5×目标，压bid等 CPC 回落",
+        "spend": 55.6,
+        "acos": 0.6219
+      },
+      {
+        "term": "karaoke system",
+        "reason": "CVR 2.6% 低于基准带且 ACOS 52.8% 超 1.5×目标，压bid",
+        "spend": 47.2,
+        "acos": 0.528
+      },
+      {
+        "term": "rivalbeta karaoke machine",
+        "reason": "竞品词高耗无单（$19.80），先控bid",
+        "spend": 19.8,
+        "acos": null
+      },
+      {
+        "term": "rivalone karaoke machine",
+        "reason": "竞品词 CVR 0% 低于基准带，降bid控成本",
+        "spend": 13.2,
+        "acos": null
+      },
+      {
+        "term": "rechargeable karaoke machine",
+        "reason": "CVR 0% 低于基准带，样本尚少，先小步降bid",
+        "spend": 11.2,
+        "acos": null
+      },
+      {
+        "term": "rivalgamma model 2035",
+        "reason": "竞品型号词 CVR 0% 低于基准带，降bid控成本",
+        "spend": 10.5,
+        "acos": null
+      },
+      {
+        "term": "karaoke machine with 2 wireless microphones",
+        "reason": "词级样本不足，继承词根「karaoke machine」：词根 ACOS 36.9% 超目标，随词根小步降bid",
+        "spend": 9.8,
+        "acos": null
+      },
+      {
+        "term": "karaoke machine for adults with screen",
+        "reason": "继承词根「karaoke machine」ACOS 超标随根降bid；另：“屏幕”属性近7天点击上升且 Listing 未覆盖（listing_flag）",
+        "spend": 9.1,
+        "acos": null
+      },
+      {
+        "term": "karaoke machine set",
+        "reason": "词级样本不足，继承词根「karaoke machine」决策：随词根小步降bid",
+        "spend": 3.1,
+        "acos": null
+      }
+    ],
+    "listing_feedback": [
+      {
+        "term": "karaoke machine with screen",
+        "insight": "近30天 24 次点击 $31.70 花费 0 单；词根「karaoke machine」整体 CVR 4.0% 正常，该词独立走弱",
+        "suggestion": "若产品带屏：把“屏幕显示”写进标题与五点第1条；若不带屏：转 negative exact 止损"
+      },
+      {
+        "term": "outdoor karaoke machine",
+        "insight": "近30天 31 次点击 $38.20 花费 0 单，近7天点击占比上升，需求在涨但承接为零",
+        "suggestion": "Listing 未覆盖户外场景：A+ 与五点补充户外使用场景 + 10 小时续航卖点，2 周后复查 CVR"
+      }
+    ],
+    "manual_review": [
+      {
+        "term": "examplebrand demo x1 pro",
+        "reason": "品牌词高耗0单（$26.00 / 21次点击），检查该型号承接页与库存状态"
+      },
+      {
+        "term": "b0test5678",
+        "reason": "ASIN 串号词，人工判断承接来源（本品直购或竞品引流）"
+      },
+      {
+        "term": "echo effect mixer amp",
+        "reason": "AI 助手标记 needs_listing_check=\"true\", 分类存疑, 需人工核对 Listing 卖点后定类"
+      }
+    ]
+  }
+}

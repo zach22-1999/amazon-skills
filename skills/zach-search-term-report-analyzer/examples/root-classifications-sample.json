@@ -1,0 +1,31 @@
+{
+  "asin": "B0PUBLIC01",
+  "classified_by": "ai_assistant",
+  "listing_context_source": "skills/zach-search-term-report-analyzer/examples/listing-context-sample.md",
+  "roots": {
+    "karaoke machine": {
+      "category": "core_category_term",
+      "relevance": "high",
+      "note": "核心品类需求与样例商品直接匹配",
+      "needs_listing_check": false
+    },
+    "replacement": {
+      "category": "attribute_term",
+      "relevance": "low",
+      "note": "替换配件需求与整机销售页面的承接能力较弱",
+      "needs_listing_check": false
+    }
+  },
+  "term_overrides": {
+    "rivalbrand karaoke machine with screen": {
+      "category": "competitor_term",
+      "relevance": "low",
+      "note": "包含明确的样例竞品品牌词"
+    },
+    "karaoke machine remote replacement": {
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "note": "用户寻找单独替换遥控器，不是整机购买需求"
+    }
+  }
+}

@@ -1,0 +1,2159 @@
+{
+  "meta": {
+    "generated_at": "2026-07-08 10:00",
+    "source_file": "fixtures/finalize_source_report.csv",
+    "brand": "ExampleBrand",
+    "asin": "B0TEST1234",
+    "report_type": "SP",
+    "site": "US",
+    "target_acos": 0.3,
+    "date_range": [
+      "2026-06-08",
+      "2026-07-07"
+    ],
+    "windows": [
+      7,
+      14,
+      30
+    ],
+    "baseline": {
+      "clicks": 500,
+      "spend": 600.0,
+      "orders": 50,
+      "sales": 2000.0,
+      "cvr": 0.1,
+      "acos": 0.3
+    },
+    "has_orders_data": true,
+    "listing_context": "EXAMPLEBRAND portable karaoke machine with two wireless microphones, bluetooth speaker for home party gift",
+    "thresholds": {},
+    "unused_fields": []
+  },
+  "terms": [
+    {
+      "search_term": "b0test1234",
+      "root_id": "b0test1234",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": "asin_term",
+      "metrics": {
+        "total": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.8
+        },
+        "w7": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 1.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.8
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "examplebrand speaker",
+      "root_id": "examplebrand",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": "brand_term",
+      "metrics": {
+        "total": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 20.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.666667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.666667
+        },
+        "w14": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 10.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.666667
+        },
+        "w30": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 20.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.666667
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "examplebrand karaoke machine",
+      "root_id": "examplebrand",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": "brand_term",
+      "metrics": {
+        "total": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 3,
+          "sales": 90.0,
+          "ctr": 0.05,
+          "cvr": 0.15,
+          "acos": 0.111111,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 22.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.111111,
+          "cpc": 0.5
+        },
+        "w14": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 1,
+          "sales": 45.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.111111,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 3,
+          "sales": 90.0,
+          "ctr": 0.05,
+          "cvr": 0.15,
+          "acos": 0.111111,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "rivalone karaoke machine",
+      "root_id": "rivalone",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 18.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.5
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 4.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.5
+        },
+        "w14": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 9.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.5
+        },
+        "w30": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 18.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.5
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "rivalone machine review",
+      "root_id": "rivalone",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 8.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.266667,
+          "cpc": 0.8
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 7.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.266667,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 15.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.266667,
+          "cpc": 0.8
+        },
+        "w30": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 8.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.266667,
+          "cpc": 0.8
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "rivalone portable karaoke",
+      "root_id": "rivalone",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        },
+        "w14": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        },
+        "w30": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "rivalone coloring",
+      "root_id": "rivalone",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 1.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.666667
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "coloring book for adults",
+      "root_id": "coloring book",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.833333
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.625,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 1.25,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.25
+        },
+        "w30": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.833333
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "coloring book kids",
+      "root_id": "coloring book",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.2,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.6
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.3,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 0.6,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.6
+        },
+        "w30": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.2,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.6
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "coloring book",
+      "root_id": "coloring book",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 0.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.125,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.25,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w30": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 0.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "karaoke machine",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 800,
+          "clicks": 40,
+          "spend": 30.0,
+          "orders": 6,
+          "sales": 240.0,
+          "ctr": 0.05,
+          "cvr": 0.15,
+          "acos": 0.125,
+          "cpc": 0.75
+        },
+        "w7": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 7.5,
+          "orders": 1,
+          "sales": 60.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.125,
+          "cpc": 0.75
+        },
+        "w14": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 15.0,
+          "orders": 3,
+          "sales": 120.0,
+          "ctr": 0.05,
+          "cvr": 0.15,
+          "acos": 0.125,
+          "cpc": 0.75
+        },
+        "w30": {
+          "impressions": 800,
+          "clicks": 40,
+          "spend": 30.0,
+          "orders": 6,
+          "sales": 240.0,
+          "ctr": 0.05,
+          "cvr": 0.15,
+          "acos": 0.125,
+          "cpc": 0.75
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine with two microphones",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.0,
+          "orders": 1,
+          "sales": 8.0,
+          "ctr": 0.05,
+          "cvr": 0.333333,
+          "acos": 0.25,
+          "cpc": 0.666667
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.5,
+          "orders": 0,
+          "sales": 2.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": 0.25,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 1.0,
+          "orders": 0,
+          "sales": 4.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.25,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 2.0,
+          "orders": 1,
+          "sales": 8.0,
+          "ctr": 0.05,
+          "cvr": 0.333333,
+          "acos": 0.25,
+          "cpc": 0.666667
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "karaoke machine for home",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 12.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.4,
+          "cpc": 1.2
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 3.0,
+          "orders": 0,
+          "sales": 7.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.4,
+          "cpc": 1.5
+        },
+        "w14": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 6.0,
+          "orders": 0,
+          "sales": 15.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.4,
+          "cpc": 1.2
+        },
+        "w30": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 12.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.4,
+          "cpc": 1.2
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine bluetooth",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 6.0,
+          "orders": 1,
+          "sales": 40.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.15,
+          "cpc": 0.6
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.5,
+          "orders": 0,
+          "sales": 10.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.15,
+          "cpc": 0.75
+        },
+        "w14": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 3.0,
+          "orders": 0,
+          "sales": 20.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.15,
+          "cpc": 0.6
+        },
+        "w30": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 6.0,
+          "orders": 1,
+          "sales": 40.0,
+          "ctr": 0.05,
+          "cvr": 0.1,
+          "acos": 0.15,
+          "cpc": 0.6
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "mini karaoke machine",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.25,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.625
+        },
+        "w14": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine duet",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 4,
+          "sales": 160.0,
+          "ctr": 0.05,
+          "cvr": 0.2,
+          "acos": 0.0625,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 1,
+          "sales": 40.0,
+          "ctr": 0.05,
+          "cvr": 0.2,
+          "acos": 0.0625,
+          "cpc": 0.5
+        },
+        "w14": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 2,
+          "sales": 80.0,
+          "ctr": 0.05,
+          "cvr": 0.2,
+          "acos": 0.0625,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 4,
+          "sales": 160.0,
+          "ctr": 0.05,
+          "cvr": 0.2,
+          "acos": 0.0625,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "mixed"
+    },
+    {
+      "search_term": "karaoke machine screen touch",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 10.0,
+          "orders": 2,
+          "sales": 80.0,
+          "ctr": 0.05,
+          "cvr": 0.166667,
+          "acos": 0.125,
+          "cpc": 0.833333
+        },
+        "w7": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 5.0,
+          "orders": 1,
+          "sales": 40.0,
+          "ctr": 0.05,
+          "cvr": 0.166667,
+          "acos": 0.125,
+          "cpc": 0.833333
+        },
+        "w14": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 5.0,
+          "orders": 1,
+          "sales": 40.0,
+          "ctr": 0.05,
+          "cvr": 0.166667,
+          "acos": 0.125,
+          "cpc": 0.833333
+        },
+        "w30": {
+          "impressions": 240,
+          "clicks": 12,
+          "spend": 10.0,
+          "orders": 2,
+          "sales": 80.0,
+          "ctr": 0.05,
+          "cvr": 0.166667,
+          "acos": 0.125,
+          "cpc": 0.833333
+        }
+      },
+      "trend_flag": "improving"
+    },
+    {
+      "search_term": "karaoke machine screen lyrics",
+      "root_id": "screen lyrics",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 320,
+          "clicks": 16,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w7": {
+          "impressions": 80,
+          "clicks": 4,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 160,
+          "clicks": 8,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 320,
+          "clicks": 16,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine wireless microphone",
+      "root_id": "wireless microphone",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.333333
+        },
+        "w14": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.142857
+        },
+        "w30": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine rental",
+      "root_id": "karaoke rental",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.333333
+        },
+        "w14": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.142857
+        },
+        "w30": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "portable karaoke system",
+      "root_id": "portable karaoke",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 50.0,
+          "orders": 2,
+          "sales": 100.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        },
+        "w7": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 12.5,
+          "orders": 0,
+          "sales": 25.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.5,
+          "cpc": 1.785714
+        },
+        "w14": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 25.0,
+          "orders": 1,
+          "sales": 50.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        },
+        "w30": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 50.0,
+          "orders": 2,
+          "sales": 100.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        }
+      },
+      "trend_flag": "worsening"
+    },
+    {
+      "search_term": "karaoke maker toy",
+      "root_id": "karaoke maker",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.05,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 7.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w14": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 15.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.05,
+          "acos": 0.333333,
+          "cpc": 0.5
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "party lights karaoke",
+      "root_id": "party lights",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.75
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.375,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 0.75,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.75
+        },
+        "w30": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.75
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "party lights for karaoke night",
+      "root_id": "party lights",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 1.8,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.6
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.45,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 0.9,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.9
+        },
+        "w30": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 1.8,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.6
+        }
+      },
+      "trend_flag": "insufficient_data"
+    },
+    {
+      "search_term": "obscure gadget thing",
+      "root_id": "obscure gadget",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 180,
+          "clicks": 9,
+          "spend": 7.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.777778
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.75,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.875
+        },
+        "w14": {
+          "impressions": 80,
+          "clicks": 4,
+          "spend": 3.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.875
+        },
+        "w30": {
+          "impressions": 180,
+          "clicks": 9,
+          "spend": 7.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.777778
+        }
+      },
+      "trend_flag": "stable"
+    },
+    {
+      "search_term": "karaoke machine home tv",
+      "root_id": "karaoke machine",
+      "match_types": [
+        "BROAD"
+      ],
+      "hard_tag": null,
+      "metrics": {
+        "total": {
+          "impressions": 340,
+          "clicks": 17,
+          "spend": 9.0,
+          "orders": 2,
+          "sales": 70.0,
+          "ctr": 0.05,
+          "cvr": 0.117647,
+          "acos": 0.128571,
+          "cpc": 0.529412
+        },
+        "w7": {
+          "impressions": 80,
+          "clicks": 4,
+          "spend": 2.25,
+          "orders": 0,
+          "sales": 17.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.128571,
+          "cpc": 0.5625
+        },
+        "w14": {
+          "impressions": 160,
+          "clicks": 8,
+          "spend": 4.5,
+          "orders": 1,
+          "sales": 35.0,
+          "ctr": 0.05,
+          "cvr": 0.125,
+          "acos": 0.128571,
+          "cpc": 0.5625
+        },
+        "w30": {
+          "impressions": 340,
+          "clicks": 17,
+          "spend": 9.0,
+          "orders": 2,
+          "sales": 70.0,
+          "ctr": 0.05,
+          "cvr": 0.117647,
+          "acos": 0.128571,
+          "cpc": 0.529412
+        }
+      },
+      "trend_flag": "stable"
+    }
+  ],
+  "roots": [
+    {
+      "root_id": "b0test1234",
+      "term_count": 1,
+      "sample_terms": [
+        "b0test1234"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.8
+        },
+        "w7": {
+          "impressions": 20,
+          "clicks": 1,
+          "spend": 1.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 2.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.8
+        }
+      },
+      "hard_tag": "asin_term",
+      "needs_classification": false
+    },
+    {
+      "root_id": "examplebrand",
+      "term_count": 2,
+      "sample_terms": [
+        "examplebrand karaoke machine",
+        "examplebrand speaker"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 640,
+          "clicks": 32,
+          "spend": 30.0,
+          "orders": 3,
+          "sales": 90.0,
+          "ctr": 0.05,
+          "cvr": 0.09375,
+          "acos": 0.333333,
+          "cpc": 0.9375
+        },
+        "w7": {
+          "impressions": 160,
+          "clicks": 8,
+          "spend": 7.5,
+          "orders": 0,
+          "sales": 22.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.333333,
+          "cpc": 0.9375
+        },
+        "w14": {
+          "impressions": 320,
+          "clicks": 16,
+          "spend": 15.0,
+          "orders": 1,
+          "sales": 45.0,
+          "ctr": 0.05,
+          "cvr": 0.0625,
+          "acos": 0.333333,
+          "cpc": 0.9375
+        },
+        "w30": {
+          "impressions": 640,
+          "clicks": 32,
+          "spend": 30.0,
+          "orders": 3,
+          "sales": 90.0,
+          "ctr": 0.05,
+          "cvr": 0.09375,
+          "acos": 0.333333,
+          "cpc": 0.9375
+        }
+      },
+      "hard_tag": "brand_term",
+      "needs_classification": false
+    },
+    {
+      "root_id": "rivalone",
+      "term_count": 4,
+      "sample_terms": [
+        "rivalone karaoke machine",
+        "rivalone portable karaoke",
+        "rivalone machine review",
+        "rivalone coloring"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 740,
+          "clicks": 37,
+          "spend": 36.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.027027,
+          "acos": 1.2,
+          "cpc": 0.972973
+        },
+        "w7": {
+          "impressions": 160,
+          "clicks": 8,
+          "spend": 9.0,
+          "orders": 0,
+          "sales": 7.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 1.2,
+          "cpc": 1.125
+        },
+        "w14": {
+          "impressions": 360,
+          "clicks": 18,
+          "spend": 18.0,
+          "orders": 0,
+          "sales": 15.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 1.2,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 740,
+          "clicks": 37,
+          "spend": 36.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.027027,
+          "acos": 1.2,
+          "cpc": 0.972973
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "coloring book",
+      "term_count": 3,
+      "sample_terms": [
+        "coloring book for adults",
+        "coloring book kids",
+        "coloring book"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 4.2,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.7
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 1.05,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 2.1,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.05
+        },
+        "w30": {
+          "impressions": 120,
+          "clicks": 6,
+          "spend": 4.2,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.7
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "karaoke machine",
+      "term_count": 8,
+      "sample_terms": [
+        "karaoke machine",
+        "karaoke machine duet",
+        "karaoke machine home tv",
+        "karaoke machine screen touch",
+        "karaoke machine for home",
+        "karaoke machine bluetooth",
+        "mini karaoke machine",
+        "karaoke machine with two microphones"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 2440,
+          "clicks": 122,
+          "spend": 84.0,
+          "orders": 17,
+          "sales": 628.0,
+          "ctr": 0.05,
+          "cvr": 0.139344,
+          "acos": 0.133758,
+          "cpc": 0.688525
+        },
+        "w7": {
+          "impressions": 620,
+          "clicks": 31,
+          "spend": 23.5,
+          "orders": 3,
+          "sales": 177.0,
+          "ctr": 0.05,
+          "cvr": 0.096774,
+          "acos": 0.132768,
+          "cpc": 0.758065
+        },
+        "w14": {
+          "impressions": 1200,
+          "clicks": 60,
+          "spend": 42.0,
+          "orders": 7,
+          "sales": 314.0,
+          "ctr": 0.05,
+          "cvr": 0.116667,
+          "acos": 0.133758,
+          "cpc": 0.7
+        },
+        "w30": {
+          "impressions": 2440,
+          "clicks": 122,
+          "spend": 84.0,
+          "orders": 17,
+          "sales": 628.0,
+          "ctr": 0.05,
+          "cvr": 0.139344,
+          "acos": 0.133758,
+          "cpc": 0.688525
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "screen lyrics",
+      "term_count": 1,
+      "sample_terms": [
+        "karaoke machine screen lyrics"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 320,
+          "clicks": 16,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w7": {
+          "impressions": 80,
+          "clicks": 4,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w14": {
+          "impressions": 160,
+          "clicks": 8,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        },
+        "w30": {
+          "impressions": 320,
+          "clicks": 16,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.0
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "wireless microphone",
+      "term_count": 1,
+      "sample_terms": [
+        "karaoke machine wireless microphone"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.333333
+        },
+        "w14": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.142857
+        },
+        "w30": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "karaoke rental",
+      "term_count": 1,
+      "sample_terms": [
+        "karaoke machine rental"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        },
+        "w7": {
+          "impressions": 60,
+          "clicks": 3,
+          "spend": 4.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.333333
+        },
+        "w14": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 8.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.142857
+        },
+        "w30": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 16.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 1.066667
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "portable karaoke",
+      "term_count": 1,
+      "sample_terms": [
+        "portable karaoke system"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 50.0,
+          "orders": 2,
+          "sales": 100.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        },
+        "w7": {
+          "impressions": 140,
+          "clicks": 7,
+          "spend": 12.5,
+          "orders": 0,
+          "sales": 25.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.5,
+          "cpc": 1.785714
+        },
+        "w14": {
+          "impressions": 300,
+          "clicks": 15,
+          "spend": 25.0,
+          "orders": 1,
+          "sales": 50.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        },
+        "w30": {
+          "impressions": 600,
+          "clicks": 30,
+          "spend": 50.0,
+          "orders": 2,
+          "sales": 100.0,
+          "ctr": 0.05,
+          "cvr": 0.066667,
+          "acos": 0.5,
+          "cpc": 1.666667
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "karaoke maker",
+      "term_count": 1,
+      "sample_terms": [
+        "karaoke maker toy"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.05,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w7": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 2.5,
+          "orders": 0,
+          "sales": 7.5,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w14": {
+          "impressions": 200,
+          "clicks": 10,
+          "spend": 5.0,
+          "orders": 0,
+          "sales": 15.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": 0.333333,
+          "cpc": 0.5
+        },
+        "w30": {
+          "impressions": 400,
+          "clicks": 20,
+          "spend": 10.0,
+          "orders": 1,
+          "sales": 30.0,
+          "ctr": 0.05,
+          "cvr": 0.05,
+          "acos": 0.333333,
+          "cpc": 0.5
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "party lights",
+      "term_count": 2,
+      "sample_terms": [
+        "party lights for karaoke night",
+        "party lights karaoke"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 3.3,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.66
+        },
+        "w7": {
+          "impressions": 0,
+          "clicks": 0,
+          "spend": 0.825,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": null,
+          "cvr": null,
+          "acos": null,
+          "cpc": null
+        },
+        "w14": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.65,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.825
+        },
+        "w30": {
+          "impressions": 100,
+          "clicks": 5,
+          "spend": 3.3,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.66
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    },
+    {
+      "root_id": "obscure gadget",
+      "term_count": 1,
+      "sample_terms": [
+        "obscure gadget thing"
+      ],
+      "metrics": {
+        "total": {
+          "impressions": 180,
+          "clicks": 9,
+          "spend": 7.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.777778
+        },
+        "w7": {
+          "impressions": 40,
+          "clicks": 2,
+          "spend": 1.75,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.875
+        },
+        "w14": {
+          "impressions": 80,
+          "clicks": 4,
+          "spend": 3.5,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.875
+        },
+        "w30": {
+          "impressions": 180,
+          "clicks": 9,
+          "spend": 7.0,
+          "orders": 0,
+          "sales": 0.0,
+          "ctr": 0.05,
+          "cvr": 0.0,
+          "acos": null,
+          "cpc": 0.777778
+        }
+      },
+      "hard_tag": null,
+      "needs_classification": true
+    }
+  ],
+  "classification_request": {
+    "schema_pointer": "references/term_classification.md",
+    "roots_to_classify": [
+      "rivalone",
+      "coloring book",
+      "karaoke machine",
+      "screen lyrics",
+      "wireless microphone",
+      "karaoke rental",
+      "portable karaoke",
+      "karaoke maker",
+      "party lights",
+      "obscure gadget"
+    ],
+    "top_terms_for_override": [
+      "rivalone coloring",
+      "karaoke machine screen touch"
+    ]
+  }
+}

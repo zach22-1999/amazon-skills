@@ -1,0 +1,79 @@
+{
+  "asin": "B0TEST1234",
+  "classified_by": "ai_assistant",
+  "listing_context_source": "fixture",
+  "roots": {
+    "rivalone": {
+      "category": "competitor_term",
+      "relevance": "medium",
+      "note": "高频前导竞品品牌 token",
+      "needs_listing_check": false
+    },
+    "coloring book": {
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "note": "与卡拉OK机无关",
+      "needs_listing_check": false
+    },
+    "karaoke machine": {
+      "category": "core_category_term",
+      "relevance": "high",
+      "note": "核心品类词",
+      "needs_listing_check": false
+    },
+    "screen lyrics": {
+      "category": "attribute_term",
+      "relevance": "high",
+      "note": "歌词屏属性需求",
+      "needs_listing_check": false
+    },
+    "wireless microphone": {
+      "category": "attribute_term",
+      "relevance": "high",
+      "note": "无线麦克风属性",
+      "needs_listing_check": false
+    },
+    "karaoke rental": {
+      "category": "scenario_term",
+      "relevance": "low",
+      "note": "租赁需求，本品不承接",
+      "needs_listing_check": false
+    },
+    "portable karaoke": {
+      "category": "core_category_term",
+      "relevance": "high",
+      "note": "便携品类词",
+      "needs_listing_check": false
+    },
+    "karaoke maker": {
+      "category": "core_category_term",
+      "relevance": "low",
+      "note": "偏玩具品类，本品不承接",
+      "needs_listing_check": false
+    },
+    "party lights": {
+      "category": "scenario_term",
+      "relevance": "medium",
+      "note": "派对氛围场景",
+      "needs_listing_check": false
+    },
+    "obscure gadget": {
+      "category": "core_category_term",
+      "relevance": "high",
+      "note": "语义模糊，需对照 Listing",
+      "needs_listing_check": true
+    }
+  },
+  "term_overrides": {
+    "rivalone coloring": {
+      "category": "irrelevant_term",
+      "relevance": "low",
+      "note": "竞品词根下的无关变体"
+    },
+    "karaoke machine screen touch": {
+      "category": "attribute_term",
+      "relevance": "high",
+      "note": "触屏属性需求，偏离词根核心语义"
+    }
+  }
+}

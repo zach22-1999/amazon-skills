@@ -1,477 +1,148 @@
-# 搜索词决策规则
+# 搜索词决策规则（v2 · 解释层）
 
-本文件定义 `zach-search-term-report-analyzer` 的核心判断规则。
-目标不是生成泛泛而谈的分析，而是把广告搜索词报告转成可执行的决策输出：
-
-- 否词候选
-- 放量候选
-- 潜力属性词 / 场景词
-- 观察名单
-- 需人工复核项
+> **权威定义见 `architecture.md` §5，本文件是解释层**：面向运营，讲清每条规则的业务理由。
+> 实现（`finalize_search_term_report.py`）与本文件冲突时，以 `architecture.md` 为准，并回头修订本文件。
 
 ---
 
-## 1. 适用范围
+## 1. v2 决策的三个底座
 
-适用于以下广告搜索词报告：
+### 1.1 基准 = 本 ASIN 自身的广告 CVR
 
-- SP 搜索词报告
-- SB 搜索词报告
-- SD 搜索词报告
+`基准CVR = 该 ASIN 分析窗口内总订单数 / 总点击量`。不用全店平均、不用全报告平均——不同产品的转化天花板差异太大，只有和自己比才能回答"这个词对**这个产品**是好是坏"。注意口径：广告 CVR = orders/clicks，禁止与业务 CVR（orders/sessions）互比（见 Ontology Bridge 9）。
 
-默认以**单个 ASIN**为分析单位。如果一份报告中包含多个 ASIN，先识别候选 ASIN，由用户确认分析对象后再继续。
+### 1.2 词根继承（sample_basis）——治"待判定"的核心机制
 
----
+v1 的病根：一刀切点击门槛（点击 < 8 就不下结论），导致上千长尾词全部落入"待判定"，跑完还得人工再判一遍。v2 的解法是三级样本依据：
 
-## 2. 核心原则
+| basis | 条件 | 含义 |
+|---|---|---|
+| `term` | 该词自身点击 ≥ 8（`min_clicks_for_judgement`） | 词自己的样本够，用词自己的指标判 |
+| `root` | 词样本不足，但所属词根总点击 ≥ 12（`root_min_clicks_for_judgement`） | **长尾词继承词根级决策**——词根聚合后的样本量足够下结论 |
+| `pool` | 词根样本也不足 | 真正的碎词，进"低量长尾池"：汇总监控、明确声明不逐词决策 |
 
-### 2.1 先回到产品维度，再看搜索词
+业务理由：`karaoke machine for kids with 2 mics pink` 这种词一个月可能只有 3 次点击，单看它永远"数据不足"；但它所属的词根（如 `for kids`）聚合了 40 个成员词、200 次点击，词根层面完全够下结论——长尾词没必要各自为战。`pool` 是一种决策（"这堆碎词不值得逐词管理"），不是未决，所以不计入待判定。
 
-不要把整份报告里的所有词直接混在一起比较。先识别：
+### 1.3 类别与相关性来自 AI 助手语义分类，不再靠静态词典
 
-- 品牌
-- ASIN
-- 报告类型
-- 主要广告组合 / 广告活动 / 广告组命名
-
-若同一 ASIN 对应多个广告活动，允许合并分析；若涉及多个不同产品，默认拆开。
-
-### 2.2 基准使用该 ASIN 自身的广告 CVR
-
-默认基准不是全店平均、也不是全报告平均，而是：
-
-`ASIN广告CVR基准 = 当前分析窗口内该 ASIN 的总订单数 / 总点击量`
-
-用于判断：
-
-- 某搜索词是否高于平均
-- 某搜索词是否接近平均
-- 某搜索词是否明显低于平均
-
-### 2.3 不单指标拍板
-
-不能只因某词 CVR 低，就直接建议否定。至少联合看：
-
-- 点击量
-- 花费
-- ACOS
-- CVR
-- 时间窗趋势
-- 相关性
-- 词类别（品牌词 / 竞品词 / 属性词 / 场景词 / 无关词）
-
----
-
-## 3. 指标定义
-
-若报告原始字段名不同，统一映射到以下内部指标：
-
-- `impressions`：展示量
-- `clicks`：点击量
-- `ctr`：点击率
-- `cpc`：单次点击成本
-- `spend`：花费
-- `orders`：订单数
-- `sales`：销售额
-- `cvr`：订单数 / 点击量
-- `acos`：花费 / 销售额
-- `roas`：销售额 / 花费
-
-若原报表已给出 `CVR / ACOS / ROAS`，优先复算校验；若缺字段，按“有就用，没有就跳过”。
-
-补充约定：
-
-- 搜索词进入聚合前，应先做标准化清洗，去掉隐藏字符、异常空格和大小写差异
-- 同一搜索词的脏字符变体应尽量合并到同一个标准搜索词再分析
-
----
-
-## 4. 可配置阈值
-
-以下阈值不要硬写在主流程里，集中在这里配置。
-
-```yaml
-min_clicks_for_judgement: 8
-min_clicks_for_priority: 15
-min_clicks_for_scale_up: 12
-min_clicks_for_listing_feedback: 10
-min_spend_for_attention: 10
-high_spend_without_orders: 15
-near_avg_cvr_band: 0.15
-high_cvr_band: 0.20
-low_cvr_band: 0.20
-trend_change_band: 0.20
-max_target_acos_multiple_for_scale_up: 1.15
-very_high_target_acos_multiple: 1.50
+```
+effective_category(term) = 硬标签(hard_tag) ➜ term 级覆盖(term_override) ➜ 词根分类(root.category)
+effective_relevance     = 同优先级取值；brand/asin 视为 high
 ```
 
-解释：
-
-- `min_clicks_for_judgement`
-  - 点击量低于这个值时，不做强结论，默认进入观察或人工复核。
-- `min_clicks_for_priority`
-  - 点击量高于这个值时，优先进入处理名单。
-- `min_clicks_for_scale_up`
-  - 即使某词表现优秀，也建议达到这个点击量后再进入更明确的放量。
-- `min_clicks_for_listing_feedback`
-  - 属性词 / 场景词至少达到这个点击量后，再优先反馈给 Listing / 投放策略。
-- `min_spend_for_attention`
-  - 即使点击不高，但花费已明显发生，也要进入关注。
-- `high_spend_without_orders`
-  - 当某词已经明显花费但仍 0 单时，即使 ACOS 因无销售额而缺失，也应优先进入控成本。
-- `near_avg_cvr_band`
-  - 当词的 CVR 与 ASIN 基准 CVR 的差距在 ±15% 内，视为“接近平均”。
-- `high_cvr_band`
-  - 当词的 CVR 高于 ASIN 基准 CVR 20% 以上，视为“明显高于平均”。
-- `low_cvr_band`
-  - 当词的 CVR 低于 ASIN 基准 CVR 20% 以上，视为“明显低于平均”。
-- `trend_change_band`
-  - 7 / 14 / 30 天窗口之间的核心指标变化超过 20% 时，视为趋势显著变化。
-- `max_target_acos_multiple_for_scale_up`
-  - 即使某词 CVR 很高，只要 ACOS 明显高于目标，也不要直接放量。
-- `very_high_target_acos_multiple`
-  - 当 ACOS 远高于目标时，优先进入控 bid / 降成本，而不是继续观察。
+硬标签（品牌词 / ASIN 串号词）是脚本确定性识别的，优先级最高；AI 助手对花费 top30 的词可以做 term 级覆盖（个别词偏离词根语义时点名纠正）；其余词一律继承词根的 category / relevance。静态词典永远盖不全长尾，语义判断交给模型，数值判断留给脚本。
 
 ---
 
-## 5. 搜索词分类规则
+## 2. 阈值表与业务理由
 
-每个搜索词至少要落一个主标签，可多打辅助标签。
+阈值集中为 `finalize_search_term_report.py` 的脚本常量（禁散写），实际取值同时写进 workbook.meta.thresholds：
 
-### 5.1 主标签
-
-- `brand_term`：品牌词
-- `competitor_term`：竞品词
-- `asin_term`：ASIN 串号词
-- `core_category_term`：核心品类词
-- `attribute_term`：属性词
-- `scenario_term`：场景词
-- `irrelevant_term`：无关词
-- `uncertain_term`：暂不确定
-
-### 5.2 分类优先级
-
-优先级从高到低：
-
-1. `brand_term`
-2. `competitor_term`
-3. `asin_term`
-4. `irrelevant_term`
-5. `attribute_term`
-6. `scenario_term`
-7. `core_category_term`
-8. `uncertain_term`
-
-### 5.3 v1 的边界
-
-v1 可以做：
-
-- 识别并标记品牌词
-- 识别并标记竞品词
-- 标记属性词、场景词、无关词候选
-- 识别并标记 ASIN 串号词
-- 对常见品牌 typo 做保守归并
-
-v1 不强制做：
-
-- 深度竞品品牌库构建
-- 自动打开多个竞品 Listing 做复杂判断
-
-遇到边界不清时，标为 `uncertain_term` 并升级人工。
+| 阈值 | 默认值 | 业务理由 |
+|---|---|---|
+| `min_clicks_for_judgement` | 8 | term 级样本门槛：8 次点击以下，单词 CVR 波动太大，不用词自身指标下结论 |
+| `root_min_clicks_for_judgement` | 12 | root 级样本门槛（v2 新增）：词根是聚合值，要求比 term 略高才有代表性 |
+| `min_clicks_for_priority` | 15 | 点击到这个量级的词对预算影响直接，优先进处理名单 |
+| `min_clicks_for_scale_up` | 12 | 放量是加钱动作，比一般判断要求更多样本，防止对偶然高 CVR 加仓 |
+| `min_spend_for_attention` | 10.0 | 点击不高但钱已经花出去了，也要进入关注 |
+| `high_spend_without_orders` | 15.0 | 0 单词的止损线：花到这个数还没单，即使 ACOS 因无销售额缺失也要动手 |
+| `near_avg_cvr_band` | 0.15 | 与基准差 ±15% 内视为"接近平均"——广告数据噪音大，太窄的带会频繁误判 |
+| `high_cvr_band` | 0.20 | 高于基准 20% 以上才算"明显高于平均"，够格谈放量 |
+| `low_cvr_band` | 0.20 | 低于基准 20% 以上才算"明显低于平均"，够格谈控成本/否定 |
+| `trend_change_band` | 0.20 | 窗口间指标变化超 20% 才算趋势显著，过滤日常波动 |
+| `max_target_acos_multiple_for_scale_up` | 1.15 | 放量红线：ACOS 超目标 15% 以上时，CVR 再高也不加码 |
+| `very_high_target_acos_multiple` | 1.50 | ACOS 超目标 50% 是硬伤，直接进控 bid，不再观察 |
+| `negative_min_clicks` | 2 | 无关词进否词的最低点击（v2 新增）：0/1 次点击的无关词否掉性价比低，先进低量池 |
+| `negative_min_spend` | 1.0 | 或最低花费（v2 新增）：钱已实际浪费的无关词，点击再少也否 |
 
 ---
 
-## 6. 决策输出标签
+## 3. 决策规则逐条解释（按命中顺序，每词恰好一个主决策）
 
-每个搜索词最终至少输出一个动作标签：
+规则**有序**执行，命中即返回。每个词最终带四件套：decision + basis + confidence + reason。
 
-- `scale_up`
-  - 建议放量、提高出价、转精准或重点保留
-- `hold_test`
-  - 当前不要激进处理，继续测试或小幅调 bid
-- `reduce_bid`
-  - 词相关，但成本效率偏差，先控 bid
-- `negative_candidate`
-  - 进入否词候选
-- `observe`
-  - 数据不足或趋势不稳，先观察
-- `listing_feedback`
-  - 应反馈给 Listing / 素材 / 产品认知
-- `manual_review`
-  - 需要人工复核，不自动下结论
+### 规则 1 — ASIN 串号词 → `manual_review`
 
----
+词里含 `B0XXXXXXXX` 串号的，可能是品牌承接、竞品流量或用户直搜 ASIN，语义无法自动分辨，固定升级人工。这是待判定里**合理存在**的部分。
 
-## 7. 主决策规则
+### 规则 2 — 分类标记 needs_listing_check → `manual_review`
 
-### 7.1 放量候选规则
+AI 助手分类时极少数真拿不准的词根（应 <5%），尊重标记升级人工。
 
-满足以下条件时，优先标记为 `scale_up`：
+### 规则 3 — 品牌词：防守逻辑，不做常规效率判断
 
-- `clicks >= min_clicks_for_judgement`
-- 更稳妥时优先要求 `clicks >= min_clicks_for_scale_up`
-- `cvr >= ASIN广告CVR基准 * (1 + high_cvr_band)`
-- 不属于 `irrelevant_term`
-- 不属于需要保守处理的例外项
-- ACOS 没有明显高于目标 ACOS
+- term 级 0 单且花费 ≥ 15 → `manual_review`「品牌词高耗 0 单，查承接页」——自己的品牌词都不转化，大概率是 Listing/承接出了问题，不是流量问题。
+- 其余 → `hold_test`「品牌承接/防守，保持」。品牌词承担防守职能，CVR 高不代表泛品类需求扩张，CVR 一般也不轻易撤——单列 brand bucket，在报告里与泛词分开看。
 
-附加加分条件：
+### 规则 4 — 竞品词：抢量是策略决策，脚本只做止损
 
-- 7 天 CVR 高于 14 / 30 天
-- ACOS 低于目标 ACOS
-- 点击量持续增长
-- 属于属性词或场景词，且词义与产品卖点一致
+- 0 单且花费 ≥ 15 → `reduce_bid`「竞品词高耗无单，先控」。
+- 有样本（basis≠pool）且 CVR 明显低于基准 → `reduce_bid`。
+- 其余 → `hold_test`「竞品词表现尚可，加码属策略决策」——要不要跟某个竞品打，是更高层的策略判断，skill 只保证不流血，单列 competitor bucket。
 
-输出说明应写清：
+### 规则 5 — 无关词：达到最低量就进否词，碎词进池
 
-- 为什么该词高于基准
-- 建议是放量、转精准、单独建组，还是先维持再观察
+- 点击 ≥ 2 或花费 ≥ $1 → `negative_candidate`（建议 negative exact）。**整个词根都无关且成员 ≥ 3 个词时，额外给 root 级 negative phrase 建议**——一条 phrase 否词顶几十条 exact，这是词根聚合在否词侧的红利。
+- 量不够的 → `observe(basis=pool)` 进低量池。否掉一个从没花过钱的词没有收益，还占否词位。
 
-### 7.2 接近平均词规则
+### 规则 6 — 相关词但词和词根样本都不足 → `observe(basis=pool)`
 
-当满足以下条件时，标记为 `hold_test` 或 `reduce_bid`：
+core / attribute / scenario 类词，basis==pool 时进低量池汇总监控。这是声明"不逐词决策"，不是拖延。
 
-- `clicks >= min_clicks_for_judgement`
-- `ASIN广告CVR基准 * (1 - near_avg_cvr_band) <= cvr <= ASIN广告CVR基准 * (1 + near_avg_cvr_band)`
+### 规则 7 — 相关词的效率判断（用 term 或 root 指标 m）
 
-这时继续看 ACOS：
+**7a. 报表无订单数据**（SB/SD 部分报表）：只做浪费检测——花费 ≥ 15 → `reduce_bid`，否则 `hold_test`，并在报告显式声明"无订单字段，无法做 CVR/ACOS 判断"的局限。没有数据就不硬给结论。
 
-- 若 `acos > 目标ACOS`
-  - 标记 `reduce_bid`
-  - 说明：词不一定差，但成本压力偏高，先降 bid 控成本
-- 若 `acos <= 目标ACOS`
-  - 标记 `hold_test`
-  - 说明：词效能接近平均，可保持或小幅提 bid 测试放量空间
+**7b. CVR 明显高于基准（≥ 基准×1.2）**：
+- basis==term 且点击 ≥ 12 且 ACOS ≤ 目标×1.15 → `scale_up`——三个条件缺一不可：真实高效 + 样本够 + 成本可控。
+- ACOS 超标 → `reduce_bid`「高转化但成本超标，压 bid 等 CPC 回落」——词是好词，问题在出价。
+- basis==root（继承）→ `hold_test`「词根整体高效，小步提 bid 测试」——继承的信号不足以直接加仓单个词，但值得试。
 
-### 7.3 明显低效词规则
+**7c. CVR 接近基准（±15% 带内）**：看 ACOS 定方向——超目标 → `reduce_bid`（词不差，成本压力偏高）；不超 → `hold_test`（保持或小幅测试放量空间）。
 
-满足以下条件时，优先考虑 `negative_candidate` 或 `manual_review`：
+**7d. CVR 明显低于基准（≤ 基准×0.8）**：
+- 0 单且（花费 ≥ 15 或点击 ≥ 15）——已经形成实际浪费：
+  - relevance==high 且属性/场景词且 Listing 未覆盖 → `listing_feedback`——词有真实需求但页面没承接，这是产品/内容问题不是流量问题，否掉可惜（广告侧同时给控 bid 注记）。
+  - relevance==high → `reduce_bid`「相关但转化不达标，控成本+查承接」——相关词不轻易否，先控成本查承接。
+  - 其余 → `negative_candidate`「低相关低效，止损」。
+- ACOS > 目标×1.5 → `reduce_bid`——严重超标直接动手。
+- relevance==low → `negative_candidate`——低相关+低效，双重确认可以否。
+- 其余 → `reduce_bid`「低于基准，先小步降 bid」——渐进处理，不一步否死。
 
-- `clicks >= min_clicks_for_judgement` 或 `spend >= min_spend_for_attention`
-- `cvr <= ASIN广告CVR基准 * (1 - low_cvr_band)`
-- ACOS 明显偏高或持续无单
-- 词义与产品不强相关，或已出现明显浪费信号
+### 规则 7e / 8 — 带间词与兜底 → `hold_test`
 
-但以下情况不要直接否：
+CVR 落在"明显高"与"明显低"之间未被前面命中的 → `hold_test`。兜底（理论不可达）也是 `hold_test`——**禁止兜底 observe**：v1 的教训就是把"不知道怎么办"都堆进 observe，v2 规定除低量池外不允许产生 observe。
 
-- `brand_term`
-- `competitor_term`
-- 新品期
-- 点击量过低、数据不足
-- 明显可能是 Listing 承接问题而非流量问题
+### 降级规则 — 趋势打架时收紧放量
 
-默认顺序：
+`trend_flag==mixed`（7/14/30 天窗口信号互相冲突）且结果为 `scale_up` → 降为 `hold_test`「窗口信号打架，先稳」。加钱动作必须建立在稳定信号上；控成本动作不受此限（止损不用等趋势确认）。
 
-1. 先看是否属于例外项
-2. 再看是否无关
-3. 再决定是 `negative_candidate`、`reduce_bid`、`observe` 还是 `manual_review`
+### listing_feedback 附加位
 
-补充：
+属性/场景词 + 近 7 天点击上升 + Listing 未覆盖 → 独立 flag（不占主 decision，除 7d 命中外）。广告决策和内容反馈是两条线，一个词可以既"降 bid"又"值得反馈给 Listing"。
 
-- 若某词 `0 单 + 高点击 / 高花费`，即使 ACOS 因无销售额而缺失，也应优先考虑进入 `reduce_bid`
-- 对属性词 / 场景词，不要因为短期转化弱就完全丢掉；可同时给出“控成本”和“反馈 Listing”的双重视角
+### confidence 三级
 
-### 7.4 点击优先级规则
-
-同等条件下，优先处理高点击词。
-
-排序优先级建议：
-
-1. 高点击 + 高花费 + 低效率词
-2. 高点击 + 高效率词
-3. 上升中的属性词 / 场景词
-4. 低点击但花费异常词
-5. 低点击低花费观察词
+- `high`：basis==term 且点击 ≥ 15——词自己的数据充分。
+- `medium`：basis==term（8–14 次点击）或词根点击 ≥ 20 的继承决策。
+- `low`：其余——主要是刚过 root 门槛的继承决策。执行时 low 置信度的动作建议幅度放小。
 
 ---
 
-## 8. 时间窗规则
-
-默认至少输出：
-
-- 近 7 天
-- 近 14 天
-- 近 30 天
-
-### 8.1 趋势变好
-
-以下情况可标记为“趋势变好”：
-
-- 7 天 CVR 明显高于 30 天
-- 7 天 ACOS 明显低于 30 天
-- 点击量稳定或上升
-- 订单效率同步改善
-
-### 8.2 趋势变坏
-
-以下情况可标记为“趋势变坏”：
-
-- 7 天 CVR 明显低于 30 天
-- 7 天 ACOS 明显高于 30 天
-- 点击量上升但转化不跟
-- 花费上升但订单无改善
-
-### 8.3 趋势不稳
-
-以下情况标记为 `observe`：
-
-- 7 / 14 / 30 天结论互相打架
-- 样本量太低
-- 某时间窗数据异常缺失
-- 大促、节假日等特殊周期导致波动失真
-
-补充：
-
-- 趋势判断不要只看 CVR，也要结合 ACOS 是否同步变好 / 变坏
-
----
-
-## 9. 例外规则
-
-### 9.1 新品期
-
-如果当前 ASIN 处于新品期：
-
-- 不要用成熟品的稳定阈值直接判断
-- 对低效词更偏 `observe` 或 `manual_review`
-- 对潜力词更偏“测试中放量”，而不是直接重仓
-
-### 9.2 品牌词
-
-品牌词即使 CVR 很高，也不自动进入“重点放量”。
-要单独标记 `brand_term`，并说明：
-
-- 它可能主要承担品牌防守或品牌承接
-- 不一定代表真实泛品类需求扩张
-
-### 9.3 竞品词
-
-竞品词即使 CVR 一般，也不自动进入否词。
-默认先标记 `competitor_term`，并说明：
-
-- 这是竞品争夺词
-- 是否继续投放需要更高层策略判断
-- v1 只做标记和提醒，不做深度竞品归因
-
-### 9.4 数据不足
-
-若满足任一条件：
-
-- `clicks < min_clicks_for_judgement`
-- `spend < min_spend_for_attention`
-- 时间窗数据不完整
-
-则默认标记为 `observe` 或 `manual_review`，不下强结论。
-
-### 9.5 ASIN 型搜索词
-
-如果搜索词本身包含明显的 `B0...` ASIN 串号：
-
-- 单独标记为 `asin_term`
-- 不自动进入放量或否词
-- 默认优先 `manual_review`
-- 说明需要人工判断这是品牌承接、竞品流量，还是特殊投放信号
-
----
-
-## 10. 异常归因规则
-
-当词表现差时，不要只输出“CVR低”。至少尝试归因到以下之一：
-
-- `irrelevant_traffic`
-  - 词本身与产品不够相关
-- `poor_listing_alignment`
-  - 词相关，但 Listing 承接不够
-- `pricing_or_conversion_issue`
-  - 可能是价格、评价、竞争环境影响转化
-- `mixed_signal`
-  - 数据不够一致，无法明确归因
-- `manual_review_needed`
-  - 必须看 Listing 才能进一步判断
-
-若需要看 Listing 才能继续判断，应明确写：
-
-“该词已触发人工复核，建议先查看对应 ASIN 的 Listing、核心卖点、功能和适用场景，再决定是否否定或调整投放。”
-
----
-
-## 11. 属性词 / 场景词规则
-
-对于 `attribute_term` 或 `scenario_term`，不要只输出广告动作，还要判断是否进入 `listing_feedback`。
-
-优先进入 `listing_feedback` 的条件：
-
-- 近 7 天或 14 天点击量上升
-- 词义与产品真实卖点相关
-- 当前 Listing 中未明显覆盖该属性 / 场景
-- 不是明显无关流量
-
-输出时建议拆成两条：
-
-- 广告侧建议
-- Listing / 内容侧建议
-
----
-
-## 12. 置信度层
-
-除动作标签外，建议额外给出 `high / medium / low` 三级置信度。
-
-置信度应至少参考：
-
-- 点击量是否足够
-- 是否已有订单样本
-- 7 / 14 / 30 天是否都能形成有效窗口
-- 词分类是否明确
-- 趋势是否稳定
-
-规则目标：
-
-- `low`：不直接给强动作，优先 `observe / listing_feedback / manual_review`
-- `medium`：可给轻动作，如 `hold_test / reduce_bid`
-- `high`：可给更明确的 `scale_up / reduce_bid / negative_candidate`
-
----
-
-## 13. 输出优先级
-
-最终报告中的顺序建议：
-
-1. `negative_candidate`
-2. `scale_up`
-3. `reduce_bid`
-4. `listing_feedback`
-5. `observe`
-6. `manual_review`
-
-原因：
-
-- 先处理浪费
-- 再处理机会
-- 再处理需要协同的认知反馈
-- 最后放观察和人工复核
-
----
-
-## 14. 升级人工条件
-
-以下情况直接标记 `manual_review`：
-
-- 报告中无法稳定识别 ASIN
-- 多个产品混在一起且用户未确认分析对象
-- 品牌词 / 竞品词策略含糊，无法自动下结论
-- 需要结合 Listing 才能判断相关性
-- 字段缺失导致核心指标无法计算
-- 时间窗信号互相冲突，无法形成稳定结论
-
----
-
-## 15. v1 不做的事
-
-v1 明确不做：
-
-- 自动代替用户做最终预算决策
-- 深度竞品品牌库建设
-- 自动抓竞品 Listing 并做完整竞品画像
-- 在没有明确字段时强行给 ACOS / CVR 结论
-- 把用户真实销售数据沉淀进 skill 包
+## 4. 待判定治理与验收口径
+
+- `待判定 = manual_review + observe(basis ∈ {term, root})`；**pool 不计入**（它是明确的"汇总监控"决策）。
+- 目标：待判定 ≤ 10% 唯一词数 **且** ≤ 10% 总花费。`run_summary.json` 输出 `pending_ratio_terms` / `pending_ratio_spend`，超标不失败但显式告警，报告里必须解释原因。
+- 合理的待判定来源基本只有：ASIN 串号词（规则 1）、needs_listing_check（规则 2）、品牌词高耗 0 单（规则 3）。若超标且不来自这三处，先检查分类质量。
+
+## 5. 报告输出优先级
+
+1. `negative_candidate`（先止血）
+2. `scale_up`（再抓机会）
+3. `reduce_bid`（控成本）
+4. `listing_feedback`（需协同的认知反馈）
+5. brand / competitor bucket（策略参考）
+6. `manual_review`（人工项）
+7. `observe(pool)`（低量池，折叠汇总）
+
+先处理浪费，再处理机会，再处理协同，最后才是观察项——和钱的关系越直接，排得越靠前。

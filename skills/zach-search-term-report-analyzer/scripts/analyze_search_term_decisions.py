@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""按单 ASIN 生成搜索词决策分析结果。"""
+"""旧版单脚本分析入口，仅供兼容已有自动化。
+
+新任务请使用 prepare_search_term_analysis.py → 词根分类 →
+finalize_search_term_report.py。
+"""
 
 from __future__ import annotations
 
@@ -1014,7 +1018,7 @@ def export_outputs(
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="按单 ASIN 生成搜索词决策分析结果")
+    parser = argparse.ArgumentParser(description="已弃用的 v1 单脚本分析入口")
     parser.add_argument("input_file", help="原始搜索词报告路径（csv/xlsx）")
     parser.add_argument("--output-dir", help="输出目录，默认写入 outputs/search-term-report-analyzer/<brand>/")
     parser.add_argument("--brand", help="显式指定品牌，覆盖自动识别")
@@ -1039,6 +1043,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    print(
+        "警告：analyze_search_term_decisions.py 已弃用；"
+        "新任务请使用 prepare → 词根分类 → finalize 的 v2 流程。",
+        file=sys.stderr,
+    )
     args = parse_args()
     input_path = Path(args.input_file).expanduser().resolve()
     if not input_path.exists():

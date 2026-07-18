@@ -1,0 +1,15 @@
+<!-- finalize 测试用最小 stub 模板 -->
+<div id="app">payload 未注入</div>
+<script id="payload" type="application/json">__PAYLOAD_JSON__</script>
+<script>
+(function () {
+  var el = document.getElementById('payload');
+  try {
+    var payload = JSON.parse(el.textContent);
+    document.getElementById('app').textContent =
+      'terms: ' + payload.terms.length + ' / pending: ' + payload.summary.pending_ratio_terms;
+  } catch (err) {
+    document.getElementById('app').textContent = 'payload 未注入';
+  }
+})();
+</script>

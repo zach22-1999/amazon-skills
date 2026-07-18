@@ -1,0 +1,14 @@
+{
+  "asin": "B0TEST1234",
+  "classified_by": "ai_assistant",
+  "listing_context_source": "fixture",
+  "roots": {
+    "generic term": {
+      "category": "core_category_term",
+      "relevance": "high",
+      "note": "核心品类词",
+      "needs_listing_check": false
+    }
+  },
+  "term_overrides": {}
+}
