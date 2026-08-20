@@ -46,6 +46,7 @@ GitHub Social preview 上传说明见：
 ```text
 zach-feature-demand-validator
 zach-listing-health-checker
+zach-search-term-analyzer
 zach-search-term-report-analyzer
 zach-sif-cvr-threshold-analyzer
 ```
@@ -62,6 +63,7 @@ zach-sif-cvr-threshold-analyzer
 | [zach-product-research](./skills/zach-product-research/README.md) | 用 Sorftime 做选品分析，输出市场调研三件套与原始数据 | Sorftime MCP | Ready |
 | [zach-feature-demand-validator](./skills/zach-feature-demand-validator/README.md) | 验证一个微创新功能到底是不是用户真实在意 | Sorftime + WebSearch 或本地评论包 | Ready |
 | [zach-listing-health-checker](./skills/zach-listing-health-checker/README.md) | 用真实消费者视角巡检 Listing 健康状态 | Amazon 网页抓取 | Ready |
+| [zach-search-term-analyzer](./skills/zach-search-term-analyzer/README.md) | 场景化分析 Brand Analytics 热门搜索词报告：自家在/不在点击 TOP3 走不同判断（收割/漏水/预警 vs 机会/伏击/头部满足），输出市场结构象限与成交系数 | Brand Analytics 导出 CSV | Ready |
 | [zach-search-term-report-analyzer](./skills/zach-search-term-report-analyzer/README.md) | 用词根级 AI 分类与决策继承分析 Amazon Ads 搜索词报告，输出 Markdown、CSV、HTML 和 JSON 六类结果 | 本地报表 + 可选 Amazon 网页抓取 | Ready |
 | [zach-sif-cvr-threshold-analyzer](./skills/zach-sif-cvr-threshold-analyzer/README.md) | 对齐 ASIN 360 业务报表和自然排名数据，输出 CVR 观察线、危险线和广告确认线 | 领星 ASIN 360 业务报表 + 用户自己的 SIF MCP | Ready |
 | [zach-seller-skill-creator](./skills/zach-seller-skill-creator/README.md) | 把亚马逊卖家的实战流程沉淀成可安装、可评测、可迭代的 skill | 本地文件 + 可选评测脚本 | Ready |
